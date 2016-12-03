@@ -23,7 +23,7 @@ Can be composed with other plugins: on load it mounts all child components (e.g.
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
 Parameters:
- - @path       string   path to the JSON file
+ - @path       string   path to the GEXF file
  - @onGraphLoaded  Function        Optional callback for graph update
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)

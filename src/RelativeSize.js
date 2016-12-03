@@ -16,6 +16,8 @@ It supposes that sigma graph is already in place, therefore component should not
 mounted until graph is available. It can be used within Sigma component if graph is
 preloaded, or within loader component, like NeoCypher.
 
+Sets nodes sizes corresponding its degree.
+
 Parameters:
  - @initialSize  number  start size for every node, will be multiplied by Math.sqrt(node.degree)
 
