@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.plugins.relativeSize.min.js'
+import '../sigma/plugins.relativeSize'
 
 type Props = {
 	initialSize: number,

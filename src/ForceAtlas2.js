@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.layout.forceAtlas2.min.js'
+import '../sigma/layout.forceAtlas2'
 
 type State = {
 	running: boolean,

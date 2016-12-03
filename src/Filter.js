@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.plugins.filter.min.js'
+import '../sigma/plugins.filter'
 //import { embedProps } from './tools'
 
 type Props = {

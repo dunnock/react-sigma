@@ -11,7 +11,6 @@ Test wrapper running test on sigma instance right from the sigma compoenent
 class TestSigma extends React.PureComponent {
     constructor(props) {
         super(props)
-        console.log("TestSigma constructor")
         if( this.props.testConstruct )
             this.props.testConstruct(this.props.sigma)
     }

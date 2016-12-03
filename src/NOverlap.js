@@ -2,8 +2,8 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.plugins.animate.min.js'
-import 'sigma/build/plugins/sigma.layout.noverlap.min.js'
+import '../sigma/plugins.animate'
+import '../sigma/layout.noverlap'
 
 type State = {
 	running: boolean,

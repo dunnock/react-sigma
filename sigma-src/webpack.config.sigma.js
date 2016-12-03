@@ -21,6 +21,12 @@ module.exports = {
     'parsers.gexf': [ sigmaPluginsRoot + '/sigma.parsers.gexf/gexf-parser.js',
                       sigmaPluginsRoot + '/sigma.parsers.gexf/sigma.parsers.gexf.js' ],
     'neo4j.cypher': sigmaPluginsRoot + '/sigma.neo4j.cypher/sigma.neo4j.cypher.js',
+    'plugins.filter': sigmaPluginsRoot + '/sigma.plugins.filter/sigma.plugins.filter.js',
+    'layout.forceAtlas2': [ sigmaPluginsRoot + '/sigma.layout.forceAtlas2/supervisor.js',
+                            sigmaPluginsRoot + '/sigma.layout.forceAtlas2/worker.js'],
+    'plugins.animate': sigmaPluginsRoot + '/sigma.plugins.animate/sigma.plugins.animate.js',
+    'layout.noverlap': sigmaPluginsRoot + '/sigma.layout.noverlap/sigma.layout.noverlap.js',
+    'plugins.relativeSize': sigmaPluginsRoot + '/sigma.plugins.relativeSize/sigma.plugins.relativeSize.js',
     // add any extra sigma modules here
   },
 
@@ -35,8 +41,8 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js/, loader: jsLoader, exclude: [/node_modules/,/sigma.*\/src/] },
-      { test: /sigma.*\/src/, loader: 'imports?this=>window' },
+      { test: /\.js/, loader: jsLoader, exclude: [/node_modules/] },
+      { test: /sigma\-react\/.*\.js/, loader: 'imports?this=>window' },
     ]
   },
 

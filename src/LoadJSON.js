@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import '../sigma/parsers.json'
+import '../sigma/parsers.json.js'
 import { embedProps } from './tools'
 
 type State = {

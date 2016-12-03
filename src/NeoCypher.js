@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import '../sigma/parsers.json'
+import '../sigma/parsers.json.js'
 import '../sigma/neo4j.cypher'
 import NeoGraphItemsProducers from './NeoGraphItemsProducers'
 import { embedProps } from './tools'
