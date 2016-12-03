@@ -32,7 +32,7 @@ module.exports = {
 
   output: {
     path: sigmaDistRoot,
-    filename: options.optimizeMinimize ? '[name].min.js' : '[name].js',
+    filename: '[name].js',
     library: 'Sigma',
     libraryTarget: 'umd',
   },
