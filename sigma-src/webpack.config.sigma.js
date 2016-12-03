@@ -1,6 +1,6 @@
 let webpack = require('webpack');
 let yargs = require('yargs');
-let { sigmaSrcRoot, sigmaDistRoot } = require('./paths')
+let { sigmaSrcRoot, sigmaDistRoot, sigmaPluginsRoot } = require('../config/paths')
 
 let options = yargs
   .alias('p', 'optimize-minimize')
@@ -17,6 +17,10 @@ module.exports = {
     'webgl': sigmaSrcRoot + '/webgl.js',
     'edges': sigmaSrcRoot + '/edges.js',
     'nodes': sigmaSrcRoot + '/nodes.js',
+    'parsers.json': sigmaPluginsRoot + '/sigma.parsers.json/sigma.parsers.json.js',
+    'parsers.gexf': [ sigmaPluginsRoot + '/sigma.parsers.gexf/gexf-parser.js',
+                      sigmaPluginsRoot + '/sigma.parsers.gexf/sigma.parsers.gexf.js' ],
+    'neo4j.cypher': sigmaPluginsRoot + '/sigma.neo4j.cypher/sigma.neo4j.cypher.js',
     // add any extra sigma modules here
   },
 

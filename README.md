@@ -5,16 +5,16 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 - [Usage](#usage)
 - [Types](#types)
 - [Components reference](#components-reference)
-  - [Sigma](#sigma)
-  - [EdgeShapes](#edgeshapes)
-  - [NodeShapes](#nodeshapes)
-  - [Filter](#filter)
-  - [ForceAtlas2](#forceatlas2)
-  - [NOverlap](#noverlap)
-  - [RandomizeNodePositions](#randomizenodepositions)
-  - [LoadGEXF](#loadgexf)
-  - [LoadJSON](#loadjson)
-  - [NeoCypher](#neocypher)
+	- [Sigma](#sigma)
+	- [EdgeShapes](#edgeshapes)
+	- [NodeShapes](#nodeshapes)
+	- [Filter](#filter)
+	- [ForceAtlas2](#forceatlas2)
+	- [NOverlap](#noverlap)
+	- [RandomizeNodePositions](#randomizenodepositions)
+	- [LoadGEXF](#loadgexf)
+	- [LoadJSON](#loadjson)
+	- [NeoCypher](#neocypher)
 - [Extending sigma components](#extending-sigma-components)
 
 
@@ -23,18 +23,18 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 ```
 import {Sigma, SigmaEnableWebGL, EdgeShapes, NodeShapes, LoadGEXF, Filter, ForceAtlas2, RelativeSize} from 'react-sigmajs'
 ...
-    <SigmaEnableWebGL/>
-    <Sigma key="1"
-					onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
-					onClickStage={ e => this.setState({filterNeighbours: null}) } >
-			<EdgeShapes default="tapered"/>
-			<NodeShapes default="star"/>
-      <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
-        <Filter neighborsOf={ this.state.filterNeighbours } />
-      	<ForceAtlas2 worker barnesHutOptimize barnesHutTheta={0.6} iterationsPerRender={10} linLogMode timeout={3000}/>
-        <RelativeSize initialSize={15}/>
-      </LoadGEXF>
-  	</Sigma>
+<SigmaEnableWebGL/>
+<Sigma key="1"
+			onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
+			onClickStage={ e => this.setState({filterNeighbours: null}) } >
+	<EdgeShapes default="tapered"/>
+	<NodeShapes default="star"/>
+	<LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
+		<Filter neighborsOf={ this.state.filterNeighbours } />
+		<ForceAtlas2 worker barnesHutOptimize barnesHutTheta={0.6} iterationsPerRender={10} linLogMode timeout={3000}/>
+		<RelativeSize initialSize={15}/>
+	</LoadGEXF>
+</Sigma>
 ```
 
 See storybook for more usage recipes.
@@ -53,19 +53,19 @@ initializes renderer and camera in the given area and starts rendering graph.
 <Sigma> be composed with sigma sub-components using JSX syntax, e.g.:
 
 ```
-    <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-           settings={{drawEdges:false}}
-           onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-           graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-      <RelativeSize initialSize={8} />
-    </Sigma>
+		<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+					 settings={{drawEdges:false}}
+					 onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+					 graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+			<RelativeSize initialSize={8} />
+		</Sigma>
 ```
 
 ### Parameters
 
  - @style  CSS   CSS style description for main div holding graph, should be specified in React format
  - @settings  Sigma$Settings     js object with sigma initialization options
-                as described on [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
+								as described on [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
  - @renderer   string     can be "webgl" or "canvas"
  - @graph     Sigma$Graph$Data   js object with array of nodes and edges used to initialize sigma
  - @onClickNode  (e) => void     set sigma callback for "clickNode" event (see below)
@@ -80,10 +80,10 @@ initializes renderer and camera in the given area and starts rendering graph.
  Sigma callback receives [Sigma Event](https://github.com/jacomyal/sigma.js/wiki/Events-API)
  with the following structure (see Sigma$Event type under /types/sigma.js):
  ```
-  .data
-     .captor   -- information about event handler, for instance position on the page {clientX, clientY}
-     .node?     -- for node events is sigma node data
-     .edge?     -- for edge events is sigma edge data
+	.data
+		 .captor   -- information about event handler, for instance position on the page {clientX, clientY}
+		 .node?     -- for node events is sigma node data
+		 .edge?     -- for edge events is sigma edge data
  ```
 
 
@@ -236,7 +236,7 @@ Parameters:
  - @password  string    Neo4j instance REST API password
  - @query     string    Neo4j cypher query
  - @producers NeoGraphItemsProducers   Optional transformer for creating Sigma nodes and edges, 
-                                    instance compatible with NeoGraphItemsProducers
+																		instance compatible with NeoGraphItemsProducers
  - @onGraphLoaded  Function        Optional callback for graph update
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
@@ -251,15 +251,15 @@ Parameters:
 
 ```
 call MyCustomSigma extends React.Component {
-  constructor(props) {
-    super(props)
-    props.sigma.graph.addNode({id:"n3", label:props.label});
-  }
+	constructor(props) {
+		super(props)
+		props.sigma.graph.addNode({id:"n3", label:props.label});
+	}
 }
 ...
 return  <Sigma>
-      <MyCustomSigma label="Label">
-    </Sigma>
+			<MyCustomSigma label="Label">
+		</Sigma>
 ```
 
 ### Asynchronous graph data loading
@@ -271,11 +271,11 @@ return  <Sigma>
 
 
 ```
-    <Sigma>
-      <LoadJSON url="/arctic.json">
-        <RelativeSize initialSize={8}/>
-      </LoadJSON>
-    </Sigma>
+		<Sigma>
+			<LoadJSON url="/arctic.json">
+				<RelativeSize initialSize={8}/>
+			</LoadJSON>
+		</Sigma>
 ```
 
 

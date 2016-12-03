@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.parsers.gexf.min.js'
+import '../sigma/parsers.gexf'
 import { embedProps } from './tools'
 
 type State = {

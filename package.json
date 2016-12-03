@@ -4,6 +4,11 @@
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
   "version": "0.3.1",
   "license": "MIT",
+  "bugs": "https://github.com/dunnock/react-sigma/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dunnock/react-sigma.git"
+  },
   "files": [
     "lib",
     "dist",
@@ -90,7 +95,8 @@
   },
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "sigma-react": "^1.2.0-2"
   },
   "peerDependencies": {
     "react": ">=0.14.0",

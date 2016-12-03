@@ -43,5 +43,6 @@ module.exports = {
   srcRoot: resolveApp('src'),
   sigmaSrcRoot: resolveApp('sigma-src'),
   sigmaDistRoot: resolveApp('') + "/sigma",
+  sigmaPluginsRoot: resolveApp('node_modules/sigma-react/plugins/')
 };
 
