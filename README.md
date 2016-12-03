@@ -10,10 +10,10 @@ React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opens
   - [ForceAtlas2](#forceatlas2)
   - [NOverlap](#noverlap)
   - [RandomizeNodePositions](#randomizenodepositions)
-  - [LoadGEXF]
-  - [LoadJSON]
-  - [NeoCypher]
-
+  - [LoadGEXF](#loadgexf)
+  - [LoadJSON](#loadjson)
+  - [NeoCypher](#neocypher)
+- [Extending sigma components](#extending-sigma-components)
 
 
 # Usage
