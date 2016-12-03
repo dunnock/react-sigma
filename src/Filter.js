@@ -55,7 +55,8 @@ class Filter extends React.Component {
 		if(props.nodesBy)
 			this.filter.nodesBy(props.nodesBy, "nodesBy")
 		this.filter.apply()
-		this.props.sigma.refresh();
+		if(this.props.sigma)
+			this.props.sigma.refresh();
 	}
 }
 

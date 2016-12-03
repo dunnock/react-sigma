@@ -16,6 +16,8 @@ type Props = {
 };
 
 
+// TODO: make a superclass for loaders??
+
 /**
 
 LoadJSON component, interface for parsers.json sigma plugin. Can be used within Sigma component.
@@ -70,7 +72,8 @@ class LoadJSON extends React.PureComponent {
     }
 
     _onLoad() {
-        this.props.sigma.refresh()
+        if(this.props.sigma)
+            this.props.sigma.refresh()
         this.setState({loaded:true})
         if(this.props.onGraphLoaded)
             return this.props.onGraphLoaded()

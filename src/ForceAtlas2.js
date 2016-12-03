@@ -7,7 +7,7 @@ import 'sigma/build/plugins/sigma.layout.forceAtlas2.min.js'
 type State = {
 	running: boolean,
 	timer?: number,
-	drawEdges: ?boolean
+	drawEdges?: ?boolean
 };
 
 type Props = {
@@ -69,10 +69,11 @@ class ForceAtlas2 extends React.Component {
 	}
 
 	componentDidUpdate(prevProps: Props, prevState: State) {
-		if(prevState.running && !this.state.running && this.props.sigma) {
-			this.props.sigma.stopForceAtlas2()
-			this.props.sigma.settings({drawEdges:prevState.drawEdges===false ? false : true})
-			this.props.sigma.refresh();
+		let s = this.props.sigma
+		if(prevState.running && !this.state.running && s) {
+				s.stopForceAtlas2()
+				s.settings({drawEdges:prevState.drawEdges===false ? false : true})
+				s.refresh();
 		}
 	}
 

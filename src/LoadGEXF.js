@@ -70,6 +70,8 @@ class LoadGEXF extends React.PureComponent {
     }
 
     _onLoad() {
+        if(this.props.sigma)
+            this.props.sigma.refresh()
         this.setState({loaded:true})
         if(this.props.onGraphLoaded)
             return this.props.onGraphLoaded()

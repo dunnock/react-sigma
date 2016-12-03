@@ -7,7 +7,7 @@ import 'sigma/build/plugins/sigma.layout.noverlap.min.js'
 
 type State = {
 	running: boolean,
-	drawEdges: ?boolean
+	drawEdges?: ?boolean
 };
 
 
@@ -61,9 +61,11 @@ class NOverlap extends React.Component {
 	}
 
 	componentDidUpdate(prevProps: Props, prevState: State) {
-		if(prevState.running && !this.state.running && this.props.sigma) {
-			this.props.sigma.settings({drawEdges:prevState.drawEdges || true})
-			this.props.sigma.refresh();
+		if(prevState.running && !this.state.running) {
+			if(this.props.sigma)
+				this.props.sigma.settings({drawEdges:prevState.drawEdges || true})
+			if(this.props.sigma)
+				this.props.sigma.refresh()
 		}
 	}
 
