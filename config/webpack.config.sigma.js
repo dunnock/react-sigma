@@ -15,6 +15,8 @@ module.exports = {
   entry: {
     'main': sigmaSrcRoot + '/main.js',
     'webgl': sigmaSrcRoot + '/webgl.js',
+    'edges': sigmaSrcRoot + '/edges.js',
+    'nodes': sigmaSrcRoot + '/nodes.js',
     // add any extra sigma modules here
   },
 

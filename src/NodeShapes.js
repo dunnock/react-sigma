@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.renderers.customShapes.min.js'
+import '../sigma/nodes'
 
 type Props = {
 	default?: Sigma$Node$Shapes,

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import 'sigma/build/plugins/sigma.renderers.customEdgeShapes.min.js'
+import '../sigma/edges'
 
 type Props = {
 	default?: Sigma$Edge$Shapes,

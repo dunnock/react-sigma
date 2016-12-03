@@ -29,13 +29,7 @@ import "sigma/src/renderers/canvas/sigma.canvas.labels.def.js"
 import "sigma/src/renderers/canvas/sigma.canvas.hovers.def.js"
 import "sigma/src/renderers/canvas/sigma.canvas.nodes.def.js"
 import "sigma/src/renderers/canvas/sigma.canvas.edges.def.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edges.curve.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edges.arrow.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"
 import "sigma/src/renderers/canvas/sigma.canvas.edgehovers.def.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"
-import "sigma/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"
 import "sigma/src/renderers/canvas/sigma.canvas.extremities.def.js"
 
 // Middlewares:
