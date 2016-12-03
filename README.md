@@ -5,16 +5,16 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 - [Usage](#usage)
 - [Types](#types)
 - [Components reference](#components-reference)
-	- [Sigma](#sigma)
-	- [EdgeShapes](#edgeshapes)
-	- [NodeShapes](#nodeshapes)
-	- [Filter](#filter)
-	- [ForceAtlas2](#forceatlas2)
-	- [NOverlap](#noverlap)
-	- [RandomizeNodePositions](#randomizenodepositions)
-	- [LoadGEXF](#loadgexf)
-	- [LoadJSON](#loadjson)
-	- [NeoCypher](#neocypher)
+ - [Sigma](#sigma)
+ - [EdgeShapes](#edgeshapes)
+ - [NodeShapes](#nodeshapes)
+ - [Filter](#filter)
+ - [ForceAtlas2](#forceatlas2)
+ - [NOverlap](#noverlap)
+ - [RandomizeNodePositions](#randomizenodepositions)
+ - [LoadGEXF](#loadgexf)
+ - [LoadJSON](#loadjson)
+ - [NeoCypher](#neocypher)
 - [Extending sigma components](#extending-sigma-components)
 
 
@@ -25,8 +25,8 @@ import {Sigma, SigmaEnableWebGL, EdgeShapes, NodeShapes, LoadGEXF, Filter, Force
 ...
 <SigmaEnableWebGL/>
 <Sigma key="1"
-			onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
-			onClickStage={ e => this.setState({filterNeighbours: null}) } >
+		onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
+		onClickStage={ e => this.setState({filterNeighbours: null}) } >
 	<EdgeShapes default="tapered"/>
 	<NodeShapes default="star"/>
 	<LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
@@ -53,12 +53,12 @@ initializes renderer and camera in the given area and starts rendering graph.
 <Sigma> be composed with sigma sub-components using JSX syntax, e.g.:
 
 ```
-		<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-					 settings={{drawEdges:false}}
-					 onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-					 graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-			<RelativeSize initialSize={8} />
-		</Sigma>
+<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+		settings={{drawEdges:false}}
+		onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+		graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+	<RelativeSize initialSize={8} />
+</Sigma>
 ```
 
 ### Parameters
@@ -242,8 +242,6 @@ Parameters:
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 
 
-
-
 ## Extending sigma components
 
  Sigma container will mount any child component with sigma instance under props.sigma. This way sigma
@@ -258,8 +256,8 @@ call MyCustomSigma extends React.Component {
 }
 ...
 return  <Sigma>
-			<MyCustomSigma label="Label">
-		</Sigma>
+	<MyCustomSigma label="Label">
+</Sigma>
 ```
 
 ### Asynchronous graph data loading
@@ -271,11 +269,11 @@ return  <Sigma>
 
 
 ```
-		<Sigma>
-			<LoadJSON url="/arctic.json">
-				<RelativeSize initialSize={8}/>
-			</LoadJSON>
-		</Sigma>
+<Sigma>
+	<LoadJSON url="/arctic.json">
+		<RelativeSize initialSize={8}/>
+	</LoadJSON>
+</Sigma>
 ```
 
 
