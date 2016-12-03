@@ -1,9 +1,11 @@
-React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for linked graphs. It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications.
+It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications. Library is using JSX for graph configuration, including asynchronous graph loading, so no callback is needed. It's including ES modules supports, so resulting code should consist only of sigma functionality that you explicitly import. Easy to extend with additional components. 
 
 ## Table of Contents
 
 - [Usage](#usage)
-  - [Sigma component](#sigma-component)
+- [Types](#types)
+- [Components reference](#components-reference)
+  - [Sigma](#sigma)
   - [EdgeShapes](#edgeshapes)
   - [NodeShapes](#nodeshapes)
   - [Filter](#filter)
@@ -20,7 +22,7 @@ React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opens
 
 ```
     <SigmaEnableWebGL/>
-    <Sigma renderer="canvas" key="1"
+    <Sigma key="1"
 					onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
 					onClickStage={ e => this.setState({filterNeighbours: null}) } >
 			<EdgeShapes default="tapered"/>
@@ -33,8 +35,16 @@ React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opens
   	</Sigma>
 ```
 
+See storybook for more usage recipes.
 
-## Sigma component
+# Types
+
+All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
+TODO: move to flow-typed
+
+# Components reference
+
+## Sigma 
 
 Sigma is the main component which reserves <div> area with a given style (default is full width, 500px height), 
 initializes renderer and camera in the given area and starts rendering graph.
@@ -74,10 +84,6 @@ initializes renderer and camera in the given area and starts rendering graph.
      .edge?     -- for edge events is sigma edge data
  ```
 
-### Types
-
-All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
-TODO: move to flow-typed
 
 ## EdgeShapes
 
