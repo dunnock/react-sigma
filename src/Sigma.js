@@ -138,11 +138,12 @@ class Sigma extends React.PureComponent {
     this.sigma = new sigma({settings})
     this.initRenderer = this.initRenderer.bind(this)
     Sigma.bindHandlers(this.props, this.sigma)
+    if(this.props.graph)
+      this.sigma.graph.read(this.props.graph)
   }
 
   initRenderer(container: HTMLElement) {
     if(container) {
-      // TODO: make it identify default renderer (e.g. webgl when available)
       let options: Object = {container}
       if(this.props.renderer)
         options.type = this.props.renderer

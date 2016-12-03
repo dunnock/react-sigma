@@ -21,6 +21,8 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 # Usage
 
 ```
+import {Sigma, SigmaEnableWebGL, EdgeShapes, NodeShapes, LoadGEXF, Filter, ForceAtlas2, RelativeSize} from 'react-sigmajs'
+...
     <SigmaEnableWebGL/>
     <Sigma key="1"
 					onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }

@@ -102,6 +102,8 @@
     "build": "babel-node scripts/build-cli.js",
     "build:v": "babel-node scripts/build-cli.js --verbose",
     "test": "node scripts/test.js --env=jsdom",
+    "release:patch": "npm-release patch",
+    "release:minor": "npm-release minor",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
@@ -119,7 +121,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules)/"
+      "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma)/"
     ],
     "testEnvironment": "node"
   }

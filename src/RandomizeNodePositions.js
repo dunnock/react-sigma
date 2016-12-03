@@ -12,15 +12,8 @@ type Props = {
 
 /**
 
-LoadJSON component, interface for parsers.json sigma plugin. Can be used within Sigma component.
-Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
-Child's componentWillMount should be used to enable plugins on loaded graph.
-
-Parameters:
- - @path       string   path to the JSON file
- - @onGraphLoaded  Function        Optional callback for graph update
-
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+RandomizeNodePositions component, sets random positions to all nodes.
+Can be used within Sigma component with predefined graph or within graph loader component.
 
 **/
 
