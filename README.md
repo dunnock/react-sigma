@@ -1,87 +1,38 @@
-React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for linked graphs. Sigma is a fastest JavaScript library dedicated to graph drawing. It makes easy to publish networks on
-Web pages, and allows developers to integrate network exploration in rich Web applications.
+React-Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for linked graphs. It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications.
 
 ## Table of Contents
 
-- [Folder Structure](#folder-structure)
-- [Prerequisites](#prerequisites)
-  - [npm install](#npm-install)
-  - [Enable flow type checking](enable-flow-type-checking)
-- [Available Scripts](#available-scripts)
-  - [npm start](#npm-start)
-  - [npm test](#npm-test)
-  - [npm run build](#npm-run-build)
-  - [npm run flow](#npm-run-flow)
 - [Usage](#usage)
-  - [Sigma component]
-  - 
-- [create-react-app](#create-react-app-regards)
+  - [Sigma component](#sigma-component)
+  - [EdgeShapes](#edgeshapes)
+  - [NodeShapes](#nodeshapes)
+  - [Filter](#filter)
+  - [ForceAtlas2](#forceatlas2)
+  - [NOverlap](#noverlap)
+  - [RandomizeNodePositions](#randomizenodepositions)
+  - [LoadGEXF]
+  - [LoadJSON]
+  - [NeoCypher]
 
-## Folder Structure
-
-```
-sitegraph/
-  README.md
-  node_modules/
-  package.json
-  public/ -- static content
-  src/    -- sources
-  types/  -- types for @flow checking
-```
-
-## Prerequisites
-
-- node.js 4+
-- npm
-
-### `npm install`
-
-Please note, distribution includes 'canvas-node' module suitable for running jsdom tests (sigma.js functionality). This package requires some global libraries dependencies to compile, please refer to [canvas installation](https://github.com/Automattic/node-canvas#installation) page for setup instructions.
-
-### Enable flow type checking
-
-Application is built with flow type checking embedded. But it requires flow-typed installed globally:
-
-```
-npm install -g flow-typed
-flow-typed
-```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](#running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-### `npm run flow`
-
-Performs flow type check, highly recommended before starting build.
-Please note, all application custom types are stored in Component files (props and state descriptions) as well as under /types/ subdir.
 
 
 # Usage
 
-Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for linked graphs.
-Sigma makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications.
+```
+    <SigmaEnableWebGL/>
+    <Sigma renderer="canvas" key="1"
+					onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
+					onClickStage={ e => this.setState({filterNeighbours: null}) } >
+			<EdgeShapes default="tapered"/>
+			<NodeShapes default="star"/>
+      <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
+        <Filter neighborsOf={ this.state.filterNeighbours } />
+      	<ForceAtlas2 worker barnesHutOptimize barnesHutTheta={0.6} iterationsPerRender={10} linLogMode timeout={3000}/>
+        <RelativeSize initialSize={15}/>
+      </LoadGEXF>
+  	</Sigma>
+```
+
 
 ## Sigma component
 
@@ -90,7 +41,6 @@ initializes renderer and camera in the given area and starts rendering graph.
 <Sigma> be composed with sigma sub-components using JSX syntax, e.g.:
 
 ```
-    <SigmaEnableWebGL/>
     <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
            settings={{drawEdges:false}}
            onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
@@ -99,7 +49,7 @@ initializes renderer and camera in the given area and starts rendering graph.
     </Sigma>
 ```
 
-### Parameters:
+### Parameters
 
  - @style  CSS   CSS style description for main div holding graph, should be specified in React format
  - @settings  Sigma$Settings     js object with sigma initialization options
@@ -113,7 +63,7 @@ initializes renderer and camera in the given area and starts rendering graph.
  - @onOverEdge   (e) => void     set sigma callback for "overEdge" event
  - @onOutEdge    (e) => void     set sigma callback for "outEdge" event
 
-### Callbacks:
+### Callbacks
 
  Sigma callback receives [Sigma Event](https://github.com/jacomyal/sigma.js/wiki/Events-API)
  with the following structure (see Sigma$Event type under /types/sigma.js):
@@ -127,6 +77,164 @@ initializes renderer and camera in the given area and starts rendering graph.
 ### Types
 
 All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
+TODO: move to flow-typed
+
+## EdgeShapes
+
+To assign a shape renderer to an edge, simply set edge.type='shape-name' e.g. edge.type='dotted'.
+Note! this Component requires "canvas" renderer to work.
+
+```
+<Sigma renderer="canvas" graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+	<EdgeShapes default="dotted"/>
+</Sigma>
+```
+
+Supported shapes
+```
+type Sigma$Edge$Shapes = "line" | "arrow" | "curve" | "curvedArrow" | "dashed" | "dotted" | "parallel" | "tapered";
+```
+
+See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
+for more datails on implementation.
+
+Parameters:
+ - @default  string  set default sigma edge to be applied to edges where type is not set
+
+## NodeShapes
+
+To assign a shape renderer to an edge, simply set node.type='shape-name'
+Note! this Component requires "canvas" renderer to work.
+
+```
+<Sigma renderer="canvas" graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+	<NodeShapes default="star"/>
+</Sigma>
+```
+
+Extra node properties:
+ - node.type='shape-name' - node shape renderer e.g. node.type='cross'.
+ - node.borderColor - e.g. node.borderColor='#FF3333'
+Details on shapes configuration and possibility to apply images to nodes, please refer to
+[plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customShapes#images).
+
+Supported shapes
+```
+type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
+```
+
+See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
+for more datails on implementation.
+
+Parameters:
+ - @default  string  set default sigma node renderer to be applied to nodes where type is not set
+
+
+## Filter
+
+Filter is hiding all nodes which do not apply to the provided nodesBy criteria.
+
+Parameters:
+ - @nodesBy   Nodes$Filter   will hide nodes where filter returns false
+
+```
+type Nodes$Filter = (node: Sigma$Node) => boolean;
+```
+
+## ForceAtlas2
+
+Running ForceAtlas2 algorythm on graph with progress animation.
+
+It accepts all the parameters of ForceAtlas2 described on its github page:
+ - @worker      boolean           Use a web worker to run calculations in separate thread
+ - @barnesHutOptimize    boolean  Use the algorithm's Barnes-Hut to improve repulsion's scalability
+									This is useful for large graph but harmful to small ones.
+ - @barnesHutTheta  number
+ - @adjustSizes     boolean
+ - @iterationsPerRender  number
+ - @linLogMode  boolean
+ - @outboundAttractionDistribution   boolean
+ - @edgeWeightInfluence  number
+ - @scalingRatio    number
+ - @strongGravityMode    boolean
+ - @gravity     number
+ - @slowDown    number
+ - @timeout     number   how long algorythm should run. default=graph.nodes().length * 10
+
+[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2)
+
+## NOverlap
+
+Evenly distributes nodes in the grid. Applicable only to small graphs (<100 nodes)
+
+It accepts all the parameters of sigma.layout.noverlap plugin described on its github page:
+ - @nodeMargin  number(5)    additional minimum space to apply around each and every node
+ - @scaleNodes  number(1.2)  multiplier,  larger nodes will have more space around
+ - @gridSize    number(20)   number of rows and columns to use when dividing the nodes up into cell
+ - @permittedExpansion     number(1.1)  maximum ratio to apply to the bounding box
+ - @speed       number     larger value increases the speed at the cost of precision
+ - @maxIterations  number  iterations to run the algorithm for before stopping it
+ - @easing      number     camera easing type for camera transition
+ - @duration    number     duration of the transition for the easing method
+ - @timeout     number     how long algorythm should run. default=graph.nodes().length * 10
+
+[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.noverlap)
+
+## RandomizeNodePositions
+
+RandomizeNodePositions component, sets random positions to all nodes.
+Can be used within Sigma component with predefined graph or within graph loader component.
+
+## RelativeSize
+
+Sets nodes sizes corresponding its degree.
+
+Parameters:
+ - @initialSize  number  start size for every node, will be multiplied by Math.sqrt(node.degree)
+
+
+## SigmaEnableWebGL
+
+Component enables WebGL renderer, setting it as default renderer if WebGL is supported by browser.
+
+```
+<SigmaEnableWebGL />
+<Sigma />
+```
+
+## LoadGEXF
+
+Parameters:
+ - @path       string   path to the GEXF file
+ - @onGraphLoaded  Function        Optional callback for graph update
+
+[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+
+## LoadJSON
+
+Parameters:
+ - @path       string   path to the JSON file
+ - @onGraphLoaded  Function        Optional callback for graph update
+
+[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+
+## NeoCypher
+
+Load graph from Neo4j database via REST API
+
+Parameters:
+ - @url       string    Neo4j instance REST API URL
+ - @user      string    Neo4j instance REST API user
+ - @password  string    Neo4j instance REST API password
+ - @query     string    Neo4j cypher query
+ - @producers NeoGraphItemsProducers   Optional transformer for creating Sigma nodes and edges, 
+                                    instance compatible with NeoGraphItemsProducers
+ - @onGraphLoaded  Function        Optional callback for graph update
+
+[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+
+
+
 
 ## Extending sigma components
 
@@ -163,11 +271,4 @@ return  <Sigma>
 ```
 
 
-
-# create-react-app regards
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
-Below you will find some information on how to perform common tasks.<br>
-You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
