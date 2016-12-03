@@ -1,0 +1,7 @@
+require("imports-loader?this=>window!sigma/src/renderers/sigma.renderers.webgl.js")
+require("imports-loader?this=>window!sigma/src/renderers/sigma.renderers.def.js")
+require("imports-loader?this=>window!sigma/src/renderers/webgl/sigma.webgl.nodes.def.js")
+require("imports-loader?this=>window!sigma/src/renderers/webgl/sigma.webgl.nodes.fast.js")
+require("imports-loader?this=>window!sigma/src/renderers/webgl/sigma.webgl.edges.def.js")
+require("imports-loader?this=>window!sigma/src/renderers/webgl/sigma.webgl.edges.fast.js")
+require("imports-loader?this=>window!sigma/src/renderers/webgl/sigma.webgl.edges.arrow.js")

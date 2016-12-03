@@ -1,0 +1,19 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+flow-typed
+
+# testing
+coverage
+
+# production
+es
+lib
+dist
+sigma
+
+# misc
+.DS_Store
+.env
+npm-debug.log

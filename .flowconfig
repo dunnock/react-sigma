@@ -1,0 +1,9 @@
+[include]
+src
+
+[ignore]
+<PROJECT_ROOT>/node_modules/fbjs/.*
+
+[libs]
+./flow-typed
+./types
