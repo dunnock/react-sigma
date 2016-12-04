@@ -20,8 +20,18 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 
 # Usage
 
+### Simple use case
+
 ```
-import {Sigma, SigmaEnableWebGL, EdgeShapes, NodeShapes, LoadGEXF, Filter, ForceAtlas2, RelativeSize} from 'react-sigmajs'
+import {Sigma, LoadJSON} from 'react-sigmajs'
+...
+<Sigma style={{width:"200px", height:"200px"}}>
+  <LoadJSON path="/public/data.json">
+</Sigma>
+```
+
+### Advanced use case
+```
 ...
 <SigmaEnableWebGL/>
 <Sigma key="1"
