@@ -64,6 +64,7 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
     "extract-text-webpack-plugin": "1.0.1",
+    "fake-xml-http-request": "^1.4.0",
     "file-loader": "0.9.0",
     "filesize": "3.3.0",
     "find-cache-dir": "0.1.1",
@@ -110,7 +111,8 @@
     "release:minor": "npm-release minor",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "postinstall": "babel-node scripts/build-cli.js --sigma-only"
   },
   "jest": {
     "moduleFileExtensions": [

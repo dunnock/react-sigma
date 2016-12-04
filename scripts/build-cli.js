@@ -13,6 +13,10 @@ const argv = yargs
     demand: false,
     default: false
   })
+  .option('sigma-only', {
+    demand: false,
+    default: false
+  })
   .option('verbose', {
     demand: false,
     default: false,

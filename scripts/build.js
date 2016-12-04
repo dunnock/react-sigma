@@ -18,7 +18,10 @@ function forkAndBuildDocs({verbose}) {
 }
 
 export default function Build(options) {
-  return sigma().then(Promise.all([
+  let proc = sigma()
+  if(options.sigmaOnly)
+  	return proc
+  return proc.then(Promise.all([
       lib(),
       es(),
       dist(),
