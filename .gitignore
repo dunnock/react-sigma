@@ -12,6 +12,7 @@ es
 lib
 dist
 sigma
+storybook-static
 
 # misc
 .DS_Store
