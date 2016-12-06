@@ -33,7 +33,7 @@ type Sigma$Edge$Shapes = "line" | "arrow" | "curve" | "curvedArrow" | "dashed" |
 See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
 for more datails on implementation.
 
- - @param {default}  string  set default sigma edge to be applied to edges where type is not set
+@param {string} default  set default sigma edge to be applied to edges where type is not set
 
 **/
 

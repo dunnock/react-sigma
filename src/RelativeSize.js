@@ -18,7 +18,7 @@ preloaded, or within loader component, like NeoCypher.
 
 Sets nodes sizes corresponding its degree.
 
- - @param {number} initialSize  start size for every node, will be multiplied by Math.sqrt(node.degree)
+ @param {number} initialSize  start size for every node, will be multiplied by Math.sqrt(node.degree)
 
 **/
 

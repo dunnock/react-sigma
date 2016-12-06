@@ -31,13 +31,13 @@ NeoCypher component, interface for neo4j.cypher sigma plugin. Can be used within
 Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
- - @param {url}       string    Neo4j instance REST API URL
- - @param {user}      string    Neo4j instance REST API user
- - @param {password}  string    Neo4j instance REST API password
- - @param {query}     string    Neo4j cypher query
- - @param {producers} NeoGraphItemsProducers   Optional transformer for creating Sigma nodes and edges, 
+ @param {string} url    Neo4j instance REST API URL
+ @param {string} user    Neo4j instance REST API user
+ @param {string} password    Neo4j instance REST API password
+ @param {string} query    Neo4j cypher query
+ @param {NeoGraphItemsProducers} producers   Optional transformer for creating Sigma nodes and edges, 
                                     instance compatible with NeoGraphItemsProducers
- - @param {onGraphLoaded}  Function        Optional callback for graph update
+ @param {Function} onGraphLoaded        Optional callback for graph update
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 

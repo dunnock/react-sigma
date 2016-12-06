@@ -2,7 +2,7 @@
 
 # Sigma
 
-[src/Sigma.js:123-195](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/Sigma.js#L123-L195 "Source code on GitHub")
+[src/Sigma.js:125-197](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/Sigma.js#L125-L197 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -27,26 +27,76 @@ Can be composed with sigma sub-components using JSX syntax, e.g.:
 
 **Examples**
 
-```javascript
-<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-settings={{drawEdges:false}}
-onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-<RelativeSize initialSize={8}/>
-</Sigma>
-```
+`````javascript
+    <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+    settings={{drawEdges:false}}
+    onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+    graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+    <RelativeSize initialSize={8}/>
+    </Sigma>
+
+
+    ### Callbacks:
+
+    Sigma callback receives [Sigma Event](https://github.com/jacomyal/sigma.js/wiki/Events-API)
+    with the following structure (see Sigma$Event type under /types/sigma.js):
+    ````
+    .data
+    .captor   -- information about event handler, for instance position on the page {clientX, clientY}
+    .node?     -- for node events is sigma node data
+    .edge?     -- for edge events is sigma edge data
+    ````
+
+    ### Types
+
+    All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
+
+    ## Extending sigma components
+
+    Sigma container will mount any child component with sigma instance under props.sigma. This way sigma
+    functionality may be extended indefinitely:
+
+    ````
+    call MyCustomSigma extends React.Component {
+    constructor(props) {
+    super(props)
+    props.sigma.graph.addNode({id:"n3", label:props.label});
+    }
+    }
+    ...
+    <Sigma>
+    <MyCustomSigma label="Label">
+    </Sigma>
+    ````
+
+    ### Asynchronous graph data loading
+
+    Component which initializes asynchronously is supposed to mount its children only after initialized
+    (for example LoadJSON), which makes possible to build sequential composition in the pure JSX without
+    any callbacks or handlers. In the following example RelativeSize will be counted only after loading
+    from arctic.json file.
+
+
+    ````
+    <Sigma>
+    <LoadJSON url="/arctic.json">
+    <RelativeSize initialSize={8}/>
+    </LoadJSON>
+    </Sigma>
+    ````
+`````
 
 # Rendering
 
 # SigmaEnableWebGL
 
-[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
+[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
 
 Component enables WebGL renderer, setting it as default renderer if WebGL is supported by browser.
 
 # EdgeShapes
 
-[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
+[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -70,11 +120,13 @@ Supported shapes
 See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
 for more datails on implementation.
 
--   @param {default}  string  set default sigma edge to be applied to edges where type is not set
+**Parameters**
+
+-   `default` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** set default sigma edge to be applied to edges where type is not set
 
 # NodeShapes
 
-[src/NodeShapes.js:45-55](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/NodeShapes.js#L45-L55 "Source code on GitHub")
+[src/NodeShapes.js:48-58](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/NodeShapes.js#L48-L58 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -85,10 +137,6 @@ preloaded, or within loader component, like LoadJSON.
 
 Note! this Component requires "canvas" renderer to work.
 
-    <Sigma renderer="canvas" graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-    <NodeShapes default="star"/>
-    </Sigma>
-
 Extra node properties:
 
 -   node.type='shape-name' - node shape renderer e.g. node.type='cross'.
@@ -96,20 +144,35 @@ Extra node properties:
     Details on shapes configuration and possibility to apply images to nodes, please refer to
     [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customShapes#images).
 
-Supported shapes
-
-    type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
-
 See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
 for more datails on implementation.
 
--   @param {default}  string  set default sigma node renderer to be applied to nodes where type is not set
+**Parameters**
+
+-   `default` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** set default sigma node renderer to be applied to nodes where type is not set
+
+**Examples**
+
+````javascript
+    ```
+    <Sigma renderer="canvas" graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+    <NodeShapes default="star"/>
+    </Sigma>
+    ```
+````
+
+````javascript
+    Supported shapes
+    ```
+    type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
+    ```
+````
 
 # Loading graph data
 
 # LoadJSON
 
-[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/LoadJSON.js#L35-L81 "Source code on GitHub")
+[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/LoadJSON.js#L35-L81 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -117,14 +180,14 @@ LoadJSON component, interface for parsers.json sigma plugin. Can be used within 
 Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
--   @param {path}       string   path to the JSON file
--   @param {onGraphLoaded}  Function        Optional callback for graph update
+**Parameters**
 
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+-   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** path to the JSON file
+-   `onGraphLoaded` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Optional callback for graph update[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 
 # LoadGEXF
 
-[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
+[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -132,14 +195,14 @@ LoadGEXF component, interface for parsers.json sigma plugin. Can be used within 
 Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
--   @param {path}       string   path to the GEXF file
--   @param {onGraphLoaded}  Function        Optional callback for graph update
+**Parameters**
 
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+-   `path` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** path to the GEXF file
+-   `onGraphLoaded` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Optional callback for graph update[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 
 # NeoCypher
 
-[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/NeoCypher.js#L47-L100 "Source code on GitHub")
+[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/NeoCypher.js#L47-L100 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -147,21 +210,21 @@ NeoCypher component, interface for neo4j.cypher sigma plugin. Can be used within
 Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
--   @param {url}       string    Neo4j instance REST API URL
--   @param {user}      string    Neo4j instance REST API user
--   @param {password}  string    Neo4j instance REST API password
--   @param {query}     string    Neo4j cypher query
--   @param {producers} NeoGraphItemsProducers   Optional transformer for creating Sigma nodes and edges, 
-    instance compatible with NeoGraphItemsProducers
--   @param {onGraphLoaded}  Function        Optional callback for graph update
+**Parameters**
 
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
+-   `url` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Neo4j instance REST API URL
+-   `user` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Neo4j instance REST API user
+-   `password` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Neo4j instance REST API password
+-   `query` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Neo4j cypher query
+-   `producers` **NeoGraphItemsProducers** Optional transformer for creating Sigma nodes and edges, 
+    instance compatible with NeoGraphItemsProducers
+-   `onGraphLoaded` **[Function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)** Optional callback for graph update[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 
 # Nodes distribution
 
 # ForceAtlas2
 
-[src/ForceAtlas2.js:58-109](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/ForceAtlas2.js#L58-L109 "Source code on GitHub")
+[src/ForceAtlas2.js:58-109](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/ForceAtlas2.js#L58-L109 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -172,26 +235,26 @@ preloaded, or within loader component, like NeoCypher.
 
 It accepts all the parameters of ForceAtlas2 described on its github page:
 
--   @param {worker}      boolean           Use a web worker to run calculations in separate thread
--   @param {barnesHutOptimize}    boolean  Use the algorithm's Barnes-Hut to improve repulsion's scalability
-    This is useful for large graph but harmful to small ones.
--   @param {barnesHutTheta}  number
--   @param {adjustSizes}     boolean
--   @param {iterationsPerRender}  number
--   @param {linLogMode}  boolean
--   @param {outboundAttractionDistribution}   boolean
--   @param {edgeWeightInfluence}  number
--   @param {scalingRatio}    number
--   @param {strongGravityMode}    boolean
--   @param {gravity}     number
--   @param {slowDown}    number
--   @param {timeout}     number   how long algorythm should run. default=graph.nodes().length \* 10
+**Parameters**
 
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2)
+-   `worker` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use a web worker to run calculations in separate thread
+-   `barnesHutOptimize` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use the algorithm's Barnes-Hut to improve repulsion's scalability
+    This is useful for large graph but harmful to small ones.
+-   `barnesHutTheta` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `adjustSizes` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `iterationsPerRender` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `linLogMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `outboundAttractionDistribution` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `edgeWeightInfluence` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `scalingRatio` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `strongGravityMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `gravity` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `slowDown` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `timeout` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** how long algorythm should run. default=graph.nodes().length \* 10[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2)
 
 # NOverlap
 
-[src/NOverlap.js:54-100](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/NOverlap.js#L54-L100 "Source code on GitHub")
+[src/NOverlap.js:54-100](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/NOverlap.js#L54-L100 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -222,7 +285,7 @@ preloaded, or within loader component, like LoadJSON.
 
 # RandomizeNodePositions
 
-[src/RandomizeNodePositions.js:21-37](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/RandomizeNodePositions.js#L21-L37 "Source code on GitHub")
+[src/RandomizeNodePositions.js:21-37](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/RandomizeNodePositions.js#L21-L37 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -231,7 +294,7 @@ Can be used within Sigma component with predefined graph or within graph loader 
 
 # RelativeSize
 
-[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/RelativeSize.js#L25-L34 "Source code on GitHub")
+[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/RelativeSize.js#L25-L34 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -242,11 +305,13 @@ preloaded, or within loader component, like NeoCypher.
 
 Sets nodes sizes corresponding its degree.
 
--   @param {number} initialSize  start size for every node, will be multiplied by Math.sqrt(node.degree)
+**Parameters**
+
+-   `initialSize` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** start size for every node, will be multiplied by Math.sqrt(node.degree)
 
 # Filter
 
-[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/dfe703c104b034cd8d0c158f59ccae595e4baee5/src/Filter.js#L30-L60 "Source code on GitHub")
+[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/8cc04cab0c2c738030fa1b5ed7daa5502fe2321a/src/Filter.js#L30-L60 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -257,6 +322,6 @@ preloaded, or within loader component, like NeoCypher.
 
 Filter is hiding all nodes which do not apply to the provided nodesBy criteria.
 
--   @param {nodesBy}   Nodes$Filter   will hide nodes where filter returns false
+**Parameters**
 
-type Nodes$Filter = (node: Sigma$Node) => boolean;
+-   `nodesBy` **Nodes$Filter** will hide nodes where filter returns falsetype Nodes$Filter = (node: Sigma$Node) => boolean;

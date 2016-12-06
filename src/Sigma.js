@@ -30,18 +30,11 @@ type State = {
 /**
 
 Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for linked graphs.
-Sigma is a fastest JavaScript library dedicated to graph drawing. It makes easy to publish networks on
-Web pages, and allows developers to integrate network exploration in rich Web applications.
+Sigma makes it easy to publish networks on Web pages, and allows developers to integrate network exploration in
+rich Web applications.
 
 Can be composed with sigma sub-components using JSX syntax, e.g.:
 
-@example
-<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-       settings={{drawEdges:false}}
-       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-  <RelativeSize initialSize={8}/>
-</Sigma>
 
 @param {CSS} style   CSS style description for main div holding graph, should be specified in React format
 @param {Sigma$Settings} settings     js object with sigma initialization options
@@ -66,6 +59,15 @@ type Sigma$Event = {
 }}}
 type Sigma$EventHandler = (node:Sigma$Event) => void
 ```
+
+@example
+<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+       settings={{drawEdges:false}}
+       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+  <RelativeSize initialSize={8}/>
+</Sigma>
+
 
 ### Callbacks:
 

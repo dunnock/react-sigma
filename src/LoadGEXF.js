@@ -22,8 +22,8 @@ LoadGEXF component, interface for parsers.json sigma plugin. Can be used within 
 Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
- - @param {path}       string   path to the GEXF file
- - @param {onGraphLoaded}  Function        Optional callback for graph update
+ @param {string} path   path to the GEXF file
+ @param {Function} onGraphLoaded        Optional callback for graph update
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
 

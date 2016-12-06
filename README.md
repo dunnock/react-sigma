@@ -1,4 +1,4 @@
-It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications. Library is using JSX for graph configuration, including asynchronous graph loading, so no callback is needed. It's including ES modules supports, so resulting code should consist only of sigma functionality that you explicitly import. Easy to extend with additional components. 
+It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading, so no callback is needed. Library is split by components, so even with webpack1 you still can import specific components you need. Easy to extend with additional components. 
 
 ## Table of Contents
 
