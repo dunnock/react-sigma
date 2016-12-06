@@ -2,7 +2,7 @@
   "name": "react-sigmajs",
   "description": "React SigmaJS - React.JS flow-typed interface for SigmaJS library - fastest opensource rendering engine for linked graphs.",
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "license": "MIT",
   "bugs": "https://github.com/dunnock/react-sigma/issues",
   "repository": {
