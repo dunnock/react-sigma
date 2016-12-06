@@ -1,0 +1,15 @@
+toc:
+  - Sigma
+  - name: Rendering
+  - SigmaEnableWebGL
+  - EdgeShapes
+  - NodeShapes
+  - name: Loading graph data
+  - LoadJSON
+  - LoadGEXF
+  - NeoCypher
+  - name: Nodes distribution
+  - ForceAtlas2
+  - NOverlap
+  - RandomizeNodePositions
+  - RelativeSize
