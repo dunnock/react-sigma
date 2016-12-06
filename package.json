@@ -102,6 +102,7 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
     "prepublish": "npm run build"
   },
   "jest": {
