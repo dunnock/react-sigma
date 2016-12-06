@@ -1,7 +1,7 @@
 // @flow
 
-import Sigma from '../src/Sigma';
-import LoadJSON from '../src/LoadJSON';
+import sigma from '../sigma/main'
+import {Sigma, LoadJSON} from '../src/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestSigma from './TestSigma'

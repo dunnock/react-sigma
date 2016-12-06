@@ -22,6 +22,9 @@ type Props = {
 type DefaultProps = {
   settings: Sigma$Settings
 };
+type State = {
+  renderer: boolean
+};
 
 
 /**
@@ -32,28 +35,37 @@ Web pages, and allows developers to integrate network exploration in rich Web ap
 
 Can be composed with sigma sub-components using JSX syntax, e.g.:
 
-````
-    <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-           settings={{drawEdges:false}}
-           onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-           graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-      <RelativeSize initialSize={8}/>
-    </Sigma>
-````
+@example
+<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+       settings={{drawEdges:false}}
+       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+  <RelativeSize initialSize={8}/>
+</Sigma>
 
-## Parameters:
-
- - @style  CSS   CSS style description for main div holding graph, should be specified in React format
- - @settings  Sigma$Settings     js object with sigma initialization options
+@param {CSS} style   CSS style description for main div holding graph, should be specified in React format
+@param {Sigma$Settings} settings     js object with sigma initialization options
                 as described on [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
- - @renderer   string     can be "webgl" or "canvas"
- - @graph     Sigma$Graph$Data   js object with array of nodes and edges used to initialize sigma
- - @onClickNode  (e) => void     set sigma callback for "clickNode" event (see below)
- - @onOverNode   (e) => void     set sigma callback for "overNode" event
- - @onOutNode    (e) => void     set sigma callback for "outNode" event
- - @onClickEdge  (e) => void     set sigma callback for "clickEdge" event
- - @onOverEdge   (e) => void     set sigma callback for "overEdge" event
- - @onOutEdge    (e) => void     set sigma callback for "outEdge" event
+@param {string} renderer     can be "webgl" or "canvas"
+@param {Sigma$Graph$Data} graph   js object with array of nodes and edges used to initialize sigma
+@param {Sigma$EventHandler} onClickNode      set sigma callback for "clickNode" event (see below)
+@param {Sigma$EventHandler} onOverNode      set sigma callback for "overNode" event
+@param {Sigma$EventHandler} onOutNode      set sigma callback for "outNode" event
+@param {Sigma$EventHandler} onClickEdge     set sigma callback for "clickEdge" event
+@param {Sigma$EventHandler} onOverEdge      set sigma callback for "overEdge" event
+@param {(Sigma$EventHandler} onOutEdge      set sigma callback for "outEdge" event
+
+```
+type Sigma$Event = {
+  data: {
+    node?: Neo4j$Node,
+    edge?: Neo4j$Edge,
+    captor: {
+      clientX: number,
+      clientY: number
+}}}
+type Sigma$EventHandler = (node:Sigma$Event) => void
+```
 
 ### Callbacks:
 
@@ -83,9 +95,9 @@ call MyCustomSigma extends React.Component {
   }
 }
 ...
-return  <Sigma>
-      <MyCustomSigma label="Label">
-    </Sigma>
+<Sigma>
+  <MyCustomSigma label="Label">
+</Sigma>
 ````
 
 ### Asynchronous graph data loading
@@ -97,11 +109,11 @@ return  <Sigma>
 
 
 ````
-    <Sigma>
-      <LoadJSON url="/arctic.json">
-        <RelativeSize initialSize={8}/>
-      </LoadJSON>
-    </Sigma>
+<Sigma>
+  <LoadJSON url="/arctic.json">
+    <RelativeSize initialSize={8}/>
+  </LoadJSON>
+</Sigma>
 ````
 
 
@@ -110,6 +122,7 @@ return  <Sigma>
 
 class Sigma extends React.PureComponent {
   props: Props;
+  state: State;
   sigma: sigma;
   sigmaRenderer: ?string;
   plugins: mixed;
@@ -134,6 +147,7 @@ class Sigma extends React.PureComponent {
 
   constructor(props: Props) {
     super(props);
+    this.state = {renderer:false}
     let settings = this.props.settings ? this.props.settings : {}
     this.sigma = new sigma({settings})
     this.initRenderer = this.initRenderer.bind(this)
@@ -149,9 +163,11 @@ class Sigma extends React.PureComponent {
         options.type = this.props.renderer
       this.sigmaRenderer = this.sigma.addRenderer(options)
       this.sigma.refresh()
+      this.setState({renderer:true})
     } else if(this.sigmaRenderer) {
       this.sigma.killRenderer(this.sigmaRenderer)
       this.sigmaRenderer = null
+      this.setState({renderer:false})
     }
   }
 
@@ -161,9 +177,10 @@ class Sigma extends React.PureComponent {
   }
 
   render() {
+    let children = this.state.renderer ? embedProps(this.props.children, {sigma: this.sigma}) : null
     return <div ref={this.initRenderer} style={this.props.style}>
-          { embedProps(this.props.children, {sigma: this.sigma}) }
-        </div>;
+          { children }
+        </div>
   }
 
   static bindHandlers(handlers, sigma) {

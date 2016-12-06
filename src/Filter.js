@@ -20,8 +20,7 @@ preloaded, or within loader component, like NeoCypher.
 
 Filter is hiding all nodes which do not apply to the provided nodesBy criteria.
 
-Parameters:
- - @nodesBy   Nodes$Filter   will hide nodes where filter returns false
+ - @param {nodesBy}   Nodes$Filter   will hide nodes where filter returns false
 
 type Nodes$Filter = (node: Sigma$Node) => boolean;
 

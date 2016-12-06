@@ -9,6 +9,8 @@ export RelativeSize from './RelativeSize'
 export NOverlap from './NOverlap'
 export NeoCypher from './NeoCypher'
 export NeoGraphItemsProducers from './NeoGraphItemsProducers'
+export RandomizeNodePositions from './RandomizeNodePositions'
+export SigmaEnableWebGL from './SigmaEnableWebGL'
 
 import Sigma from './Sigma'
 export default Sigma

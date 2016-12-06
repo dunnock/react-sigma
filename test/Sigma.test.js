@@ -1,6 +1,6 @@
 // @flow
 
-import Sigma from '../src/Sigma';
+import {Sigma} from '../src/index';
 import TestSigma from './TestSigma'
 import React from 'react';
 import ReactDOM from 'react-dom';

@@ -35,20 +35,20 @@ mounted while graph is unavailable. It can be used within Sigma component if gra
 preloaded, or within loader component, like NeoCypher.
 
 It accepts all the parameters of ForceAtlas2 described on its github page:
- - @worker      boolean           Use a web worker to run calculations in separate thread
- - @barnesHutOptimize    boolean  Use the algorithm's Barnes-Hut to improve repulsion's scalability
+ - @param {worker}      boolean           Use a web worker to run calculations in separate thread
+ - @param {barnesHutOptimize}    boolean  Use the algorithm's Barnes-Hut to improve repulsion's scalability
 									This is useful for large graph but harmful to small ones.
- - @barnesHutTheta  number
- - @adjustSizes     boolean
- - @iterationsPerRender  number
- - @linLogMode  boolean
- - @outboundAttractionDistribution   boolean
- - @edgeWeightInfluence  number
- - @scalingRatio    number
- - @strongGravityMode    boolean
- - @gravity     number
- - @slowDown    number
- - @timeout     number   how long algorythm should run. default=graph.nodes().length * 10
+ - @param {barnesHutTheta}  number
+ - @param {adjustSizes}     boolean
+ - @param {iterationsPerRender}  number
+ - @param {linLogMode}  boolean
+ - @param {outboundAttractionDistribution}   boolean
+ - @param {edgeWeightInfluence}  number
+ - @param {scalingRatio}    number
+ - @param {strongGravityMode}    boolean
+ - @param {gravity}     number
+ - @param {slowDown}    number
+ - @param {timeout}     number   how long algorythm should run. default=graph.nodes().length * 10
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2)
 

@@ -1,5 +1,4 @@
-import Sigma from '../src/Sigma';
-import SigmaEnableWebGL from '../src/SigmaEnableWebGL';
+import {Sigma, SigmaEnableWebGL} from '../src/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

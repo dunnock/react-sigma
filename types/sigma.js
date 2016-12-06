@@ -64,6 +64,9 @@ export type Sigma$Event = {
 	}
 };
 
+// Event handler function for Sigma component
+export type Sigma$EventHandler = (node:Sigma$Event) => void;
+
 // Following type requires EdgeShapes component
 export type Sigma$Edge$Shapes = "def" | "line" | "arrow" | "curved" | "dashed" | "dotted" | "parallel" | "tapered";
 
@@ -72,7 +75,6 @@ export type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cro
 
 // Following type used in Filter component
 export type Nodes$Filter = (node: Sigma$Node) => boolean;
-
 
 // TYPES DECOMPOSITION
 

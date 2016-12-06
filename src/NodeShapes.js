@@ -38,8 +38,7 @@ type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "
 See [plugin page](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.renderers.customEdgeShapes)
 for more datails on implementation.
 
-Parameters:
- - @default  string  set default sigma node renderer to be applied to nodes where type is not set
+ - @param {default}  string  set default sigma node renderer to be applied to nodes where type is not set
 
 **/
 
