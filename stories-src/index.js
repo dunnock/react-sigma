@@ -1,11 +1,12 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
-import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap } from '../src/index';
+import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL } from '../src/index';
 
 
-storiesOf('NOverlap', module)
+storiesOf('Various samples', module)
   .add('LoadJSON', () => (
-    <Sigma renderer="canvas" key="2" settings={{drawEdge:true}}>
+    <Sigma renderer="canvas" key="2" settings={{drawEdge:true}} style={{maxWidth: "inherit", height: "500px"}}>
+      <SigmaEnableWebGL />
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"} />
   	</Sigma>
   ))
@@ -47,7 +48,7 @@ storiesOf('NOverlap', module)
     </Sigma>
   ))
 
-
+/*
 storiesOf('Filter', module)
   .add('neighborsOf', () => (
     <Sigma renderer="canvas" key="1"
@@ -62,3 +63,4 @@ storiesOf('Filter', module)
       </LoadGEXF>
   	</Sigma>
   ))
+*/

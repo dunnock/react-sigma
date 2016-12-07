@@ -17,7 +17,7 @@ type Props = {
   onOutNode?: (e: Sigma$Event) => void,
   onOverEdge?: (e: Sigma$Event) => void,
   onOutEdge?: (e: Sigma$Event) => void,
-  onClickStage?: (e: Sigma$Event) => void,  // TODO: sigmaevent type
+  onClickStage?: (e: Sigma$Event) => void,
 };
 type DefaultProps = {
   settings: Sigma$Settings
@@ -59,14 +59,6 @@ type Sigma$Event = {
 }}}
 type Sigma$EventHandler = (node:Sigma$Event) => void
 ```
-
-@example
-<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-       settings={{drawEdges:false}}
-       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-  <RelativeSize initialSize={8}/>
-</Sigma>
 
 
 ### Callbacks:
@@ -117,6 +109,15 @@ call MyCustomSigma extends React.Component {
   </LoadJSON>
 </Sigma>
 ````
+
+
+@example
+<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+       settings={{drawEdges:false}}
+       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+  <RelativeSize initialSize={8}/>
+</Sigma>
 
 
 **/
