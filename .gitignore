@@ -9,9 +9,13 @@ coverage
 
 # production
 es
+!scripts/es/
 lib
+!scripts/lib/
 dist
+!scripts/dist/
 sigma
+!scripts/sigma/
 storybook-static
 
 # misc
