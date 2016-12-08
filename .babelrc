@@ -9,6 +9,7 @@
     "transform-runtime",
     "transform-es3-member-expression-literals",
     "transform-es3-property-literals",
-    "add-module-exports"
+    "add-module-exports",
+    "flow-react-proptypes"
   ],
 }
