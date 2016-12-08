@@ -11,14 +11,14 @@ const sigmaAction = decorateAction([
 storiesOf('Complex graph samples', module)
   .add('Static', () => (
     <Sigma renderer="webgl" onClickNode={ sigmaAction('onClickNode') }>
-      <LoadJSON path="/sites_coords.json"/>
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_coords.json"}/>
     </Sigma>
   ))
   .add('Medium graph animated', () => (
     <Sigma renderer="canvas" onOverNode={ sigmaAction('onOverNode') }>
       <EdgeShapes default="tapered"/>
       <NodeShapes default="star"/>
-      <LoadGEXF path="/arctic.gexf">
+      <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
         <ForceAtlas2 iterationsPerRender={1} timeout={10000}/>
         <RelativeSize initialSize={15}/>
       </LoadGEXF>
@@ -26,7 +26,7 @@ storiesOf('Complex graph samples', module)
   ))
   .add('Big graph animated', () => (
     <Sigma settings={{drawEdges:false}} onClickNode={ sigmaAction('onClickNode') }>
-      <LoadJSON path="/sites_nocoords.json">
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_nocoords.json"}>
         <RandomizeNodePositions>
           <ForceAtlas2 barnesHutOptimize barnesHutTheta={0.6} iterationsPerRender={3}/>
           <RelativeSize initialSize={8}/>
@@ -39,19 +39,19 @@ storiesOf('Complex graph samples', module)
 storiesOf('Loading', module)
   .add('LoadJSON without coords', () => (
     <Sigma>
-      <LoadJSON path="/geolocalized.json">
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/geolocalized.json"}>
         <RandomizeNodePositions/>
       </LoadJSON>
   	</Sigma>
   ))
   .add('LoadJSON with coords', () => (
     <Sigma>
-      <LoadJSON path="/arctic.json"/>
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/arctic.json"}/>
     </Sigma>
   ))
   .add('LoadGEXF', () => (
     <Sigma>
-      <LoadGEXF path="/arctic.gexf"/>
+      <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}/>
     </Sigma>
   ))
 
@@ -59,7 +59,7 @@ storiesOf('Loading', module)
 storiesOf('Components', module)
   .add('NOverlap', () => (
     <Sigma renderer="canvas">
-      <LoadJSON path="/upwork.json">
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
         <NOverlap nodeMargin={10} scaleNodes={4} duration={3000} speed={10} maxIterations={100} gridSize={20} easing="quadraticInOut" />
         <RelativeSize initialSize={15}/>
       </LoadJSON>
@@ -69,7 +69,7 @@ storiesOf('Components', module)
     <Sigma renderer="canvas">
       <EdgeShapes default="curvedArrow"/>
       <NodeShapes default="diamond"/>
-      <LoadJSON path="/upwork.json">
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
       </LoadJSON>
     </Sigma>
   ))
@@ -77,7 +77,7 @@ storiesOf('Components', module)
     <Sigma renderer="canvas">
       <EdgeShapes default="curvedArrow"/>
       <NodeShapes default="equilateral"/>
-      <LoadJSON path="/geolocalized.json">
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/geolocalized.json"}>
         <RandomizeNodePositions>
           <RelativeSize initialSize={15}/>
         </RandomizeNodePositions>
