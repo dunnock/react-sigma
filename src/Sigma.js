@@ -15,7 +15,7 @@ type Props = {
   onClickEdge?: (e: Sigma$Event) => void,
   onOverNode?: (e: Sigma$Event) => void,
   onOutNode?: (e: Sigma$Event) => void,
-  onOverEdge?: (e: Sigma$Event) => void,
+  onOverEdge?: (e: Sigma$Event) => void, // TODO: onOverEdge does not work?
   onOutEdge?: (e: Sigma$Event) => void,
   onClickStage?: (e: Sigma$Event) => void,
 };

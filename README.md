@@ -33,10 +33,7 @@ import {Sigma, LoadJSON} from 'react-sigmajs'
 ### Advanced use case
 ```
 ...
-<SigmaEnableWebGL/>
-<Sigma key="1"
-		onClickNode={ e => this.setState({filterNeighbours: e.data.node.id}) }
-		onClickStage={ e => this.setState({filterNeighbours: null}) } >
+<Sigma renderer="canvas">
 	<EdgeShapes default="tapered"/>
 	<NodeShapes default="star"/>
 	<LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
@@ -47,7 +44,7 @@ import {Sigma, LoadJSON} from 'react-sigmajs'
 </Sigma>
 ```
 
-See storybook for more usage recipes.
+See [storybook for detailed usage examples](https://dunnock.github.io/react-sigma/).
 
 # Types
 

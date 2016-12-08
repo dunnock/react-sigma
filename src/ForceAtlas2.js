@@ -11,12 +11,12 @@ type State = {
 };
 
 type Props = {
-	worker?: boolean,
+	worker: boolean,
 	barnesHutOptimize?: boolean,
 	barnesHutTheta?: number,
 	adjustSizes?: boolean,
 	iterationsPerRender?: number,
-	linLogMode?: boolean,
+	linLogMode: boolean,
 	outboundAttractionDistribution?: boolean,
 	edgeWeightInfluence?: number,
 	scalingRatio?: number,
@@ -35,13 +35,13 @@ mounted while graph is unavailable. It can be used within Sigma component if gra
 preloaded, or within loader component, like NeoCypher.
 
 It accepts all the parameters of ForceAtlas2 described on its github page:
-@param {boolean} worker           Use a web worker to run calculations in separate thread
+@param {boolean} [worker=true]           Use a web worker to run calculations in separate thread
 @param {boolean} barnesHutOptimize  Use the algorithm's Barnes-Hut to improve repulsion's scalability
 									This is useful for large graph but harmful to small ones.
 @param {number} barnesHutTheta
 @param {boolean} adjustSizes
 @param {number} iterationsPerRender
-@param {boolean} linLogMode
+@param {boolean} [linLogMode=true]
 @param {boolean} outboundAttractionDistribution
 @param {number} edgeWeightInfluence
 @param {number} scalingRatio
@@ -58,6 +58,10 @@ It accepts all the parameters of ForceAtlas2 described on its github page:
 class ForceAtlas2 extends React.Component {
 	state: State;
 	props: Props;
+	static defaultProps: DefaultProps = {
+		worker: true,
+		linLogMode: true
+	}
 
 	constructor(props: Props) {
 		super(props)

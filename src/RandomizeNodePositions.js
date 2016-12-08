@@ -28,6 +28,7 @@ class RandomizeNodePositions extends React.PureComponent {
                 n.x = Math.random()
                 n.y = Math.random()
             } )
+        this.props.sigma && this.props.sigma.refresh()
     }
 
 	render() {

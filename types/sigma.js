@@ -68,7 +68,7 @@ export type Sigma$Event = {
 export type Sigma$EventHandler = (node:Sigma$Event) => void;
 
 // Following type requires EdgeShapes component
-export type Sigma$Edge$Shapes = "def" | "line" | "arrow" | "curved" | "dashed" | "dotted" | "parallel" | "tapered";
+export type Sigma$Edge$Shapes = "def" | "line" | "arrow" | "curved" | "curvedArrow" | "dashed" | "dotted" | "parallel" | "tapered";
 
 // Following type requires NodeShapes component
 export type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
