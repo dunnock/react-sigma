@@ -1,22 +1,10 @@
 let webpack = require('webpack');
 let yargs = require('yargs');
 
-
-const options = yargs
-  .alias('p', 'optimize-minimize')
-  .alias('d', 'debug')
-  .option('port', {
-    default: '8080',
-    type: 'string'
-  })
-  .argv;
-
 const jsLoader = 'babel?cacheDirectory';
 
-
-let config = {
-
-  options: options,
+module.exports = {
+  devtool: "eval",
 
   module: {
     loaders: [
@@ -26,17 +14,5 @@ let config = {
     ]
   },
 
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(options.optimizeMinimize ? 'production' : 'development')
-      }
-    })
-  ]
+  plugins: []
 }
-
-if (options.optimizeMinimize) {
-  config.devtool = 'source-map';
-}
-
-module.exports = config;
