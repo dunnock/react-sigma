@@ -28,60 +28,60 @@ type State = {
 
 
 /**
-
-Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for network graphs.
-Sigma makes it easy to publish networks on Web pages, and allows developers to integrate network exploration in
-rich Web applications.
-
-Parameter types
-```
-type Sigma$Graph$Data = {
-  nodes: [Sigma$Node],
-  edges: [Sigma$Edge]
-};
-
-type Sigma$Node = {
-  id: string,
-  label?: string,
-  x?: number,
-  y?: number,
-  size?: number,
-  color?: color
-};
-
-type Sigma$Edge = {
-  id: string,
-  source: string,
-  target: string,
-  label?: string,
-  color?: color
-};
-```
-
-
-@signature `<Sigma graph={graph} settings={settings} onClickNode={func}.../>`
-
-@example
-Can be composed with sigma sub-components using JSX syntax
-<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-       settings={{drawEdges:false}}
-       onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-       graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-  <RelativeSize initialSize={8}/>
-</Sigma>
-
-@param {CSS} style   CSS style description for main div holding graph, should be specified in React format
-@param {Sigma$Settings} settings     js object with sigma initialization options, for full list see [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
-@param {string} renderer     can be "webgl" or "canvas"
-@param {Sigma$Graph$Data} graph   js object with array of nodes and edges used to initialize sigma
-@param {Sigma$EventHandler} onClickNode      set sigma callback for "clickNode" event (see below)
-@param {Sigma$EventHandler} onOverNode      set sigma callback for "overNode" event
-@param {Sigma$EventHandler} onOutNode      set sigma callback for "outNode" event
-@param {Sigma$EventHandler} onClickEdge     set sigma callback for "clickEdge" event
-@param {Sigma$EventHandler} onOverEdge      set sigma callback for "overEdge" event
-@param {Sigma$EventHandler} onOutEdge      set sigma callback for "outEdge" event
-
-**/
+ * 
+ * Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for network graphs.
+ * Sigma makes it easy to publish networks on Web pages, and allows developers to integrate network exploration in
+ * rich Web applications.
+ * 
+ * Parameter types
+ * ```
+ * type Sigma$Graph$Data = {
+ *   nodes: [Sigma$Node],
+ *   edges: [Sigma$Edge]
+ * };
+ * 
+ * type Sigma$Node = {
+ *   id: string,
+ *   label?: string,
+ *   x?: number,
+ *   y?: number,
+ *   size?: number,
+ *   color?: color
+ * };
+ * 
+ * type Sigma$Edge = {
+ *   id: string,
+ *   source: string,
+ *   target: string,
+ *   label?: string,
+ *   color?: color
+ * };
+ * ```
+ * 
+ * 
+ * @signature `<Sigma graph={graph} settings={settings} onClickNode={func}.../>`
+ * 
+ * @param {CSS} style   CSS style description for main div holding graph, should be specified in React format
+ * @param {Sigma$Settings} settings     js object with sigma initialization options, for full list see [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
+ * @param {string} renderer     can be "webgl" or "canvas"
+ * @param {Sigma$Graph$Data} graph   js object with array of nodes and edges used to initialize sigma
+ * @param {Sigma$EventHandler} onClickNode      set sigma callback for "clickNode" event (see below)
+ * @param {Sigma$EventHandler} onOverNode      set sigma callback for "overNode" event
+ * @param {Sigma$EventHandler} onOutNode      set sigma callback for "outNode" event
+ * @param {Sigma$EventHandler} onClickEdge     set sigma callback for "clickEdge" event
+ * @param {Sigma$EventHandler} onOverEdge      set sigma callback for "overEdge" event
+ * @param {Sigma$EventHandler} onOutEdge      set sigma callback for "outEdge" event
+ * 
+ * @example
+ * Can be composed with sigma sub-components using JSX syntax
+ * <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+ *        settings={{drawEdges:false}}
+ *        onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+ *        graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+ *   <RelativeSize initialSize={8}/>
+ * </Sigma>
+ * 
+ */
 
 
 class Sigma extends React.PureComponent {
