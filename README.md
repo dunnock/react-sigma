@@ -20,7 +20,7 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 ## Simple use case with embedded graph
 
 ```
-import {Sigma, LoadJSON} from 'react-sigmajs'
+import {Sigma} from 'react-sigmajs'
 ...
 <Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}}/>
 ```
