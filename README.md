@@ -17,7 +17,15 @@ It makes easy to publish networks on Web pages, and allows developers to integra
 
 `yarn add react-sigmajs`
 
-## Simple use case
+## Simple use case with embedded graph
+
+```
+import {Sigma, LoadJSON} from 'react-sigmajs'
+...
+<Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}}/>
+```
+
+## Simple use case with graph loaded from external file
 
 ```
 import {Sigma, LoadJSON} from 'react-sigmajs'
