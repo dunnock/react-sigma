@@ -1,4 +1,4 @@
-It makes easy to publish networks on Web pages, and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading, so no callback is needed. Library is split by components, so even with webpack1 you still can import specific components you need. Easy to extend with additional components. 
+It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading, so no callback is needed. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components. 
 
 ## Table of Contents
 
