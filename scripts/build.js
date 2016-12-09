@@ -21,10 +21,8 @@ export default function Build(options) {
   let proc = sigma()
   if(options.sigmaOnly)
   	return proc
-  return proc.then(Promise.all([
-      lib(),
-      es(),
-      dist(),
-//    forkAndBuildDocs(options)
-  ]))
+  return proc
+      .then(Promise.all([
+          lib(), es()]))
+      .then(dist())
 }

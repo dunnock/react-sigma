@@ -1,6 +1,6 @@
 {
   "name": "react-sigmajs",
-  "description": "React SigmaJS - React.JS flow-typed interface for SigmaJS library - fastest opensource rendering engine for linked graphs.",
+  "description": "React SigmaJS - React.JS interface for Sigma.JS library - fastest opensource rendering engine for network graphs",
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
   "version": "0.4.8",
   "license": "MIT",
@@ -31,6 +31,7 @@
     "graph drawing"
   ],
   "devDependencies": {
+    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
     "babel-cli": "^6.18.0",
     "babel-core": "6.17.0",
@@ -39,9 +40,9 @@
     "babel-loader": "6.2.5",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-dev-expression": "^0.2.1",
+    "babel-plugin-flow-react-proptypes": "^0.18.2",
     "babel-plugin-transform-es3-member-expression-literals": "^6.8.0",
     "babel-plugin-transform-es3-property-literals": "^6.8.0",
-    "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
@@ -52,6 +53,7 @@
     "colors": "^1.1.2",
     "cross-spawn": "4.0.2",
     "detect-port": "1.0.1",
+    "dmd-clear": "^0.1.2",
     "eslint": "3.8.1",
     "eslint-config-react-app": "^0.3.0",
     "eslint-loader": "1.6.0",
@@ -85,8 +87,7 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "@kadira/react-storybook-addon-info": "^3.3.0",
-    "babel-plugin-flow-react-proptypes": "^0.18.2",
+    "babel-preset-react": "^6.16.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "sigma-react": "^1.2.0-2"

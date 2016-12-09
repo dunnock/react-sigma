@@ -2,7 +2,7 @@
 
 # Sigma
 
-[src/Sigma.js:87-179](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/Sigma.js#L87-L179 "Source code on GitHub")
+[src/Sigma.js:87-179](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/Sigma.js#L87-L179 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -10,38 +10,29 @@ Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource 
 Sigma makes it easy to publish networks on Web pages, and allows developers to integrate network exploration in
 rich Web applications.
 
-Can be composed with sigma sub-components using JSX syntax
-`<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
-settings={{drawEdges:false}}
-onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
-graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
-<RelativeSize initialSize={8}/>
-</Sigma>`
-
 Parameter types
-\`
-type Sigma$Graph$Data = {
-nodes: [Sigma$Node],
-edges: [Sigma$Edge]
-};
 
-type Sigma$Node = {
-id: string,
-label?: string,
-x?: number,
-y?: number,
-size?: number,
-color?: color
-};
+    type Sigma$Graph$Data = {
+    nodes: [Sigma$Node],
+    edges: [Sigma$Edge]
+    };
 
-type Sigma$Edge = {
-id: string,
-source: string,
-target: string,
-label?: string,
-color?: color
-};
-\`
+    type Sigma$Node = {
+    id: string,
+    label?: string,
+    x?: number,
+    y?: number,
+    size?: number,
+    color?: color
+    };
+
+    type Sigma$Edge = {
+    id: string,
+    source: string,
+    target: string,
+    label?: string,
+    color?: color
+    };
 
 **Parameters**
 
@@ -56,9 +47,21 @@ color?: color
 -   `onOverEdge` **Sigma$EventHandler** set sigma callback for "overEdge" event
 -   `onOutEdge` **Sigma$EventHandler** set sigma callback for "outEdge" event
 
+**Examples**
+
+```javascript
+Can be composed with sigma sub-components using JSX syntax
+<Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
+settings={{drawEdges:false}}
+onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
+<RelativeSize initialSize={8}/>
+</Sigma>
+```
+
 ## bindHandlers
 
-[src/Sigma.js:170-178](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/Sigma.js#L170-L178 "Source code on GitHub")
+[src/Sigma.js:170-178](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/Sigma.js#L170-L178 "Source code on GitHub")
 
 Initialize event handlers with sigma.
 
@@ -85,13 +88,13 @@ with the structure of following type:
 
 # SigmaEnableWebGL
 
-[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
+[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
 
 Component enables WebGL renderer, setting it as default renderer if WebGL is supported by browser.
 
 # EdgeShapes
 
-[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
+[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -121,7 +124,7 @@ for more datails on implementation.
 
 # NodeShapes
 
-[src/NodeShapes.js:48-58](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/NodeShapes.js#L48-L58 "Source code on GitHub")
+[src/NodeShapes.js:48-58](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/NodeShapes.js#L48-L58 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -167,7 +170,7 @@ for more datails on implementation.
 
 # LoadJSON
 
-[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/LoadJSON.js#L35-L81 "Source code on GitHub")
+[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/LoadJSON.js#L35-L81 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -182,7 +185,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # LoadGEXF
 
-[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
+[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -197,7 +200,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # NeoCypher
 
-[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/NeoCypher.js#L47-L100 "Source code on GitHub")
+[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/NeoCypher.js#L47-L100 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -219,7 +222,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # ForceAtlas2
 
-[src/ForceAtlas2.js:58-113](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/ForceAtlas2.js#L58-L113 "Source code on GitHub")
+[src/ForceAtlas2.js:58-113](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/ForceAtlas2.js#L58-L113 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -249,7 +252,7 @@ It accepts all the parameters of ForceAtlas2 described on its github page:
 
 # NOverlap
 
-[src/NOverlap.js:54-100](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/NOverlap.js#L54-L100 "Source code on GitHub")
+[src/NOverlap.js:54-100](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/NOverlap.js#L54-L100 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -280,7 +283,7 @@ preloaded, or within loader component, like LoadJSON.
 
 # RandomizeNodePositions
 
-[src/RandomizeNodePositions.js:21-38](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/RandomizeNodePositions.js#L21-L38 "Source code on GitHub")
+[src/RandomizeNodePositions.js:21-38](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/RandomizeNodePositions.js#L21-L38 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -289,7 +292,7 @@ Can be used within Sigma component with predefined graph or within graph loader 
 
 # RelativeSize
 
-[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/RelativeSize.js#L25-L34 "Source code on GitHub")
+[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/RelativeSize.js#L25-L34 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -306,7 +309,7 @@ Sets nodes sizes corresponding its degree.
 
 # Filter
 
-[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/ef0a4473a9bd5811a32d84311aed8046c4e98882/src/Filter.js#L30-L60 "Source code on GitHub")
+[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/c5ed0cdb9182f9cfdad798f5287bf207550a3771/src/Filter.js#L30-L60 "Source code on GitHub")
 
 **Extends React.Component**
 
