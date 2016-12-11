@@ -84,10 +84,10 @@
     "strip-ansi": "3.0.1",
     "webpack": "^1.14.0",
     "webpack-manifest-plugin": "1.1.0",
+    "babel-preset-react": "^6.16.0",
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "babel-preset-react": "^6.16.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "sigma-react": "^1.2.0-2"
