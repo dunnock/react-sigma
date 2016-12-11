@@ -1,6 +1,6 @@
 {
   "name": "react-sigmajs",
-  "description": "React SigmaJS - React.JS interface for Sigma.JS library - lightweight but powerful library for drawing network graphs",
+  "description": "React SigmaJS - lightweight but powerful library for drawing network graphs",
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
   "version": "0.4.12",
   "license": "MIT",
