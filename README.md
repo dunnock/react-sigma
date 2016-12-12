@@ -20,10 +20,14 @@ It makes easy to publish networks on Web pages and allows developers to integrat
 ## Simple use case with embedded graph
 
 ```
-import {Sigma} from 'react-sigmajs'
+import {Sigma, RandomizeNodePositions, RelativeSize} from 'react-sigmajs';
 ...
-<Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}}/>
+<Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}} settings={{drawEdges:true}}>
+	<RelativeSize initialSize={15}/>
+	<RandomizeNodePositions/>
+</Sigma>
 ```
+Note that graph nodes require x, y and size defined in order to be displayed, [plugins like RelativeSize and RandomizeNodePositions might help to generate those](https://github.com/dunnock/react-sigma/blob/master/DOCS.md#nodes-distribution).
 
 ## Simple use case with graph loaded from external file
 
