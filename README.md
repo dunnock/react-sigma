@@ -16,12 +16,17 @@ It makes easy to publish networks on Web pages and allows developers to integrat
 ## Install
 
 `npm install --save react-sigmajs`
+
 or
+
 `yarn add react-sigmajs`
+
 or
+
 `bower install https://unpkg.com/react-sigmajs/dist/react-sigma.min.js`
 
 If you don't want to use webpack or browserify, you could always reference the single file distribution:
+
 `<script src="https://unpkg.com/react-sigmajs@0.4.15/dist/react-sigma.min.js"/>`
 
 ## Simple use case with embedded graph
