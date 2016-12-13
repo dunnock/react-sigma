@@ -15,7 +15,14 @@ It makes easy to publish networks on Web pages and allows developers to integrat
 
 ## Install
 
+`npm install --save react-sigmajs`
+or
 `yarn add react-sigmajs`
+or
+`bower install https://unpkg.com/react-sigmajs/dist/react-sigma.min.js`
+
+If you don't want to use webpack or browserify, you could always reference the single file distribution:
+`<script src="https://unpkg.com/react-sigmajs@0.4.15/dist/react-sigma.min.js"/>`
 
 ## Simple use case with embedded graph
 
@@ -54,6 +61,15 @@ import {Sigma, LoadJSON} from 'react-sigmajs'
 ```
 
 See [storybook for detailed usage examples](https://dunnock.github.io/react-sigma/).
+
+## Minimizing bundle
+
+Minimized sigma with minimum required functionality is 76kb, more when plugins added.
+Using webpack2 or rollup nothing need to be done to minimize bundle code, though previous generation of bundlers which does not support tree shaking, like webpack1, require explicit submodules import to be able to optimize, e.g.:
+```
+import Sigma from 'react-sigmajs/lib/Sigma'
+import LoadJSON from 'react-sigmajs/lib/LoadJSON'
+```
 
 # Components reference
 
