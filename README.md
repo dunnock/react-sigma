@@ -97,11 +97,11 @@ initializes renderer and camera in the given area and starts rendering graph.
 
 ## SigmaEnableWebGL
 
-By default sigma package includes only canvas rendering functions, though it can be easily extended with WebGL.
-Importing SigmaEnableWebGL enables WebGL renderer, setting it as default renderer if WebGL is supported by browser.
+By default sigma package includes only canvas rendering functions with webpack2, though it can be easily extended with WebGL. Importing SigmaEnableWebGL enables WebGL renderer, setting it as default renderer if WebGL is supported by browser. With webpack1 webgl rendering functions are imported by default, so you don't need to worry.
 
 ```
-import {Sigma, SigmaEnableWebGL} from './react-sigmajs'
+import { Sigma, SigmaEnableWebGL } from 'react-sigmajs'
+...
 <Sigma /> // will use webgl renderer if supported by browser
 ```
 
@@ -113,7 +113,7 @@ Sigma container will mount any child component with sigma instance under props.s
 class MyCustomSigma extends React.Component {
 	constructor(props) {
 		super(props)
-		props.sigma.graph.addNode({id:"n3", label:props.label});
+		props.sigma.graph.addNode({id:"n3", label:props.label})
 	}
 }
 ...

@@ -28,7 +28,8 @@
     "neo4j graph",
     "json graph",
     "fast graph",
-    "graph drawing"
+    "graph drawing",
+    "react-component"
   ],
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
