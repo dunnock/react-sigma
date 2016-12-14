@@ -93,8 +93,8 @@
     "sigma-react": "^1.2.0-2"
   },
   "peerDependencies": {
-    "react": ">=0.14.0",
-    "react-dom": ">=0.14.0"
+    "react": ">=15.3",
+    "react-dom": ">=15.3"
   },
   "scripts": {
     "build": "babel-node scripts/build-cli.js",

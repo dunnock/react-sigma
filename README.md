@@ -10,6 +10,7 @@ It makes easy to publish networks on Web pages and allows developers to integrat
  - [Components composition](#components-composition)
 - [Types](#types)
 
+![sample graph](https://github.com/dunnock/react-sigma/blob/master/public/sm_graph.png)
 
 # Usage
 
