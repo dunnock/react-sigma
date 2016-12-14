@@ -1,4 +1,4 @@
-It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components. 
+It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components.
 
 ## Table of Contents
 
@@ -49,7 +49,7 @@ Note that graph nodes require x, y and size defined in order to be displayed, [p
 import {Sigma, LoadJSON} from 'react-sigmajs'
 ...
 <Sigma style={{width:"200px", height:"200px"}}>
-  <LoadJSON path="/public/data.json">
+  <LoadJSON path="/public/data.json" />
 </Sigma>
 ```
 
@@ -80,9 +80,9 @@ import LoadJSON from 'react-sigmajs/lib/LoadJSON'
 
 Please see [react-sigma reference](https://github.com/dunnock/react-sigma/blob/master/DOCS.md) for details. Below is a brief concept.
 
-## Sigma 
+## Sigma
 
-Sigma is the main component which reserves <div> area with a given style (default is full width, 500px height), 
+Sigma is the main component which reserves <div> area with a given style (default is full width, 500px height),
 initializes renderer and camera in the given area and starts rendering graph.
 <Sigma> be composed with sigma plugins using JSX syntax, e.g.:
 
