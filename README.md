@@ -1,4 +1,4 @@
-It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading, so no callback is needed. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components. 
+It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components. 
 
 ## Table of Contents
 
@@ -12,6 +12,8 @@ It makes easy to publish networks on Web pages and allows developers to integrat
 
 
 # Usage
+
+See [storybook for working examples](https://dunnock.github.io/react-sigma/).
 
 ## Install
 
@@ -65,12 +67,10 @@ import {Sigma, LoadJSON} from 'react-sigmajs'
 </Sigma>
 ```
 
-See [storybook for detailed usage examples](https://dunnock.github.io/react-sigma/).
-
 ## Minimizing bundle
 
 Minimized sigma with minimum required functionality is 76kb, more when plugins added.
-Using webpack2 or rollup nothing need to be done to minimize bundle code, though previous generation of bundlers which does not support tree shaking, like webpack1, require explicit submodules import to be able to optimize, e.g.:
+Using webpack2 or rollup nothing need to be done. Webpack1 does not support tree shaking and require explicit submodules import to bundle only what's been used, e.g.:
 ```
 import Sigma from 'react-sigmajs/lib/Sigma'
 import LoadJSON from 'react-sigmajs/lib/LoadJSON'
