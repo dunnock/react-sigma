@@ -5,6 +5,7 @@
   "version": "0.5.0",
   "license": "MIT",
   "bugs": "https://github.com/dunnock/react-sigma/issues",
+  "homepage": "https://github.com/dunnock/react-sigma",
   "repository": {
     "type": "git",
     "url": "https://github.com/dunnock/react-sigma.git"
@@ -15,6 +16,7 @@
     "es",
     "sigma",
     "README.md",
+    "DOCS.md",
     "LICENSE"
   ],
   "main": "lib/index.js",
