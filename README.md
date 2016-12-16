@@ -18,24 +18,24 @@ See [storybook for working examples](https://dunnock.github.io/react-sigma/).
 
 ## Install
 
-`npm install --save react-sigmajs`
+`npm install --save react-sigma`
 
 or
 
-`yarn add react-sigmajs`
+`yarn add react-sigma`
 
 or
 
-`bower install https://unpkg.com/react-sigmajs/dist/react-sigma.min.js`
+`bower install https://unpkg.com/react-sigma@1.2/dist/react-sigma.min.js`
 
 If you don't want to use webpack or browserify, you could always reference the single file distribution:
 
-`<script src="https://unpkg.com/react-sigmajs@0.4.15/dist/react-sigma.min.js"/>`
+`<script src="https://unpkg.com/react-sigma@1.2/dist/react-sigma.min.js"/>`
 
 ## Simple use case with embedded graph
 
 ```
-import {Sigma, RandomizeNodePositions, RelativeSize} from 'react-sigmajs';
+import {Sigma, RandomizeNodePositions, RelativeSize} from 'react-sigma';
 ...
 <Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}} settings={{drawEdges:true}}>
 	<RelativeSize initialSize={15}/>
@@ -47,7 +47,7 @@ Note that graph nodes require x, y and size defined in order to be displayed, [p
 ## Simple use case with graph loaded from external file
 
 ```
-import {Sigma, LoadJSON} from 'react-sigmajs'
+import {Sigma, LoadJSON} from 'react-sigma'
 ...
 <Sigma style={{width:"200px", height:"200px"}}>
   <LoadJSON path="/public/data.json" />
@@ -73,8 +73,8 @@ import {Sigma, LoadJSON} from 'react-sigmajs'
 Minimized sigma with minimum required functionality is 76kb, more when plugins added.
 Using webpack2 or rollup nothing need to be done. Webpack1 does not support tree shaking and require explicit submodules import to bundle only what's been used, e.g.:
 ```
-import Sigma from 'react-sigmajs/lib/Sigma'
-import LoadJSON from 'react-sigmajs/lib/LoadJSON'
+import Sigma from 'react-sigma/lib/Sigma'
+import LoadJSON from 'react-sigma/lib/LoadJSON'
 ```
 
 # Components reference
@@ -101,7 +101,7 @@ initializes renderer and camera in the given area and starts rendering graph.
 By default sigma package includes only canvas rendering functions with webpack2, though it can be easily extended with WebGL. Importing SigmaEnableWebGL enables WebGL renderer, setting it as default renderer if WebGL is supported by browser. With webpack1 webgl rendering functions are imported by default, so you don't need to worry.
 
 ```
-import { Sigma, SigmaEnableWebGL } from 'react-sigmajs'
+import { Sigma, SigmaEnableWebGL } from 'react-sigma'
 ...
 <Sigma /> // will use webgl renderer if supported by browser
 ```
