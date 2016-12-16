@@ -1,8 +1,11 @@
 [![npm version][img-1]][1]
+[![Build Status][img-2]][2]
 
 [img-1]: https://img.shields.io/npm/v/react-sigma.svg
+[img-2]: https://travis-ci.org/dunnock/react-sigma.svg?branch=master
 
 [1]: https://www.npmjs.com/package/react-sigma "npm version"
+[2]: https://travis-ci.org/dunnock/react-sigma
 
 It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components.
 
