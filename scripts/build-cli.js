@@ -9,10 +9,6 @@ import yargs from 'yargs';
 
 const argv = yargs
   .help('h')
-  .option('docs-only', {
-    demand: false,
-    default: false
-  })
   .option('sigma-only', {
     demand: false,
     default: false
@@ -32,15 +28,9 @@ const argv = yargs
 
 setExecOptions(argv);
 
-let buildProcess;
+console.log(JSON.stringify(argv))
 
-if (argv.docsOnly) {
-//  buildProcess = docs(argv);
-} else {
-  buildProcess = build(argv);
-}
-
-buildProcess
+build(argv)
   .catch(err => {
     if (err.stack) {
       console.error(err.stack.red);

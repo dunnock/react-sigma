@@ -101,6 +101,8 @@
   "scripts": {
     "build": "babel-node scripts/build-cli.js",
     "build:v": "babel-node scripts/build-cli.js --verbose",
+    "build:sigma": "babel-node scripts/build-cli.js --sigma-only",
+    "pretest": "npm run build:sigma",
     "test": "node scripts/test.js --env=jsdom",
     "publish:patch": "npm-release patch",
     "publish:minor": "npm-release minor",
