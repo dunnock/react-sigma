@@ -4,6 +4,3 @@ node_js:
 cache: yarn
 env:
   - CXX=g++-4.8
-before_install:
-  - apt-get -qq update
-  - apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential
