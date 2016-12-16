@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action, linkTo } from '@kadira/storybook';
 import {decorateAction} from '@kadira/storybook-addon-actions';
-import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL, RandomizeNodePositions } from '../src/index';
+import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL, RandomizeNodePositions, ForceLink } from '../src/index';
 import FilteredSample from './FilteredSample'
 
 const sigmaAction = decorateAction([
@@ -11,25 +11,24 @@ const sigmaAction = decorateAction([
 
 storiesOf('Complex graph samples', module)
   .addWithInfo('Static', 
-              'Render big graph (12k nodes) with predefined size and coordinates, see https://dunnock.github.io/react-sigma/sites_coords.json. WebGL rendering. Click on graph node to see event data.', () => (
-    <Sigma renderer="webgl" onClickNode={ sigmaAction('onClickNode') }>
+              'Render big graph (12k nodes) with predefined size and coordinates, see https://dunnock.github.io/react-sigma/sites_coords.json. Canvas rendering. Click on graph node to see event data.', () => (
+    <Sigma renderer="canvas" onClickNode={ sigmaAction('onClickNode') }>
+      <NodeShapes default="diamond"/>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_coords.json"}/>
     </Sigma>
   ))
   .addWithInfo('Medium graph animated', 
-              'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceAtlas2 algorythms. Canvas rendering. Roll over graph node to see event data.',
+              'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceLink (ForceAtlas2) layout precalculated in background with cubicInOut easing. WebGL rendering. Roll over graph node to see event data.',
               () => (
-    <Sigma renderer="canvas" onOverNode={ sigmaAction('onOverNode') }>
-      <EdgeShapes default="tapered"/>
-      <NodeShapes default="star"/>
+    <Sigma renderer="webgl" onOverNode={ sigmaAction('onOverNode') } settings={{hideEdgesOnMove:false, animationsTime:3000}}>
       <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
-        <ForceAtlas2 iterationsPerRender={1} timeout={10000}/>
+        <ForceLink randomize="locally" background={true} easing="cubicInOut" timeout={2000}/>
         <RelativeSize initialSize={15}/>
       </LoadGEXF>
     </Sigma>
   ))
   .addWithInfo('Big graph animated',
-              'Load big graph (12k nodes, 30k edges), randomize coords and set relative node sizes, then run ForceAtlas2 algorythm with barnesHutOptimize option, see https://dunnock.github.io/react-sigma/sites_nocoords.json. WebGL rendering. Click on graph node to see event data.',
+              'Load big graph (12k nodes, 30k edges), randomize coords and set relative node sizes, then run ForceAtlas2 algorythm with realtime calculation animation with barnesHutOptimize option, see https://dunnock.github.io/react-sigma/sites_nocoords.json. WebGL rendering. Click on graph node to see event data.',
               () => (
     <Sigma renderer="webgl" settings={{drawEdges:false}} onClickNode={ sigmaAction('onClickNode') }>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_nocoords.json"}>
@@ -129,7 +128,7 @@ storiesOf('Plugins', module)
     </Sigma>
   ))
   .addWithInfo('Force atlas 2',
-          'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, see https://dunnock.github.io/react-sigma/upwork.json. WebGL rendering. Click on graph node to see event data.',
+          'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, see https://dunnock.github.io/react-sigma/upwork.json.  Click on graph node to see event data.',
           () => (
     <Sigma renderer="canvas">
       <EdgeShapes default="curvedArrow"/>
@@ -137,6 +136,20 @@ storiesOf('Plugins', module)
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
         <RandomizeNodePositions>
           <ForceAtlas2 iterationsPerRender={1} timeout={6000}/>
+          <RelativeSize initialSize={15}/>
+        </RandomizeNodePositions>
+      </LoadJSON>
+    </Sigma>
+  ))
+  .addWithInfo('Force Link',
+          'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, it is extended version of ForceAtlas2. Click on graph node to see event data.',
+          () => (
+    <Sigma renderer="canvas" settings={{hideEdgesOnMove:false, animationsTime:3000}}>
+      <EdgeShapes default="tapered"/>
+      <NodeShapes default="diamond"/>
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
+        <RandomizeNodePositions>
+          <ForceLink iterationsPerRender={1} background={true} easing="cubicInOut" timeout={1000}/>
           <RelativeSize initialSize={15}/>
         </RandomizeNodePositions>
       </LoadJSON>

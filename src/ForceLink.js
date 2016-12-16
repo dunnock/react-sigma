@@ -2,7 +2,7 @@
 
 import React from 'react'
 import sigma from '../sigma/main'
-import '../sigma/layout.forceAtlas2'
+import '../sigma/layout.forceLink'
 
 type State = {
 	running: boolean,
@@ -11,7 +11,6 @@ type State = {
 };
 
 type Props = {
-	worker: boolean,
 	barnesHutOptimize?: boolean,
 	barnesHutTheta?: number,
 	adjustSizes?: boolean,
@@ -23,6 +22,13 @@ type Props = {
 	strongGravityMode?: boolean,
 	slowDown?: number,
 	gravity?: number,
+	alignNodeSiblings?: boolean,
+	nodeSiblingsScale?: number,
+	nodeSiblingsAngleMin?: number,
+	worker: boolean,
+	background?: boolean,
+	easing?: Sigma$Easing,
+	randomize?: "globally" | "locally",
 	timeout?: number,
 	sigma?: sigma
 };
@@ -34,13 +40,12 @@ type DefaultProps = {
 
 /**
 
-ForceAtlas2 component, starts ForceAtlas2 sigma plugin once component is mounted.
+ForceLink component, starts Force Atlas2 algorythm once component is mounted.
 It supposes that sigma graph is already in place, therefore component should not be
 mounted while graph is unavailable. It can be used within Sigma component if graph is
 preloaded, or within loader component, like NeoCypher.
 
-It accepts all the parameters of ForceAtlas2 described on its github page:
-@param {boolean} [worker=true]           Use a web worker to run calculations in separate thread
+It accepts all the parameters of ForceLink described on its github page:
 @param {boolean} barnesHutOptimize  Use the algorithm's Barnes-Hut to improve repulsion's scalability
 									This is useful for large graph but harmful to small ones.
 @param {number} barnesHutTheta
@@ -52,15 +57,22 @@ It accepts all the parameters of ForceAtlas2 described on its github page:
 @param {number} scalingRatio
 @param {boolean} strongGravityMode
 @param {number} gravity
+@param {boolean} alignNodeSiblings
+@param {number} nodeSiblingsScale
+@param {number} nodeSiblingsAngleMin
+@param {boolean} [worker=true]  Use a web worker to run calculations in separate thread
+@param {boolean} background
+@param {string} easing  Easing mode
+@param {"globally"|"locally"} randomize  Randomize node positions before start
 @param {number} slowDown
 @param {number} timeout   how long algorythm should run. default=graph.nodes().length * 10
 
-[see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.layout.forceAtlas2)
+[see sigma plugin page for more details](https://github.com/Linkurious/linkurious.js/tree/develop/plugins/sigma.layouts.forceLink)
 
 **/
 
 
-class ForceAtlas2 extends React.Component {
+class ForceLink extends React.Component {
 	state: State;
 	props: Props;
 	static defaultProps: DefaultProps = {
@@ -80,20 +92,19 @@ class ForceAtlas2 extends React.Component {
 	componentDidUpdate(prevProps: Props, prevState: State) {
 		let s = this.props.sigma
 		if(prevState.running && !this.state.running && s) {
-				s.stopForceAtlas2()
+				sigma.layouts.stopForceLink()
 				s.settings({drawEdges:prevState.drawEdges===false ? false : true})
 				s.refresh();
 		}
 	}
 
 	componentWillUnmount() {
-		if(this.props.sigma) this.props.sigma.killForceAtlas2()
+		sigma.layouts.killForceLink()
 		if(this.state.timer) clearTimeout(this.state.timer)
 	}
 
-  //TODO: Add composition of child components after timeout
+	//TODO: Add composition of child components after timeout
 	render = () => null
-
 
 	_refreshGraph() {
 		let s = this.props.sigma
@@ -103,7 +114,7 @@ class ForceAtlas2 extends React.Component {
 		if(s.graph.edges().length > 1000)
 				s.settings({drawEdges: false})
 
-		s.startForceAtlas2(this._stripOptions(this.props));
+		sigma.layouts.startForceLink(s, this._stripOptions(this.props));
 		// TODO: convert running status to state
 		let timer = setTimeout(() => {
 					this.setState({running:false, timer:undefined})
@@ -118,4 +129,4 @@ class ForceAtlas2 extends React.Component {
 
 }
 
-export default ForceAtlas2;
+export default ForceLink;

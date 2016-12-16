@@ -19,7 +19,7 @@ type Props = {
 	permittedExpansion?: number,
 	speed?: number,
 	maxIterations?: number,
-	easing?: "linearNone" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut",
+	easing?: Sigma$Easing,
 	duration?: number,
 	sigma?: sigma
 };

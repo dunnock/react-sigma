@@ -92,7 +92,7 @@
   "dependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "sigma-react": "^1.2.0-2"
+    "sigma-react": "^1.2.1"
   },
   "peerDependencies": {
     "react": ">=15.3",
