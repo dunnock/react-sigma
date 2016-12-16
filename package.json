@@ -30,8 +30,7 @@
     "neo4j graph",
     "json graph",
     "fast graph",
-    "graph drawing",
-    "react-component"
+    "graph drawing"
   ],
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
@@ -108,7 +107,8 @@
     "build-storybook": "build-storybook -s public",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postinstall": "echo 'RELOCATED! react-sigmajs was relocated to react-sigma, please use #npm install react-sigma'"
   },
   "jest": {
     "moduleFileExtensions": [

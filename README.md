@@ -1,4 +1,4 @@
-!!! NOTICE !!! lib was relocated to [react-sigma](https://www.npmjs.com/package/react-sigma).
+# !!! NOTICE !!! lib was relocated to [react-sigma](https://www.npmjs.com/package/react-sigma).
 
 It makes easy to publish networks on Web pages and allows developers to integrate network exploration in rich Web applications. Use JSX for graph configuration, including asynchronous graph loading. Library is lightweight and modular, so you can bundle only what you use. Easy to extend with additional components.
 
