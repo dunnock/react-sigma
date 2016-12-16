@@ -8,6 +8,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+      - libgif-dev
 cache: yarn
 env:
   - CXX=g++-4.8
