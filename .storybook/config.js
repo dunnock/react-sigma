@@ -1,10 +1,17 @@
 import { configure, setAddon } from '@kadira/storybook'
 import infoAddon from '@kadira/react-storybook-addon-info'
+import { setOptions } from '@kadira/storybook-addon-options'
 
-setAddon(infoAddon);
+setOptions({
+  name: 'REACT-SIGMA GITHUB',
+  url: 'https://github.com/dunnock/react-sigma',
+  goFullScreen: false,
+  showLeftPanel: true,
+  showDownPanel: true,
+  showSearchBox: false,
+  downPanelInRight: true,
+})
 
-function loadStories() {
-  require('../stories-src');
-}
+setAddon(infoAddon)
 
-configure(loadStories, module);
+configure(() => require('../stories-src'), module)

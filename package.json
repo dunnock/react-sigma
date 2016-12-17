@@ -37,6 +37,7 @@
     "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
     "@kadira/storybook-addon-knobs": "^1.7.1",
+    "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-deployer": "^1.2.0",
     "babel-cli": "^6.18.0",
     "babel-core": "6.17.0",

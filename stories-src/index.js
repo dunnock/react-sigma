@@ -26,7 +26,7 @@ storiesOf('Complex graph samples', module)
     let flAlignNodeSiblings = boolean("Align node siblings", false)
     let flRandomize = select("Randomize node positions", ["locally", "globally", "no"], "locally")
     return <div style={{fontFamily:"sans-serif", fontSize:"0.875em"}}>
-        Play with ForceLink settings under <b>knobs</b>, check overNode event under <b>action logger</b>
+        Play with ForceLink settings under <b>knobs</b>. Check overNode events under <b>action logger</b>.
         <Sigma renderer="webgl" onOverNode={ sigmaAction('onOverNode') } settings={{animationsTime:3000}}>
           <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
             <ForceLink randomize={flRandomize}
