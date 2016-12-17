@@ -91,13 +91,11 @@ class ForceLink extends React.Component {
 
 	// Change sigma status only after react rendering complete
 	componentDidUpdate(prevProps: Props, prevState: State) {
-		console.log("componentDidUpdate state=" + JSON.stringify(this.state))
 		let s = this.props.sigma
 		if(prevState.running && !this.state.running && s) {
 			this._stopForceLink()
 			s.refresh();
 		} else if (ForceLink._propsChanged(prevProps, this.props)) {
-			console.log("Props changed")
 			this._stopForceLink()
 			this._refreshGraph()
 		}
@@ -113,7 +111,7 @@ class ForceLink extends React.Component {
   _stopForceLink() {
 		sigma.layouts.stopForceLink()
 		if(this.state.timer) clearTimeout(this.state.timer)
-		if(this.props.sigma) this.props.sigma.settings({drawEdges:this.state.drawEdges})
+		if(this.props.sigma && this.props.sigma.settings) this.props.sigma.settings({drawEdges:this.state.drawEdges})
   }
 
 	_refreshGraph() {
@@ -124,7 +122,8 @@ class ForceLink extends React.Component {
 		if(s.graph.edges().length > 1000)
 				s.settings({drawEdges: false})
 
-		sigma.layouts.startForceLink(s, ForceLink._stripOptions(this.props));
+		sigma.layouts.configForceLink(s, ForceLink._stripOptions(this.props))
+		sigma.layouts.startForceLink(s)
 		// TODO: convert running status to state
 		let timer = setTimeout(() => {
 					this.setState({running:false, timer:undefined})
@@ -138,7 +137,6 @@ class ForceLink extends React.Component {
 	}
 
 	static _propsChanged(prev: Props, next: Props) {
-		console.log("Compare props")
 		for(let key in prev)
 			if(prev[key] !== next[key])
 				return true

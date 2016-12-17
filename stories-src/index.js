@@ -15,18 +15,19 @@ storiesOf('Complex graph samples', module)
   .addWithInfo('Medium graph animated', 
               'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceLink (ForceAtlas2) layout precalculated in background with cubicInOut easing. WebGL rendering. Roll over graph node to see event data.',
               () => {
-    let flBackground = boolean("Force layout in backround", true)
-    let flEasing = select("Easing after layout", ["cubicIn", "cubicOut", "cubicInOut"])
     let flTimeout = number("Timeout", 2000)
+    let flBackground = boolean("Force layout in backround", true)
+    let flEasing = select("Easing after layout", ["linearNone", "cubicIn", "cubicOut", "cubicInOut"], "cubicInOut")
+    let flOutboundAttractionDistribution = boolean("Outbound attraction distribution", false)
     let flBarnesHutOptimize = boolean("Barneshut optimize", false)
     let flBarnesHutTheta = number("Barneshut theta", 0.5)
     let flGravity = number("Gravity", 1)
     let flEdgeWeightInfluence = number("Edge weight influence", 0)
     let flAlignNodeSiblings = boolean("Align node siblings", false)
-    let flRandomize = select("Randomize node positions", ["locally", "globally", "no"])
+    let flRandomize = select("Randomize node positions", ["locally", "globally", "no"], "locally")
     return <div style={{fontFamily:"sans-serif", fontSize:"0.875em"}}>
         Play with ForceLink settings under <b>knobs</b>, check overNode event under <b>action logger</b>
-        <Sigma renderer="webgl" onOverNode={ sigmaAction('onOverNode') } settings={{hideEdgesOnMove:false, animationsTime:3000}}>
+        <Sigma renderer="webgl" onOverNode={ sigmaAction('onOverNode') } settings={{animationsTime:3000}}>
           <LoadGEXF path={String(process.env.PUBLIC_URL) + "/arctic.gexf"}>
             <ForceLink randomize={flRandomize}
                       barnesHutOptimize={flBarnesHutOptimize}
@@ -36,7 +37,8 @@ storiesOf('Complex graph samples', module)
                       gravity={flGravity}
                       edgeWeightInfluence={flEdgeWeightInfluence}
                       alignNodeSiblings={flAlignNodeSiblings}
-                      timeout={flTimeout}/>
+                      timeout={flTimeout}
+                      outboundAttractionDistribution={flOutboundAttractionDistribution}/>
             <RelativeSize initialSize={15}/>
           </LoadGEXF>
         </Sigma>
