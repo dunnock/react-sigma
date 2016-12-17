@@ -76,7 +76,7 @@ export type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cro
 // Following type used in Filter component
 export type Nodes$Filter = (node: Sigma$Node) => boolean;
 
-export type Sigma$Easing = "linearNone" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut";
+export type Sigma$Easing = "linear" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut";
 
 // TYPES DECOMPOSITION
 

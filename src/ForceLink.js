@@ -28,7 +28,7 @@ type Props = {
 	worker: boolean,
 	background?: boolean,
 	easing?: Sigma$Easing,
-	randomize?: "globally" | "locally",
+	randomize?: "globally" | "locally" | "no",
 	timeout?: number,
 	sigma?: sigma
 };
@@ -89,22 +89,32 @@ class ForceLink extends React.Component {
 		this._refreshGraph()
 	}
 
+	// Change sigma status only after react rendering complete
 	componentDidUpdate(prevProps: Props, prevState: State) {
+		console.log("componentDidUpdate state=" + JSON.stringify(this.state))
 		let s = this.props.sigma
 		if(prevState.running && !this.state.running && s) {
-				sigma.layouts.stopForceLink()
-				s.settings({drawEdges:prevState.drawEdges===false ? false : true})
-				s.refresh();
+			this._stopForceLink()
+			s.refresh();
+		} else if (ForceLink._propsChanged(prevProps, this.props)) {
+			console.log("Props changed")
+			this._stopForceLink()
+			this._refreshGraph()
 		}
 	}
 
 	componentWillUnmount() {
-		sigma.layouts.killForceLink()
-		if(this.state.timer) clearTimeout(this.state.timer)
+		this._stopForceLink()
 	}
 
 	//TODO: Add composition of child components after timeout
 	render = () => null
+
+  _stopForceLink() {
+		sigma.layouts.stopForceLink()
+		if(this.state.timer) clearTimeout(this.state.timer)
+		if(this.props.sigma) this.props.sigma.settings({drawEdges:this.state.drawEdges})
+  }
 
 	_refreshGraph() {
 		let s = this.props.sigma
@@ -114,7 +124,7 @@ class ForceLink extends React.Component {
 		if(s.graph.edges().length > 1000)
 				s.settings({drawEdges: false})
 
-		sigma.layouts.startForceLink(s, this._stripOptions(this.props));
+		sigma.layouts.startForceLink(s, ForceLink._stripOptions(this.props));
 		// TODO: convert running status to state
 		let timer = setTimeout(() => {
 					this.setState({running:false, timer:undefined})
@@ -123,10 +133,17 @@ class ForceLink extends React.Component {
 	}
 
 	//strip force atlas options from component props
-	_stripOptions(props: Props): Props {
+	static _stripOptions(props: Props) {
 		return Object.assign({}, props, {sigma: undefined})
 	}
 
+	static _propsChanged(prev: Props, next: Props) {
+		console.log("Compare props")
+		for(let key in prev)
+			if(prev[key] !== next[key])
+				return true
+		return false
+	}
 }
 
 export default ForceLink;

@@ -36,6 +36,8 @@
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
+    "@kadira/storybook-addon-knobs": "^1.7.1",
+    "@kadira/storybook-deployer": "^1.2.0",
     "babel-cli": "^6.18.0",
     "babel-core": "6.17.0",
     "babel-eslint": "7.0.0",
@@ -106,11 +108,12 @@
     "test": "node scripts/test.js --env=jsdom",
     "publish:patch": "npm-release patch",
     "publish:minor": "npm-release minor",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "prepublish": "npm run build",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
-    "prepublish": "npm run build"
+    "deploy-storybook": "storybook-to-ghpages",
+    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md"
   },
   "jest": {
     "moduleFileExtensions": [
