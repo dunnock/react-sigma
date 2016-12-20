@@ -10,6 +10,21 @@
     "type": "git",
     "url": "https://github.com/dunnock/react-sigma.git"
   },
+  "scripts": {
+    "build": "babel-node scripts/build-cli.js",
+    "build:v": "babel-node scripts/build-cli.js --verbose",
+    "build:sigma": "babel-node scripts/build-cli.js --sigma-only",
+    "pretest": "npm run build:sigma",
+    "test": "node scripts/test.js --env=jsdom",
+    "publish:patch": "npm-release patch",
+    "publish:minor": "npm-release minor",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "prepublish": "npm run build",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages",
+    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md"
+  },
   "files": [
     "lib",
     "dist",
@@ -100,21 +115,6 @@
   "peerDependencies": {
     "react": ">=15.3",
     "react-dom": ">=15.3"
-  },
-  "scripts": {
-    "build": "babel-node scripts/build-cli.js",
-    "build:v": "babel-node scripts/build-cli.js --verbose",
-    "build:sigma": "babel-node scripts/build-cli.js --sigma-only",
-    "pretest": "npm run build:sigma",
-    "test": "node scripts/test.js --env=jsdom",
-    "publish:patch": "npm-release patch",
-    "publish:minor": "npm-release minor",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "prepublish": "npm run build",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages",
-    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md"
   },
   "jest": {
     "moduleFileExtensions": [
