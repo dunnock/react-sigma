@@ -14,3 +14,7 @@ import 'sigma-react/plugins/sigma.renderers.customEdgeShapes/sigma.canvas.edges.
 import 'sigma-react/plugins/sigma.renderers.customEdgeShapes/sigma.canvas.edges.dotted.js'
 import 'sigma-react/plugins/sigma.renderers.customEdgeShapes/sigma.canvas.edges.parallel.js'
 import 'sigma-react/plugins/sigma.renderers.customEdgeShapes/sigma.canvas.edges.tapered.js'
+
+import 'sigma-react/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js'
+import 'sigma-react/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js'
+import 'sigma-react/plugins/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js'
