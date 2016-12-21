@@ -1,5 +1,6 @@
 import React from 'react'
 import { Sigma, LoadJSON, Filter, ForceAtlas2, RelativeSize, RandomizeNodePositions } from '../src/index';
+import {Note} from './style.js';
 
 class FilteredSample extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class FilteredSample extends React.Component {
   }
 
   render() {
-    return <div style={{fontFamily:"sans-serif", fontSize:"small"}}>
+    return <div style={Note}>
      *Click on node to see only its neighbours. Click on stage to see all nodes. Renderer: WebGL, 12k nodes, 30k edges.
      <Sigma renderer="webgl" settings={{drawEdges:false}} onClickNode={ e => this.setState({selectedNode: e.data.node.id}) } onClickStage={ e => this.setState({selectedNode: null}) }>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_nocoords.json"}>
