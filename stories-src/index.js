@@ -4,7 +4,8 @@ import {decorateAction} from '@kadira/storybook-addon-actions';
 import { withKnobs, object, boolean, number, select } from '@kadira/storybook-addon-knobs';
 
 import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL, RandomizeNodePositions, ForceLink } from '../src/index';
-import FilteredSample from './FilteredSample'
+import FilteredSample from './FilteredSample';
+import EdgeLabelSample from './EdgeLabelSample';
 
 const sigmaAction = decorateAction([
   args => [{type: args[0].type,  data: {node: args[0].data.node, captor: args[0].data.captor} }]
@@ -12,7 +13,7 @@ const sigmaAction = decorateAction([
 
 storiesOf('Complex graph samples', module)
   .addDecorator(withKnobs)
-  .addWithInfo('Medium graph animated', 
+  .addWithInfo('Medium graph animated',
               'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceLink (ForceAtlas2) layout precalculated in background with cubicInOut easing. WebGL rendering. Roll over graph node to see event data.',
               () => {
     let flTimeout = number("Timeout", 2000)
@@ -44,7 +45,7 @@ storiesOf('Complex graph samples', module)
         </Sigma>
     </div>
   })
-  .addWithInfo('Big static', 
+  .addWithInfo('Big static',
               'Render big graph (12k nodes) with predefined size and coordinates, see https://dunnock.github.io/react-sigma/sites_coords.json. Canvas rendering. Click on graph node to see event data.', () => (
     <Sigma renderer="canvas" onClickNode={ sigmaAction('onClickNode') }>
       <NodeShapes default="diamond"/>
@@ -180,4 +181,4 @@ storiesOf('Plugins', module)
     </Sigma>
   ))
   .add('Filter', () => ( <FilteredSample/>))
-
+  .add('Edge Labels', () => ( <EdgeLabelSample />))
