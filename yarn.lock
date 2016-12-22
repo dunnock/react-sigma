@@ -5274,9 +5274,9 @@ shellwords@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.0.tgz#66afd47b6a12932d9071cbfd98a52e785cd0ba14"
 
-sigma-react:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/sigma-react/-/sigma-react-1.2.1.tgz#d24e21a33ccc54ece863aa0666307223811d9ed8"
+sigma-react@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/sigma-react/-/sigma-react-1.2.4.tgz#cbf342391eba5d7f24fe8ce590acedb19df7061a"
 
 signal-exit@^3.0.0:
   version "3.0.2"

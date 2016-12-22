@@ -7,7 +7,7 @@ import EdgeLabelSample from './EdgeLabelSample';
 
 storiesOf('Plugins', module)
   .add('NOverlap', () => (
-    <Sigma renderer="canvas">
+    <Sigma renderer="canvas" settings={{hideEdgesOnMove:false}}>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
         <NOverlap nodeMargin={10} scaleNodes={4} duration={3000} speed={10} maxIterations={100} gridSize={20} easing="quadraticInOut" />
         <RelativeSize initialSize={15}/>

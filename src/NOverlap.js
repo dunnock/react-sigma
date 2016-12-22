@@ -6,8 +6,7 @@ import '../sigma/plugins.animate'
 import '../sigma/layout.noverlap'
 
 type State = {
-	running: boolean,
-	drawEdges?: ?boolean
+	running: boolean
 };
 
 
@@ -67,10 +66,13 @@ class NOverlap extends React.Component {
 	componentDidUpdate(prevProps: Props, prevState: State) {
 		if(prevState.running && !this.state.running) {
 			if(this.props.sigma)
-				this.props.sigma.settings({drawEdges:prevState.drawEdges || true})
-			if(this.props.sigma)
 				this.props.sigma.refresh()
 		}
+	}
+
+	componentWillUnmount() {
+		if(this.state.running && this.props.sigma)
+			this.props.sigma.stopNoverlap()
 	}
 
 	render = () => null
@@ -79,16 +81,12 @@ class NOverlap extends React.Component {
 		let s = this.props.sigma
 		if(!sigma || !s) return
 
-		let drawEdges = s.settings("drawEdges")
-		if(s.graph.edges().length > 1000)
-				s.settings({drawEdges: false})
-
 		let listener = s.configNoverlap(this._stripOptions(this.props))
 
 		listener.bind('stop', () => {
 				this.setState({running:false}) } )
 
-		this.setState({running:true, drawEdges})
+		this.setState({running:true})
 
 		s.startNoverlap()
 	}
