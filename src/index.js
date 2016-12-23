@@ -13,5 +13,7 @@ export NeoGraphItemsProducers from './NeoGraphItemsProducers'
 export RandomizeNodePositions from './RandomizeNodePositions'
 export SigmaEnableWebGL from './SigmaEnableWebGL'
 
+//Dagre is not included intentionally in the default distribution, it's huge and should be imported explicitly
+
 import Sigma from './Sigma'
 export default Sigma
