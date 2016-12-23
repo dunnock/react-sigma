@@ -26,6 +26,7 @@ module.exports = {
                             sigmaPluginsRoot + '/sigma.layout.forceAtlas2/worker.js'],
     'layout.forceLink': [ sigmaPluginsRoot + '/sigma.layouts.forceLink/supervisor.js',
                             sigmaPluginsRoot + '/sigma.layouts.forceLink/worker.js'],
+    'layout.dagre': [ sigmaSrcRoot + '/dagre.js'],
     'plugins.animate': sigmaPluginsRoot + '/sigma.plugins.animate/sigma.plugins.animate.js',
     'plugins.generators': sigmaPluginsRoot + '/sigma.plugins.generators/sigma.plugins.generators.js',
     'layout.noverlap': sigmaPluginsRoot + '/sigma.layout.noverlap/sigma.layout.noverlap.js',
