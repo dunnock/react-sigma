@@ -22,8 +22,8 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages"
+    "build:storybook": "build-storybook -s public",
+    "publish:storybook": "storybook-to-ghpages"
   },
   "files": [
     "lib",
