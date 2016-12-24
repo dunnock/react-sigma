@@ -136,6 +136,7 @@ class Sigma extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    console.log("Sigma unmounting")
     this.sigma.kill()
     this.sigmaRenderer = null
   }

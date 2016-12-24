@@ -1,11 +1,14 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
+import { withKnobs, boolean, object, select } from '@kadira/storybook-addon-knobs';
 import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions, ForceLink } from '../src/index';
 import FilteredSample from './FilteredSample';
 import EdgeLabelSample from './EdgeLabelSample';
+import Dagre from '../src/Dagre'
 
 
 storiesOf('Plugins', module)
+  .addDecorator(withKnobs)
   .add('NOverlap', () => (
     <Sigma renderer="canvas" settings={{hideEdgesOnMove:false}}>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
@@ -63,5 +66,25 @@ storiesOf('Plugins', module)
       </LoadJSON>
     </Sigma>
   ))
+  .addWithInfo('Dagre',
+          'Apply Dagre layout to the site tree, source: https://github.com/cpettitt/dagre/wiki#recommended-reading',
+          () => {
+    let directed = boolean("directed", true)
+    let multigraph = boolean("multigraph", true)
+    let compound = boolean("compound", true)
+    let boundingBox = object("boundingBox", {minX:0, maxX:1, minY:0, maxY:10})
+    let rankDir = select("rankDir", ["TB","BT","RL","LR"], "TB")
+    let easing = select("Easing after layout", ["linearNone", "cubicIn", "cubicOut", "cubicInOut"], "cubicInOut")
+    return <Sigma renderer="canvas" settings={{hideEdgesOnMove:false, animationsTime:3000}}>
+      <EdgeShapes default="curved"/>
+      <NodeShapes default="star"/>
+      <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
+        <RandomizeNodePositions>
+          <Dagre directed={directed} multigraph={multigraph} compound={compound} boundingBox={boundingBox} rankDir={rankDir} easing={easing}/>
+          <RelativeSize initialSize={15}/>
+        </RandomizeNodePositions>
+      </LoadJSON>
+    </Sigma>
+  })
   .add('Filter', () => ( <FilteredSample/>))
   .add('Edge Labels', () => ( <EdgeLabelSample />))

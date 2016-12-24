@@ -108,10 +108,10 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "dagre": "^0.7.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "dagre": "^0.7.4",
-    "sigma-react": "^1.2.5"
+    "sigma-react": "1.2.7"
   },
   "peerDependencies": {
     "react": ">=15.3",
