@@ -15,5 +15,5 @@ export default function Build(options) {
   return proc
       .then(Promise.all([
           lib(), es()]))
-      .then(dist())
+      .then(()=>dist())
 }

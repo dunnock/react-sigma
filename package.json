@@ -14,6 +14,7 @@
     "build": "babel-node scripts/build-cli.js",
     "build:v": "babel-node scripts/build-cli.js --verbose",
     "build:sigma": "babel-node scripts/build-cli.js --sigma-only",
+    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
     "pretest": "npm run build:sigma",
     "test": "node scripts/test.js --env=jsdom",
     "publish:patch": "npm-release patch",
@@ -22,8 +23,7 @@
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "deploy-storybook": "storybook-to-ghpages",
-    "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md"
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "files": [
     "lib",
