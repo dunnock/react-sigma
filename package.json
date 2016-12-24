@@ -2,7 +2,7 @@
   "name": "react-sigma",
   "description": "Lightweight but powerful library for drawing network graphs built on top of SigmaJS",
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "license": "MIT",
   "bugs": "https://github.com/dunnock/react-sigma/issues",
   "homepage": "https://github.com/dunnock/react-sigma",
