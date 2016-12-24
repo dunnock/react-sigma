@@ -9,7 +9,10 @@ toc:
   - LoadGEXF
   - NeoCypher
   - name: Nodes distribution
+  - ForceLink
   - ForceAtlas2
   - NOverlap
   - RandomizeNodePositions
   - RelativeSize
+  - Dagre
+  - ReactSigmaLayoutPlugin

@@ -2,7 +2,7 @@
 
 # Sigma
 
-[src/Sigma.js:87-179](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/Sigma.js#L87-L179 "Source code on GitHub")
+[src/Sigma.js:87-180](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/Sigma.js#L87-L180 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -61,7 +61,7 @@ Can be composed with sigma sub-components using JSX syntax
 
 ## bindHandlers
 
-[src/Sigma.js:170-178](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/Sigma.js#L170-L178 "Source code on GitHub")
+[src/Sigma.js:171-179](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/Sigma.js#L171-L179 "Source code on GitHub")
 
 Initialize event handlers with sigma.
 
@@ -88,13 +88,13 @@ with the structure of following type:
 
 # SigmaEnableWebGL
 
-[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
+[src/SigmaEnableWebGL.js:7-7](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/SigmaEnableWebGL.js#L7-L7 "Source code on GitHub")
 
 Component enables WebGL renderer, setting it as default renderer if WebGL is supported by browser.
 
 # EdgeShapes
 
-[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
+[src/EdgeShapes.js:40-50](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/EdgeShapes.js#L40-L50 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -124,7 +124,7 @@ for more datails on implementation.
 
 # NodeShapes
 
-[src/NodeShapes.js:48-58](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/NodeShapes.js#L48-L58 "Source code on GitHub")
+[src/NodeShapes.js:48-58](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/NodeShapes.js#L48-L58 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -170,7 +170,7 @@ for more datails on implementation.
 
 # LoadJSON
 
-[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/LoadJSON.js#L35-L81 "Source code on GitHub")
+[src/LoadJSON.js:35-81](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/LoadJSON.js#L35-L81 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -185,7 +185,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # LoadGEXF
 
-[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
+[src/LoadGEXF.js:33-79](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/LoadGEXF.js#L33-L79 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -200,7 +200,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # NeoCypher
 
-[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/NeoCypher.js#L47-L100 "Source code on GitHub")
+[src/NeoCypher.js:47-100](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/NeoCypher.js#L47-L100 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -220,9 +220,45 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 # Nodes distribution
 
+# ForceLink
+
+[src/ForceLink.js:75-145](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/ForceLink.js#L75-L145 "Source code on GitHub")
+
+**Extends React.Component**
+
+ForceLink component, starts Force Atlas2 algorythm once component is mounted.
+It supposes that sigma graph is already in place, therefore component should not be
+mounted while graph is unavailable. It can be used within Sigma component if graph is
+preloaded, or within loader component, like NeoCypher.
+
+It accepts all the parameters of ForceLink described on its github page:
+
+**Parameters**
+
+-   `barnesHutOptimize` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** Use the algorithm's Barnes-Hut to improve repulsion's scalability
+    This is useful for large graph but harmful to small ones.
+-   `barnesHutTheta` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `adjustSizes` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `iterationsPerRender` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `linLogMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?**  (optional, default `true`)
+-   `outboundAttractionDistribution` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `edgeWeightInfluence` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `scalingRatio` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `strongGravityMode` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `gravity` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `alignNodeSiblings` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `nodeSiblingsScale` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `nodeSiblingsAngleMin` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `worker` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)?** Use a web worker to run calculations in separate thread (optional, default `true`)
+-   `background` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `easing` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Easing mode
+-   `randomize` **(`"globally"` \| `"locally"`)** Randomize node positions before start
+-   `slowDown` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+-   `timeout` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** how long algorythm should run. default=graph.nodes().length \* 10[see sigma plugin page for more details](https://github.com/Linkurious/linkurious.js/tree/develop/plugins/sigma.layouts.forceLink)
+
 # ForceAtlas2
 
-[src/ForceAtlas2.js:58-113](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/ForceAtlas2.js#L58-L113 "Source code on GitHub")
+[src/ForceAtlas2.js:63-119](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/ForceAtlas2.js#L63-L119 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -252,7 +288,7 @@ It accepts all the parameters of ForceAtlas2 described on its github page:
 
 # NOverlap
 
-[src/NOverlap.js:54-100](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/NOverlap.js#L54-L100 "Source code on GitHub")
+[src/NOverlap.js:53-98](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/NOverlap.js#L53-L98 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -283,7 +319,7 @@ preloaded, or within loader component, like LoadJSON.
 
 # RandomizeNodePositions
 
-[src/RandomizeNodePositions.js:21-38](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/RandomizeNodePositions.js#L21-L38 "Source code on GitHub")
+[src/RandomizeNodePositions.js:21-38](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/RandomizeNodePositions.js#L21-L38 "Source code on GitHub")
 
 **Extends React.PureComponent**
 
@@ -292,7 +328,7 @@ Can be used within Sigma component with predefined graph or within graph loader 
 
 # RelativeSize
 
-[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/RelativeSize.js#L25-L34 "Source code on GitHub")
+[src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/RelativeSize.js#L25-L34 "Source code on GitHub")
 
 **Extends React.Component**
 
@@ -307,9 +343,47 @@ Sets nodes sizes corresponding its degree.
 
 -   `initialSize` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** start size for every node, will be multiplied by Math.sqrt(node.degree)
 
+# Dagre
+
+[src/Dagre.js:42-46](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/Dagre.js#L42-L46 "Source code on GitHub")
+
+Dagre layout algorythm.
+It supposes that sigma graph is already in place, therefore component should not be
+mounted while graph is unavailable. It can be used within Sigma component if graph is
+preloaded, or within loader component, like NeoCypher.
+
+It accepts all the parameters of Dagre described on its github page:
+
+**Parameters**
+
+-   `directed` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** ?
+-   `multigraph` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** ?
+-   `compound` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** ?
+-   `rankDir` **(`"TB"` \| `"BT"` \| `"RL"` \| `"LR"`)** ?
+-   `easing` **Sigma$Easing** Easing mode[see sigma plugin page for more details](https://github.com/Linkurious/linkurious.js/tree/develop/plugins/sigma.layouts.dagre)
+-   `props`  
+
+# ReactSigmaLayoutPlugin
+
+[src/ReactSigmaLayoutPlugin.js:36-84](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/ReactSigmaLayoutPlugin.js#L36-L84 "Source code on GitHub")
+
+**Extends React.Component**
+
+ReactSigmaLayoutPlugin is a base class for sigma plugins.
+
+Usage
+
+    const Dagre = (props) =>
+    <ReactSigmaLayoutPlugin
+    start={sigma.layouts.dagre.start}
+    config={sigma.layouts.dagre.configure}
+    stop={() => console.warn("dagre stop not implemented")} />
+    ...
+    <Dagre/>
+
 # Filter
 
-[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/780b1162cb892982d5328211833282f36eb909cb/src/Filter.js#L30-L60 "Source code on GitHub")
+[src/Filter.js:30-60](https://github.com/dunnock/react-sigma/blob/d03c0eaea1aaf7b941ae35fe4fd8dbeb081fa24a/src/Filter.js#L30-L60 "Source code on GitHub")
 
 **Extends React.Component**
 

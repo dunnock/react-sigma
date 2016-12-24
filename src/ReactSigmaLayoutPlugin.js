@@ -18,7 +18,7 @@ type Props = {
 
 /**
 
-SigmaAsyncPlugin is a base class for sigma plugins.
+ReactSigmaLayoutPlugin is a base class for sigma plugins.
 
 Usage
 ```
