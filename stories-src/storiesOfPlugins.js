@@ -72,7 +72,7 @@ storiesOf('Plugins', module)
     let directed = boolean("directed", true)
     let multigraph = boolean("multigraph", true)
     let compound = boolean("compound", true)
-    let boundingBox = object("boundingBox", {minX:0, maxX:1, minY:0, maxY:10})
+    let boundingBox = object("boundingBox", {minX:0, maxX:10, minY:0, maxY:10})
     let rankDir = select("rankDir", ["TB","BT","RL","LR"], "TB")
     let easing = select("Easing after layout", ["linearNone", "cubicIn", "cubicOut", "cubicInOut"], "cubicInOut")
     return <Sigma renderer="canvas" settings={{hideEdgesOnMove:false, animationsTime:3000}}>
