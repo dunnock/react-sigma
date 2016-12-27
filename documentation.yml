@@ -1,4 +1,7 @@
 toc:
+  - name: Usage
+    file: USAGE.md
+  - name: Components
   - Sigma
   - name: Rendering
   - SigmaEnableWebGL
