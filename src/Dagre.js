@@ -39,7 +39,7 @@ It accepts all the parameters of Dagre described on its github page:
 **/
 
 
-const Dagre = (props) =>
+const Dagre = (props: Props) =>
         <ReactSigmaLayoutPlugin
               start={sigma.layouts.dagre.start}
               config={sigma.layouts.dagre.configure}

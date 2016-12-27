@@ -9,9 +9,9 @@ type State = {
 };
 
 type Props = {
-	config: (sigma: sigma, config: KeyValueObject) => null,
-	start: (sigma: sigma) => null,
-	stop: () => null,
+	config: (sigma: sigma, config: KeyValueObject) => void,
+	start: (sigma: sigma) => void,
+	stop: () => void,
 	sigma?: sigma
 };
 
@@ -76,7 +76,7 @@ class ReactSigmaLayoutPlugin extends React.Component {
 
 	static _stripOptions(props: Props) {
 		let config = {}
-		for(let key in props) 
+		for(let key in props)
 			if(key!=="start" && key!=="stop" && key!=="config" && key!=="sigma" && key!=="children")
 				config[key] = props[key]
 		return config
