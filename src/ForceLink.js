@@ -40,10 +40,13 @@ type DefaultProps = {
 
 /**
 
-ForceLink component, starts Force Atlas2 algorythm once component is mounted.
-It supposes that sigma graph is already in place, therefore component should not be
-mounted while graph is unavailable. It can be used within Sigma component if graph is
-preloaded, or within loader component, like NeoCypher.
+ForceLink component, starts Force Atlas2 algorythm once component is mounted,
+it is advanced version of ForceAtlas2 plugin, but it is not included in the main
+distribution script react-sigma.min.js , rather should be imported explicitly:
+
+```
+import ForceLink from 'react-sigma/lib/ForceLink'
+```
 
 It accepts all the parameters of ForceLink described on its github page:
 @param {boolean} barnesHutOptimize  Use the algorithm's Barnes-Hut to improve repulsion's scalability
@@ -62,12 +65,22 @@ It accepts all the parameters of ForceLink described on its github page:
 @param {number} nodeSiblingsAngleMin
 @param {boolean} [worker=true]  Use a web worker to run calculations in separate thread
 @param {boolean} background
-@param {string} easing  Easing mode
+@param {Sigma$Easing} easing  Easing mode
 @param {"globally"|"locally"} randomize  Randomize node positions before start
 @param {number} slowDown
 @param {number} timeout   how long algorythm should run. default=graph.nodes().length * 10
 
 [see sigma plugin page for more details](https://github.com/Linkurious/linkurious.js/tree/develop/plugins/sigma.layouts.forceLink)
+
+@example
+import ForceLink from 'react-sigma/lib/ForceLink'
+...
+<Sigma>
+  <LoadJSON path="/public/graph.json">
+  	<RelativeSize initialSize={8}/>
+		<ForceLink background easing="cubicInOut"/>
+	</LoadJSON>
+</Sigma>
 
 **/
 
