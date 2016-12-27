@@ -23,6 +23,11 @@ const argv = yargs
     default: false,
     describe: 'Only used when supplied with the --docs-only flag'
   })
+  .option('stats', {
+    demand: false,
+    default: false,
+    describe: 'Save built file sizes and options to ./build-stats/date'
+  })
   .argv;
 
 

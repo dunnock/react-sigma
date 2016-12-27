@@ -12,11 +12,13 @@ export default function BuildES() {
     .then(() => buildBabel(srcRoot, esRoot, {
       babelrc: false,
       presets: [
-        'stage-1',
+//        ["es2015", {"modules": false}],
         'react'
       ],
       plugins: [
-        "flow-react-proptypes"
+        "flow-react-proptypes",
+        "transform-export-extensions",
+        "transform-class-properties"
       ]
     }))
     .then(() => console.log('Built: '.cyan + 'es module'.green));

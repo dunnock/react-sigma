@@ -5,8 +5,12 @@ import outputFileSync from 'output-file-sync';
 
 function buildContent(content, filename, destination, babelOptions = {}) {
   babelOptions.filename = filename;
-  const result = transform(content, babelOptions);
-  outputFileSync(destination, result.code, {encoding: 'utf8'});
+  try {
+    const result = transform(content, babelOptions);
+    outputFileSync(destination, result.code, {encoding: 'utf8'});
+  } catch(e) {
+    console.error(`${e.message} (${filename}:${e.loc.line}:${e.loc.column})`);
+  }
 }
 
 function buildFile(filename, destination, babelOptions = {}) {

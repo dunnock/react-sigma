@@ -45,5 +45,5 @@ export function safeExec(command, options = {}) {
 }
 
 export function setExecOptions(options) {
-  executionOptions = { ...executionOptions, ...options };
+  Object.assign(executionOptions, options);
 }

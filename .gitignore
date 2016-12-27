@@ -16,6 +16,8 @@ dist
 !scripts/dist/
 sigma
 !scripts/sigma/
+stats
+!scripts/stats
 storybook-static
 
 # misc
