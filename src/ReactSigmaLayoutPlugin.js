@@ -9,8 +9,8 @@ type State = {
 };
 
 type Props = {
-	config: (sigma: sigma, config: KeyValueObject) => void,
-	start: (sigma: sigma) => void,
+	config: (config: KeyValueObject) => Sigma$Listener,
+	start: () => Sigma$Listener,
 	stop: () => void,
 	sigma?: sigma
 };
@@ -22,13 +22,17 @@ ReactSigmaLayoutPlugin is a base class for sigma plugins.
 
 Usage
 ```
-const Dagre = (props) =>
-        <ReactSigmaLayoutPlugin
-              start={sigma.layouts.dagre.start}
-              config={sigma.layouts.dagre.configure}
-              stop={() => console.warn("dagre stop not implemented")} />
+const NOverlap = (props: Props) => {
+				const s = props.sigma
+				if(s)
+          return <ReactSigmaLayoutPlugin
+              start={()=>s.startNoverlap()}
+              config={options=>s.configNoverlap(options)}
+              stop={s.stopNoverlap()} {...props} />
+				return null
+			}
 ...
-<Dagre/>
+<NOverlap easing="cubicInOut"/>
 ```
 **/
 
@@ -36,6 +40,7 @@ const Dagre = (props) =>
 class ReactSigmaLayoutPlugin extends React.Component {
 	state: State;
 	props: Props;
+	_mounted: boolean = false;
 
 	constructor(props: Props) {
 		super(props)
@@ -44,12 +49,12 @@ class ReactSigmaLayoutPlugin extends React.Component {
 
 	componentDidMount() {
 		this._start()
+		this._mounted = true
 	}
 
 	// Change sigma status only after react rendering complete
 	componentDidUpdate(prevProps: Props, prevState: State) {
-		if(prevState.running && !this.state.running) {
-			this.props.stop()
+		if(prevState.running && !this.state.running && this._mounted) {
 			if(this.props.sigma) this.props.sigma.refresh();
 		} else if (Utils.propsChanged(prevProps, this.props)) {
 			this.props.stop()
@@ -58,23 +63,24 @@ class ReactSigmaLayoutPlugin extends React.Component {
 	}
 
 	componentWillUnmount() {
+		this._mounted = false
 		this.props.stop()
 	}
 
-	//TODO: Add composition of child components after timeout
+	//TODO: Render composition of child components after animation
 	render = () => null
 
 	_start() {
-		let s = this.props.sigma
-		if(!sigma || !s) return
+		this.props.config(ReactSigmaLayoutPlugin._stripOptions(this.props))
+		let listener = this.props.start()
 
-		this.props.config(s, ReactSigmaLayoutPlugin._stripOptions(this.props))
-		this.props.start(s)
+		listener.bind('stop', () => {
+				 this._mounted && this.setState({running:false}) } )
 
 		this.setState({running:true})
 	}
 
-	static _stripOptions(props: Props) {
+	static _stripOptions(props: Props): KeyValueObject {
 		let config = {}
 		for(let key in props)
 			if(key!=="start" && key!=="stop" && key!=="config" && key!=="sigma" && key!=="children")

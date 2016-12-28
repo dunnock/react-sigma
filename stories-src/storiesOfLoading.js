@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Sigma, LoadJSON, LoadGEXF, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL, RandomizeNodePositions, ForceLink } from '../src/index';
+import { Sigma, LoadJSON, LoadGEXF, RandomizeNodePositions } from '../src/index';
 
 storiesOf('Loading', module)
   .add('LoadJSON without coords', () => (

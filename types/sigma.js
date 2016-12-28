@@ -1,7 +1,7 @@
 
 // EXPORTS
 
-export type Sigma$Settings = Sigma$Settings$Renderer & Sigma$Settings$Graph 
+export type Sigma$Settings = Sigma$Settings$Renderer & Sigma$Settings$Graph
 				& Sigma$Settings$Renderer$HoverNode & Sigma$Settings$Renderer$HoverEdge
 				& Sigma$Settings$Renderer$Switches & Sigma$Settings$Renderer$Performance
 				& Sigma$Settings$Rescale & Sigma$Settings$Captors
@@ -47,7 +47,7 @@ export type Neo4j$Edge = {
 	startNode: string,
 	endNode: string,
 	properties: KeyValueObject
-};	
+};
 
 export type Sigma$Renderer = "webgl" | "canvas";
 
@@ -77,6 +77,10 @@ export type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cro
 export type Nodes$Filter = (node: Sigma$Node) => boolean;
 
 export type Sigma$Easing = "linear" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut";
+
+export interface Sigma$Listener {
+	bind(event: string, handler: ()=>void): void;
+};
 
 // TYPES DECOMPOSITION
 

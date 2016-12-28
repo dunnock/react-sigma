@@ -39,10 +39,11 @@ It accepts all the parameters of Dagre described on its github page:
 **/
 
 
-const Dagre = (props: Props) =>
-        <ReactSigmaLayoutPlugin
-              start={sigma.layouts.dagre.start}
-              config={sigma.layouts.dagre.configure}
+const Dagre = (props: Props) => (!!props.sigma
+        ? <ReactSigmaLayoutPlugin
+              start={()=>sigma.layouts.dagre.start(props.sigma)}
+              config={(options)=>sigma.layouts.dagre.configure(props.sigma, options)}
               stop={() => console.warn("dagre stop not implemented")} {...props}/>
+				: null)
 
 export default Dagre;

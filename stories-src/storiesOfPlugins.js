@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
 import { withKnobs, boolean, object, select } from '@kadira/storybook-addon-knobs';
-import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions, ForceLink } from '../src/index';
+import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions } from '../src/index';
+import ForceLink from '../src/ForceLink';
 import FilteredSample from './FilteredSample';
 import EdgeLabelSample from './EdgeLabelSample';
 import Dagre from '../src/Dagre'

@@ -4,12 +4,11 @@ import React from 'react'
 import sigma from '../sigma/main'
 import '../sigma/plugins.animate'
 import '../sigma/layout.noverlap'
+import ReactSigmaLayoutPlugin from './ReactSigmaLayoutPlugin'
 
 type State = {
 	running: boolean
 };
-
-
 type Props = {
 	nodes?: Array<Sigma$Node>,
 	nodeMargin?: number,
@@ -50,51 +49,14 @@ It accepts all the parameters of sigma.layout.noverlap plugin described on its g
 **/
 
 
-class NOverlap extends React.Component {
-	state: State;
-	props: Props;
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {running:false}
-	}
-
-	componentDidMount() {
-		this._refreshGraph()
-	}
-
-	componentDidUpdate(prevProps: Props, prevState: State) {
-		if(prevState.running && !this.state.running) {
-			if(this.props.sigma)
-				this.props.sigma.refresh()
-		}
-	}
-
-	componentWillUnmount() {
-		if(this.state.running && this.props.sigma)
-			this.props.sigma.stopNoverlap()
-	}
-
-	render = () => null
-
-	_refreshGraph() {
-		let s = this.props.sigma
-		if(!sigma || !s) return
-
-		let listener = s.configNoverlap(this._stripOptions(this.props))
-
-		listener.bind('stop', () => {
-				this.setState({running:false}) } )
-
-		this.setState({running:true})
-
-		s.startNoverlap()
-	}
-
-	//strip noverlap options from component props
-	_stripOptions(props: Props): Props {
-		return Object.assign({}, props, {sigma: undefined})
-	}
-}
+const NOverlap = (props: Props) => {
+				const s = props.sigma
+				if(s)
+          return <ReactSigmaLayoutPlugin
+              start={()=>s.startNoverlap()}
+              config={options=>s.configNoverlap(options)}
+              stop={()=>s.stopNoverlap()} {...props} />
+				return null
+			}
 
 export default NOverlap;
