@@ -2,6 +2,7 @@ import 'colors';
 import { exec } from '../exec';
 import fsp from 'fs-promise';
 import { srcRoot, esRoot } from '../../config/paths';
+import babelConfig from '../../config/babel.config';
 import buildBabel from '../buildBabel';
 
 export default function BuildES() {
@@ -9,17 +10,6 @@ export default function BuildES() {
 
   return exec(`rimraf ${esRoot}`)
     .then(() => fsp.mkdirs(esRoot))
-    .then(() => buildBabel(srcRoot, esRoot, {
-      babelrc: false,
-      presets: [
-//        ["es2015", {"modules": false}],
-        'react'
-      ],
-      plugins: [
-        "flow-react-proptypes",
-        "transform-export-extensions",
-        "transform-class-properties"
-      ]
-    }))
+    .then(() => buildBabel(srcRoot, esRoot, babelConfig("es")))
     .then(() => console.log('Built: '.cyan + 'es module'.green));
 }

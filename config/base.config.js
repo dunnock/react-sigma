@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import yargs from 'yargs';
+import babelConfig from './babel.config'
 
 export const options = yargs
   .alias('p', 'optimize-minimize')
@@ -10,7 +11,10 @@ export const options = yargs
   })
   .argv;
 
-export const jsLoader = 'babel?cacheDirectory';
+const loader = 'babel-loader';
+const query = babelConfig(options.optimizeMinimize?"production":"development");
+
+console.log("Building with babel query = " + query)
 
 const baseConfig = {
   entry: undefined,
@@ -21,7 +25,7 @@ const baseConfig = {
 
   module: {
     loaders: [
-      { test: /\.js/, loader: jsLoader, exclude: [/node_modules/,/\/sigma.*\//] },
+      { test: /\.js/, loader, query, exclude: [/node_modules/,/\/sigma.*\//] },
       { test: /\/sigma\/[^\/]*\.js/, loader: 'imports?this=>window' },  // locally built sigma lib
       { test: /\/sigma[^\/]*\/build.*\.js/, loader: 'imports?this=>window' }, // resources from sigma lib
     ]
