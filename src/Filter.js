@@ -1,14 +1,12 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/plugins.filter'
-//import { embedProps } from './tools'
 
 type Props = {
 	nodesBy?: Nodes$Filter,
 	neighborsOf?: string,
-	sigma?: sigma
+	sigma?: Sigma
 };
 
 /**

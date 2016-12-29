@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import * as Utils from './Utils'
 
 type State = {

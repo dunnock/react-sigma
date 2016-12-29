@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/layout.forceLink'
 
 type State = {
@@ -30,7 +29,7 @@ type Props = {
 	easing?: Sigma$Easing,
 	randomize?: "globally" | "locally" | "no",
 	timeout?: number,
-	sigma?: sigma
+	sigma?: Sigma
 };
 
 type DefaultProps = {

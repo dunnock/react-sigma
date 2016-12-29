@@ -82,6 +82,10 @@ export interface Sigma$Listener {
 	bind(event: string, handler: ()=>void): void;
 };
 
+export type Sigma = object;
+
+declare var sigma: Sigma;
+
 // TYPES DECOMPOSITION
 
 type Sigma$Settings$Graph = {

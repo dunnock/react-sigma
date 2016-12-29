@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import { embedProps } from './tools'
 
 type Props = {
@@ -43,4 +42,3 @@ class RandomizeNodePositions extends React.PureComponent {
 }
 
 export default RandomizeNodePositions;
-

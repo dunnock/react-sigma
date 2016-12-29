@@ -1,9 +1,8 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import { embedProps } from './tools'
-
+import '../sigma/main'
 
 type Props = {
   settings: Sigma$Settings,
@@ -28,18 +27,18 @@ type State = {
 
 
 /**
- * 
+ *
  * Sigma - React.JS flow-typed interface for Sigma js library - fastest opensource rendering engine for network graphs.
  * Sigma makes it easy to publish networks on Web pages, and allows developers to integrate network exploration in
  * rich Web applications.
- * 
+ *
  * Parameter types
  * ```
  * type Sigma$Graph$Data = {
  *   nodes: [Sigma$Node],
  *   edges: [Sigma$Edge]
  * };
- * 
+ *
  * type Sigma$Node = {
  *   id: string,
  *   label?: string,
@@ -48,7 +47,7 @@ type State = {
  *   size?: number,
  *   color?: color
  * };
- * 
+ *
  * type Sigma$Edge = {
  *   id: string,
  *   source: string,
@@ -57,10 +56,10 @@ type State = {
  *   color?: color
  * };
  * ```
- * 
- * 
+ *
+ *
  * @signature `<Sigma graph={graph} settings={settings} onClickNode={func}.../>`
- * 
+ *
  * @param {CSS} style   CSS style description for main div holding graph, should be specified in React format
  * @param {Sigma$Settings} settings     js object with sigma initialization options, for full list see [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
  * @param {string} renderer     can be "webgl" or "canvas"
@@ -71,7 +70,7 @@ type State = {
  * @param {Sigma$EventHandler} onClickEdge     set sigma callback for "clickEdge" event
  * @param {Sigma$EventHandler} onOverEdge      set sigma callback for "overEdge" event
  * @param {Sigma$EventHandler} onOutEdge      set sigma callback for "outEdge" event
- * 
+ *
  * @example
  * Can be composed with sigma sub-components using JSX syntax
  * <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
@@ -80,7 +79,7 @@ type State = {
  *        graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
  *   <RelativeSize initialSize={8}/>
  * </Sigma>
- * 
+ *
  */
 
 

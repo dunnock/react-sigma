@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/layout.dagre'
 import ReactSigmaLayoutPlugin from './ReactSigmaLayoutPlugin'
 
@@ -16,7 +15,7 @@ type Props = {
 	compound?: boolean,
 	rankDir?: "TB" | "BT" | "RL" | "LR",
 	easing?: Sigma$Easing,
-	sigma?: sigma
+	sigma?: Sigma
 };
 
 

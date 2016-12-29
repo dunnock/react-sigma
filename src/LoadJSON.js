@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
+import '../sigma/main.js'
 import '../sigma/parsers.json.js'
 import { embedProps } from './tools'
 
@@ -12,7 +12,7 @@ type Props = {
 	path: string,
   onGraphLoaded?: () => void,
   children?: mixed,
-  sigma?: sigma
+  sigma?: Sigma
 };
 
 

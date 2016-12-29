@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/plugins.animate'
 import '../sigma/layout.noverlap'
 import ReactSigmaLayoutPlugin from './ReactSigmaLayoutPlugin'

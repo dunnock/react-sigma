@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/parsers.json.js'
 import '../sigma/neo4j.cypher'
 import NeoGraphItemsProducers from './NeoGraphItemsProducers'
@@ -28,14 +27,14 @@ type DefaultProps = {
 /**
 
 NeoCypher component, interface for neo4j.cypher sigma plugin. Can be used within Sigma component.
-Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
+Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins).
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
  @param {string} url    Neo4j instance REST API URL
  @param {string} user    Neo4j instance REST API user
  @param {string} password    Neo4j instance REST API password
  @param {string} query    Neo4j cypher query
- @param {NeoGraphItemsProducers} producers   Optional transformer for creating Sigma nodes and edges, 
+ @param {NeoGraphItemsProducers} producers   Optional transformer for creating Sigma nodes and edges,
                                     instance compatible with NeoGraphItemsProducers
  @param {Function} onGraphLoaded        Optional callback for graph update
 
@@ -100,4 +99,3 @@ class NeoCypher extends React.PureComponent {
 }
 
 export default NeoCypher;
-

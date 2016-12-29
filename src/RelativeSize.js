@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/plugins.relativeSize'
 
 type Props = {
@@ -12,7 +11,7 @@ type Props = {
 /**
 
 RelativeSize component, interface for RelativeSize sigma plugin.
-It supposes that sigma graph is already in place, therefore component should not be 
+It supposes that sigma graph is already in place, therefore component should not be
 mounted until graph is available. It can be used within Sigma component if graph is
 preloaded, or within loader component, like NeoCypher.
 
@@ -34,4 +33,3 @@ class RelativeSize extends React.Component {
 }
 
 export default RelativeSize;
-

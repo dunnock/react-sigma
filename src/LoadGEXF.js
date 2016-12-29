@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import sigma from '../sigma/main'
 import '../sigma/parsers.gexf'
 import { embedProps } from './tools'
 
@@ -12,14 +11,14 @@ type Props = {
 	path: string,
     onGraphLoaded?: () => void,
     children?: mixed,
-    sigma?: sigma
+    sigma?: Sigma
 };
 
 
 /**
 
 LoadGEXF component, interface for parsers.json sigma plugin. Can be used within Sigma component.
-Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins). 
+Can be composed with other plugins: on load it mounts all child components (e.g. other sigma plugins).
 Child's componentWillMount should be used to enable plugins on loaded graph.
 
  @param {string} path   path to the GEXF file
@@ -79,4 +78,3 @@ class LoadGEXF extends React.PureComponent {
 }
 
 export default LoadGEXF;
-
