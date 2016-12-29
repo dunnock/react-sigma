@@ -1,20 +1,21 @@
-import webpack from 'webpack';
-import yargs from 'yargs';
-import babelConfig from './babel.config'
+const webpack = require('webpack');
+const yargs = require('yargs');
+const babelConfig = require('./babel.config');
 
-export const options = yargs
+const options = yargs
   .alias('p', 'optimize-minimize')
   .alias('d', 'debug')
-  .option('port', {
-    default: '8080',
-    type: 'string'
-  })
   .argv;
 
-const loader = 'babel-loader';
-const query = babelConfig(options.optimizeMinimize?"production":"development");
+const babelLoader = {
+          loader: 'babel-loader',
+          options: babelConfig(options.optimizeMinimize?"production":"development")
+        };
 
-console.log("Building with babel query = " + query)
+const importsLoader = {
+          loader: 'imports-loader',
+          options: "this=>window"
+        };
 
 const baseConfig = {
   entry: undefined,
@@ -24,11 +25,12 @@ const baseConfig = {
   externals: undefined,
 
   module: {
-    loaders: [
-      { test: /\.js/, loader, query, exclude: [/node_modules/,/\/sigma.*\//] },
-      { test: /\/sigma\/[^\/]*\.js/, loader: 'imports?this=>window' },  // locally built sigma lib
-      { test: /\/sigma[^\/]*\/build.*\.js/, loader: 'imports?this=>window' }, // resources from sigma lib
-    ]
+    rules: [
+      { test: /\.js/, use: [babelLoader], exclude: [/node_modules/,/\/sigma.*\//] },
+//      { test: /\/sigma\/[^\/]*\.js/, use: [importsLoader]},  // locally built sigma lib
+//      { test: /\/sigma[^\/]*\/build.*\.js/, use: [importsLoader] }, // resources from sigma lib
+    ],
+    noParse: [/\/sigma.*\//]
   },
 
   plugins: [
@@ -44,4 +46,4 @@ if (options.optimizeMinimize) {
   baseConfig.devtool = 'source-map';
 }
 
-export default baseConfig;
+module.exports = {options, babelLoader, importsLoader, baseConfig, default: baseConfig}

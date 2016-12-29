@@ -1,6 +1,5 @@
 // @flow
 
-import sigma from '../sigma/main'
 import {Sigma, LoadJSON} from '../src/index';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -15,7 +14,7 @@ it('loads graph from JSON file without crashing', () => {
 
   const div = document.createElement('div');
   ReactDOM.render(<Sigma>
-  		<LoadJSON path={`geolocalized.json`}>   		
+  		<LoadJSON path={`geolocalized.json`}>
 	  		<TestSigma testConstruct={s => expect(s.graph.nodes().length).toBe(2)}/>
   	</LoadJSON>
   </Sigma>, div);

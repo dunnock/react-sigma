@@ -11,5 +11,6 @@ export default function BuildES() {
   return exec(`rimraf ${esRoot}`)
     .then(() => fsp.mkdirs(esRoot))
     .then(() => buildBabel(srcRoot, esRoot, babelConfig("es")))
-    .then(() => console.log('Built: '.cyan + 'es module'.green));
+    .then(() => console.log('Built: '.cyan + 'es module'.green))
+    .catch(e => console.error('Failed: '.red + 'es module: '.yellow + e));
 }

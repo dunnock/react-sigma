@@ -1,17 +1,8 @@
-let webpack = require('webpack');
-let yargs = require('yargs');
-let { sigmaSrcRoot, sigmaDistRoot, sigmaPluginsRoot } = require('../config/paths')
+const webpack = require('webpack');
+const { sigmaSrcRoot, sigmaDistRoot, sigmaPluginsRoot } = require('../config/paths');
+const { baseConfig, babelLoader, importsLoader } = require('../config/base.config.js');
 
-let options = yargs
-  .alias('p', 'optimize-minimize')
-  .alias('d', 'debug')
-  .argv;
-
-let jsLoader = 'babel?cacheDirectory';
-
-module.exports = {
-  options: options,
-
+const config = {
   entry: {
     'main': sigmaSrcRoot + '/main.js',
     'webgl': sigmaSrcRoot + '/webgl.js',
@@ -33,28 +24,17 @@ module.exports = {
     'plugins.relativeSize': sigmaPluginsRoot + '/sigma.plugins.relativeSize/sigma.plugins.relativeSize.js',
     // add any extra sigma modules here
   },
-
+  module: {
+    rules: [
+      { test: /\.js/, use: [babelLoader], exclude: [/node_modules/] },
+      { test: /sigma\-react\/.*\.js/, use: [importsLoader] },
+    ]
+  },
   output: {
     path: sigmaDistRoot,
     filename: '[name].js',
     library: 'Sigma',
-    libraryTarget: 'umd',
-  },
+  }
+}
 
-  externals: undefined,
-
-  module: {
-    loaders: [
-      { test: /\.js/, loader: jsLoader, exclude: [/node_modules/] },
-      { test: /sigma\-react\/.*\.js/, loader: 'imports?this=>window' },
-    ]
-  },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(options.optimizeMinimize ? 'production' : 'development')
-      }
-    })
-  ]
-};
+module.exports = Object.assign({}, baseConfig, config)
