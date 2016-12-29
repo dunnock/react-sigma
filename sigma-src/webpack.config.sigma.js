@@ -28,7 +28,8 @@ const config = {
     rules: [
       { test: /\.js/, use: [babelLoader], exclude: [/node_modules/] },
       { test: /sigma\-react\/.*\.js/, use: [importsLoader] },
-    ]
+    ],
+//    noParse: [/\/sigma\-react\//]
   },
   output: {
     path: sigmaDistRoot,

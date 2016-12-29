@@ -26,9 +26,7 @@ const baseConfig = {
 
   module: {
     rules: [
-      { test: /\.js/, use: [babelLoader], exclude: [/node_modules/,/\/sigma.*\//] },
-//      { test: /\/sigma\/[^\/]*\.js/, use: [importsLoader]},  // locally built sigma lib
-//      { test: /\/sigma[^\/]*\/build.*\.js/, use: [importsLoader] }, // resources from sigma lib
+      { test: /\.js/, use: [babelLoader], exclude: [/node_modules/,/\/sigma.*\//] }
     ],
     noParse: [/\/sigma.*\//]
   },
