@@ -35,7 +35,8 @@ or
 
 `bower install https://unpkg.com/react-sigma@1.2/dist/react-sigma.min.js`
 
-If you don't want to use webpack or browserify, you could always reference the single file distribution:
+If you don't want to use webpack or browserify, you could always reference the
+single file distribution, library will be available under global var ReactSigma:
 
 `<script src="https://unpkg.com/react-sigma@1.2/dist/react-sigma.min.js"/>`
 
@@ -148,5 +149,3 @@ after initialized. For instance LoadJSON will render child subcomponents only af
 
 All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
 TODO: move to flow-typed
-
-

@@ -2,7 +2,7 @@
   "name": "react-sigma",
   "description": "Lightweight but powerful library for drawing network graphs built on top of SigmaJS",
   "author": "Maxim Vorobjov <maxim.vorobjov@gmail.com>",
-  "version": "1.2.10",
+  "version": "1.2.13",
   "license": "MIT",
   "bugs": "https://github.com/dunnock/react-sigma/issues",
   "homepage": "https://github.com/dunnock/react-sigma",
@@ -32,9 +32,10 @@
     "DOCS.md",
     "LICENSE"
   ],
-  "main": "lib",
-  "jsnext:main": "es",
-  "module": "es",
+  "engines": { "node" : ">=6.3.0" },
+  "main": "lib/index.js",
+  "jsnext:main": "es/index.js",
+  "module": "es/index.js",
   "keywords": [
     "graph",
     "sigma.js",
@@ -47,8 +48,8 @@
     "react-component"
   ],
   "devDependencies": {
-    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.21.0",
+    "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook-addon-knobs": "^1.7.1",
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-deployer": "^1.2.0",
@@ -97,18 +98,15 @@
     "rimraf": "2.5.4",
     "script-loader": "^0.7.0",
     "strip-ansi": "3.0.1",
-    "webpack": "^1.14.0",
+    "webpack": "2.2.0-rc.3",
     "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "1.0.0"
+    "whatwg-fetch": "1.0.0",
+    "dagre": "^0.7.4",
+    "sigma-react": "1.2.7"
   },
   "dependencies": {
-    "@kadira/react-storybook-addon-info": "^3.3.0",
-    "@kadira/storybook-addon-knobs": "^1.7.1",
-    "@kadira/storybook-addon-options": "^1.0.1",
-    "dagre": "^0.7.4",
     "react": "^15.4.1",
-    "react-dom": "^15.4.1",
-    "sigma-react": "1.2.7"
+    "react-dom": "^15.4.1"
   },
   "peerDependencies": {
     "react": ">=15.3",
