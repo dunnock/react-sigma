@@ -50,8 +50,8 @@
     "react-component"
   ],
   "devDependencies": {
-    "@kadira/storybook": "^2.21.0",
     "@kadira/react-storybook-addon-info": "^3.3.0",
+    "@kadira/storybook": "^2.21.0",
     "@kadira/storybook-addon-knobs": "^1.7.1",
     "@kadira/storybook-addon-options": "^1.0.1",
     "@kadira/storybook-deployer": "^1.2.0",
@@ -71,6 +71,7 @@
     "child-process-promise": "^2.2.0",
     "colors": "^1.1.2",
     "cross-spawn": "4.0.2",
+    "dagre": "^0.7.4",
     "dmd-clear": "^0.1.2",
     "eslint": "3.8.1",
     "eslint-config-react-app": "^0.3.0",
@@ -99,16 +100,17 @@
     "recursive-readdir": "2.1.0",
     "rimraf": "2.5.4",
     "script-loader": "^0.7.0",
+    "sigma-react": "1.2.7",
     "strip-ansi": "3.0.1",
     "webpack": "2.2.0-rc.3",
     "webpack-manifest-plugin": "1.1.0",
-    "whatwg-fetch": "1.0.0",
-    "dagre": "^0.7.4",
-    "sigma-react": "1.2.7"
+    "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
     "react": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "webpack": "^2.2.1",
+    "whatwg-fetch": "^2.0.1"
   },
   "peerDependencies": {
     "react": ">=15.3",

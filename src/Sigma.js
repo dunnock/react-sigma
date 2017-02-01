@@ -119,6 +119,13 @@ class Sigma extends React.PureComponent {
       this.sigma.graph.read(this.props.graph)
   }
 
+  componentDidUpdate(prevProps: Props) {
+    if(this.props.graph !== prevProps.graph) {
+      this.sigma.graph.read(this.props.graph)
+      this.sigma.refresh()
+    }
+  }
+
   initRenderer(container: HTMLElement) {
     if(container) {
       let options: Object = {container}
