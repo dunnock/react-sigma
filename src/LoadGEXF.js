@@ -5,13 +5,13 @@ import '../sigma/parsers.gexf'
 import { embedProps } from './tools'
 
 type State = {
-    loaded: boolean
+		loaded: boolean
 };
 type Props = {
 	path: string,
-    onGraphLoaded?: () => void,
-    children?: mixed,
-    sigma?: Sigma
+		onGraphLoaded?: () => void,
+		children?: mixed,
+		sigma?: Sigma
 };
 
 
@@ -30,15 +30,15 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 
 class LoadGEXF extends React.PureComponent {
-    state: State;
+		state: State;
 	props: Props;
-    onLoad: () => void;
+		onLoad: () => void;
 
-    constructor(props: Props) {
-        super(props)
-        this.state = {loaded:false}
-        this.onLoad = this._onLoad.bind(this)
-    }
+		constructor(props: Props) {
+				super(props)
+				this.state = {loaded:false}
+				this.onLoad = this._onLoad.bind(this)
+		}
 
 	componentDidMount() {
 		this._load(this.props.path)
@@ -47,33 +47,33 @@ class LoadGEXF extends React.PureComponent {
 	componentWillReceiveProps(props: Props) {
 		// reload only if path changes
 		if(this.props.path !== props.path) {
-            this.setState({loaded:false})
+						this.setState({loaded:false})
 			this._load(props.path)
-        }
+				}
 	}
 
 	render() {
-        if(!this.state.loaded)
-            return null
-        return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
-    }
+				if(!this.state.loaded)
+						return null
+				return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
+		}
 
 
-    _load(url: string) {
-        sigma.parsers.gexf(
-                this.props.path ,
-                this.props.sigma ,
-                this.onLoad
-        )
-    }
+		_load(url: string) {
+				sigma.parsers.gexf(
+								this.props.path ,
+								this.props.sigma ,
+								this.onLoad
+				)
+		}
 
-    _onLoad() {
-        if(this.props.sigma)
-            this.props.sigma.refresh()
-        this.setState({loaded:true})
-        if(this.props.onGraphLoaded)
-            return this.props.onGraphLoaded()
-    }
+		_onLoad() {
+				if(this.props.sigma)
+						this.props.sigma.refresh()
+				this.setState({loaded:true})
+				if(this.props.onGraphLoaded)
+						return this.props.onGraphLoaded()
+		}
 
 }
 
