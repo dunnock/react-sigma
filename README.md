@@ -23,6 +23,8 @@ It makes easy to publish networks on Web pages and allows developers to integrat
 
 See [storybook for working examples](https://dunnock.github.io/react-sigma/).
 
+Please make sure to read [CONTRIBUTION prerequisites section](https://github.com/dunnock/react-sigma/blob/master/CONTRIBUTION.md#prerequisites) if you want to fork & change or contribute.
+
 ## Install
 
 `npm install --save react-sigma`
