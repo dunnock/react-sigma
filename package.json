@@ -15,7 +15,7 @@
     "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
     "pretest": "npm run build:sigma",
     "test": "node scripts/test.js --env=jsdom",
-    "publish:patch": "npm-release patch",
+    "publish:patch": "npm publish",
     "publish:minor": "npm-release minor",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "prepublish": "npm run build",
