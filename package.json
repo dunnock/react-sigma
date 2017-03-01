@@ -128,7 +128,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma)/"
+      "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma|scripts)/"
     ],
     "testEnvironment": "node"
   }
