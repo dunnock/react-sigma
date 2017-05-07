@@ -47,12 +47,15 @@ single file distribution, library will be available under global var ReactSigma:
 ```
 import {Sigma, RandomizeNodePositions, RelativeSize} from 'react-sigma';
 ...
-<Sigma graph={{nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]}} settings={{drawEdges:true}}>
-	<RelativeSize initialSize={15}/>
-	<RandomizeNodePositions/>
+let myGraph = {nodes:[{id:"n1", label:"Alice"}, {id:"n2", label:"Rabbit"}], edges:[{id:"e1",source:"n1",target:"n2",label:"SEES"}]};
+...
+<Sigma graph={myGraph} settings={{drawEdges: true, clone: false}}>
+  <RelativeSize initialSize={15}/>
+  <RandomizeNodePositions/>
 </Sigma>
 ```
-Note that graph nodes require x, y and size defined in order to be displayed, [plugins like RelativeSize and RandomizeNodePositions might help to generate those](https://github.com/dunnock/react-sigma/blob/master/DOCS.md#nodes-distribution).
+Note that graph nodes require x, y and size defined in order to be displayed, [plugins like RelativeSize and RandomizeNodePositions might help to generate those](https://github.com/dunnock/react-sigma/blob/master/DOCS.md#nodes-distribution). Sigma updates graph positions, therefore if to keep track of nodes in this example we use 
+`<Sigma settings={{clone: false}}>`
 
 ## Simple use case with graph loaded from external file
 
