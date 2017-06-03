@@ -1,7 +1,7 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { decorateAction } from '@kadira/storybook-addon-actions';
-import { withKnobs, object, boolean, number, select } from '@kadira/storybook-addon-knobs';
+import { storiesOf, action } from '@storybook/react';
+import { decorateAction } from '@storybook/addon-actions';
+import { withKnobs, object, boolean, number, select } from '@storybook/addon-knobs';
 import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, ForceAtlas2, RelativeSize, NOverlap, SigmaEnableWebGL, RandomizeNodePositions } from '../src/index';
 import ForceLink from '../src/ForceLink';
 import {Note} from './style.js';

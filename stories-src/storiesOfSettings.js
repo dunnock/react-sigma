@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { Sigma, EdgeShapes, NodeShapes, LoadJSON, ForceAtlas2, RelativeSize, RandomizeNodePositions } from '../src/index';
 import { Note } from './style.js';
 

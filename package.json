@@ -50,12 +50,11 @@
     "react-component"
   ],
   "devDependencies": {
-    "@kadira/react-storybook-addon-info": "^3.3.0",
-    "@kadira/storybook": "^2.35.3",
-    "@kadira/storybook-addon-knobs": "^1.7.1",
-    "@kadira/storybook-addon-options": "^1.0.1",
-    "@kadira/storybook-addons": "^1.6.1",
-    "@kadira/storybook-deployer": "^1.2.0",
+    "@storybook/addon-info": "^3.0.0",
+    "@storybook/addon-knobs": "3.0.0",
+    "@storybook/addon-options": "3.0.0",
+    "@storybook/addons": "3.0.0",
+    "@storybook/react": "3.0.0",
     "babel-cli": "^6.23.0",
     "babel-core": "6.23.1",
     "babel-eslint": "^7.1.1",

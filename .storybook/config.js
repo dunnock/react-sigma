@@ -1,6 +1,6 @@
-import { configure, setAddon } from '@kadira/storybook'
-import infoAddon from '@kadira/react-storybook-addon-info'
-import { setOptions } from '@kadira/storybook-addon-options'
+import { configure, setAddon } from '@storybook/react'
+import infoAddon from '@storybook/addon-info'
+import { setOptions } from '@storybook/addon-options'
 
 setOptions({
   name: 'REACT-SIGMA GITHUB',

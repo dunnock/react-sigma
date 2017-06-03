@@ -1,6 +1,6 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { withKnobs, boolean, object, select } from '@kadira/storybook-addon-knobs';
+import { storiesOf, action } from '@storybook/react';
+import { withKnobs, boolean, object, select } from '@storybook/addon-knobs';
 import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions } from '../src/index';
 import ForceLink from '../src/ForceLink';
 import FilteredSample from './FilteredSample';
