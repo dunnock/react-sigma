@@ -6,8 +6,10 @@ const config = {
   entry: {
     'main': sigmaSrcRoot + '/main.js',
     'webgl': sigmaSrcRoot + '/webgl.js',
+    'svg': sigmaSrcRoot + '/svg.js',
     'edges': sigmaSrcRoot + '/edges.js',
     'nodes': sigmaSrcRoot + '/nodes.js',
+    'sigma.plugins.dragNodes': sigmaPluginsRoot + '/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js',
     'parsers.json': sigmaPluginsRoot + '/sigma.parsers.json/sigma.parsers.json.js',
     'parsers.gexf': [ sigmaPluginsRoot + '/sigma.parsers.gexf/gexf-parser.js',
                       sigmaPluginsRoot + '/sigma.parsers.gexf/sigma.parsers.gexf.js' ],

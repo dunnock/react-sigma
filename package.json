@@ -50,6 +50,7 @@
     "react-component"
   ],
   "devDependencies": {
+    "@kadira/storybook-deployer": "^1.2.0",
     "@storybook/addon-info": "^3.0.0",
     "@storybook/addon-knobs": "3.0.0",
     "@storybook/addon-options": "3.0.0",
@@ -127,7 +128,7 @@
       "<rootDir>/config/polyfills.js"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma|scripts)/"
+      "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma|scripts|stats)/"
     ],
     "testEnvironment": "node"
   }
