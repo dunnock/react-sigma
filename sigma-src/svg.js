@@ -1,5 +1,4 @@
 import "sigma-react/src/renderers/sigma.renderers.svg.js"
-import "sigma-react/src/renderers/sigma.renderers.def.js"
 import "sigma-react/src/renderers/svg/sigma.svg.utils.js"
 import "sigma-react/src/renderers/svg/sigma.svg.nodes.def.js"
 import "sigma-react/src/renderers/svg/sigma.svg.edges.def.js"

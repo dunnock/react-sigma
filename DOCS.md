@@ -23,7 +23,7 @@ should be imported explicitly:
 ### webpack1
 
 Minimized sigma with minimum required functionality is 76kb, more when plugins added.
-Minimized bundle with all components (except Dagre and ForceLink) is 196kb.
+Minimized bundle with all components (except Dagre, SVG and ForceLink) is 196kb.
 Webpack1 does not support tree shaking and require explicit submodules import
 to bundle only what's been used, e.g.:
 
@@ -32,9 +32,9 @@ to bundle only what's been used, e.g.:
 
 ### webpack2
 
-Using webpack2 or rollup
+Using webpack2
 
-    import * as Sigma from 'react-sigma'
+    import { Sigma, LoadJSON } from 'react-sigma'
 
 unused components won't be included in the resulting bundle.
 

@@ -111,12 +111,22 @@ initializes renderer and camera in the given area and starts rendering graph.
 
 ## SigmaEnableWebGL
 
-By default sigma package includes only canvas rendering functions with webpack2, though it can be easily extended with WebGL. Importing SigmaEnableWebGL enables WebGL renderer, setting it as default renderer if WebGL is supported by browser. With webpack1 webgl rendering functions are imported by default, so you don't need to worry.
+By default sigma package includes only canvas rendering functions with webpack2, though it can be easily extended with WebGL or SVG (see next topic). Importing SigmaEnableWebGL enables WebGL renderer, setting it as default renderer if WebGL is supported by browser. 
 
 ```
 import { Sigma, SigmaEnableWebGL } from 'react-sigma'
 ...
 <Sigma /> // will use webgl renderer if supported by browser
+```
+
+## SigmaEnableSVG
+
+Sigma can be easily extended with SVG renderer. Importing SigmaEnableSVG enables SVG renderer, though it does not set it as default so renderer should be explicitly specified in sigma options. 
+
+```
+import { Sigma, SigmaEnableSVG } from 'react-sigma'
+...
+<Sigma renderer="svg" /> 
 ```
 
 ## Extending sigma components
