@@ -154,3 +154,7 @@ after initialized. For instance LoadJSON will render child subcomponents only af
 
 All defined Sigma types stored under /types/sigma.js, can be used as a reference for objects and parameters.
 TODO: move to flow-typed
+
+# Attributions
+
+ - this project is a React wrapper around excellent [Sigma.JS](https://github.com/jacomyal/sigma.js) library built by @jakolyal and @Yomguithereal

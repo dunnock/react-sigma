@@ -105,7 +105,7 @@
     "script-loader": "^0.7.0",
     "sigma-react": "^1.2.7",
     "strip-ansi": "^3.0.1",
-    "webpack": "^2.2.1",
+    "webpack": "^2.6.1",
     "webpack-manifest-plugin": "^1.1.0",
     "whatwg-fetch": "^2.0.2"
   },
