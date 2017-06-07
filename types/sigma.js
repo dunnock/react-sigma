@@ -53,6 +53,9 @@ export type Sigma$Renderer = "webgl" | "canvas";
 
 export type KeyValueObject = {[string]: string};
 
+// Error handler function for Sigma component
+export type Sigma$ErrorHandler = (error: Error) => void;
+
 export type Sigma$Event = {
 	data: {
 		node?: Neo4j$Node,

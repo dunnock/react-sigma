@@ -10,6 +10,7 @@ type Props = {
   style?: CSS,
   children?: mixed,
   graph?: Sigma$Graph$Data,
+  onSigmaException?: (e: Error) => void,
   onClickNode?: (e: Sigma$Event) => void,
   onClickEdge?: (e: Sigma$Event) => void,
   onOverNode?: (e: Sigma$Event) => void,
@@ -64,6 +65,7 @@ type State = {
  * @param {Sigma$Settings} settings     js object with sigma initialization options, for full list see [sigma settings page](https://github.com/jacomyal/sigma.js/wiki/Settings)
  * @param {string} renderer     can be "webgl" or "canvas"
  * @param {Sigma$Graph$Data} graph   js object with array of nodes and edges used to initialize sigma
+ * @param {Sigma$ErrorHandler} onSigmaException      set sigma callback for sigma exceptions / errors
  * @param {Sigma$EventHandler} onClickNode      set sigma callback for "clickNode" event (see below)
  * @param {Sigma$EventHandler} onOverNode      set sigma callback for "overNode" event
  * @param {Sigma$EventHandler} onOutNode      set sigma callback for "outNode" event
@@ -115,8 +117,13 @@ class Sigma extends React.PureComponent {
     this.sigma = new sigma({settings})
     this.initRenderer = this.initRenderer.bind(this)
     Sigma.bindHandlers(this.props, this.sigma)
-    if(this.props.graph)
-      this.sigma.graph.read(this.props.graph)
+    if(this.props.graph) {
+      try {
+        this.sigma.graph.read(this.props.graph)
+      } catch(e) {
+        this.props.onSigmaException(e)
+      }
+    }
   }
 
   initRenderer(container: HTMLElement) {
