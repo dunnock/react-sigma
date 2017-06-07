@@ -121,8 +121,7 @@ class Sigma extends React.PureComponent {
       try {
         this.sigma.graph.read(this.props.graph)
       } catch(e) {
-        if (typeof this.props.onSigmaException === 'function')
-          this.props.onSigmaException(e)
+        this.props.onSigmaException(e)
       }
     }
   }
