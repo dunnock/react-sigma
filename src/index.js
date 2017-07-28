@@ -11,6 +11,7 @@ export NeoCypher from './NeoCypher'
 export NeoGraphItemsProducers from './NeoGraphItemsProducers'
 export RandomizeNodePositions from './RandomizeNodePositions'
 export SigmaEnableWebGL from './SigmaEnableWebGL'
+export SigmaEnableSVG from './SigmaEnableSVG'
 
 import Sigma from './Sigma'
 export default Sigma
