@@ -6,7 +6,7 @@ import '../sigma/main'
 
 type Props = {
   settings: Sigma$Settings,
-  renderer?: "webgl" | "canvas",
+  renderer?: "webgl" | "canvas" | "svg",
   style?: CSS,
   children?: mixed,
   graph?: Sigma$Graph$Data,
