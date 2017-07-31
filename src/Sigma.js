@@ -7,7 +7,7 @@ import '../sigma/main'
 type Props = {
   settings: Sigma$Settings,
   renderer?: "webgl" | "canvas" | "svg",
-  style?: CSS,
+  style?: Object,
   children?: mixed,
   graph?: Sigma$Graph$Data,
   onSigmaException?: (e: Error) => void,
