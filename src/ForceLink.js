@@ -145,7 +145,7 @@ class ForceLink extends React.Component {
 
   //strip force atlas options from component props
   static _stripOptions(props: Props) {
-    return Object.assign({}, props, {sigma: undefined})
+    return Object.assign({}, props, {children: undefined, sigma: undefined})
   }
 
   static _propsChanged(prev: Props, next: Props) {
