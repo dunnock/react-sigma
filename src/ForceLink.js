@@ -2,6 +2,7 @@
 
 import React from 'react'
 import '../sigma/layout.forceLink'
+import { embedProps } from './tools'
 
 type State = {
 	running: boolean,
@@ -85,16 +86,11 @@ import ForceLink from 'react-sigma/lib/ForceLink'
 
 
 class ForceLink extends React.Component {
-	state: State;
+	state: State = {running: true};
 	props: Props;
 	static defaultProps: DefaultProps = {
 		worker: true,
 		linLogMode: true
-	}
-
-	constructor(props: Props) {
-		super(props)
-		this.state = {running:false}
 	}
 
 	componentDidMount() {
@@ -117,8 +113,11 @@ class ForceLink extends React.Component {
 		this._stopForceLink()
 	}
 
-	//TODO: Add composition of child components after timeout
-	render = () => null
+	render = () => {
+		if(this.state.running)
+			return null;
+    return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>;
+	}
 
   _stopForceLink() {
 		sigma.layouts.stopForceLink()
