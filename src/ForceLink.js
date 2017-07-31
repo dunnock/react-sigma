@@ -5,37 +5,37 @@ import '../sigma/layout.forceLink'
 import { embedProps } from './tools'
 
 type State = {
-	running: boolean,
-	timer?: number,
-	drawEdges?: ?boolean
+  running: boolean,
+  timer?: number,
+  drawEdges?: ?boolean
 };
 
 type Props = {
-	barnesHutOptimize?: boolean,
-	barnesHutTheta?: number,
-	adjustSizes?: boolean,
-	iterationsPerRender?: number,
-	linLogMode: boolean,
-	outboundAttractionDistribution?: boolean,
-	edgeWeightInfluence?: number,
-	scalingRatio?: number,
-	strongGravityMode?: boolean,
-	slowDown?: number,
-	gravity?: number,
-	alignNodeSiblings?: boolean,
-	nodeSiblingsScale?: number,
-	nodeSiblingsAngleMin?: number,
-	worker: boolean,
-	background?: boolean,
-	easing?: Sigma$Easing,
-	randomize?: "globally" | "locally" | "no",
-	timeout?: number,
-	sigma?: Sigma
+  barnesHutOptimize?: boolean,
+  barnesHutTheta?: number,
+  adjustSizes?: boolean,
+  iterationsPerRender?: number,
+  linLogMode: boolean,
+  outboundAttractionDistribution?: boolean,
+  edgeWeightInfluence?: number,
+  scalingRatio?: number,
+  strongGravityMode?: boolean,
+  slowDown?: number,
+  gravity?: number,
+  alignNodeSiblings?: boolean,
+  nodeSiblingsScale?: number,
+  nodeSiblingsAngleMin?: number,
+  worker: boolean,
+  background?: boolean,
+  easing?: Sigma$Easing,
+  randomize?: "globally" | "locally" | "no",
+  timeout?: number,
+  sigma?: Sigma
 };
 
 type DefaultProps = {
-	worker: boolean,
-	linLogMode: boolean
+  worker: boolean,
+  linLogMode: boolean
 };
 
 /**
@@ -50,7 +50,7 @@ import ForceLink from 'react-sigma/lib/ForceLink'
 
 It accepts all the parameters of ForceLink described on its github page:
 @param {boolean} barnesHutOptimize  Use the algorithm's Barnes-Hut to improve repulsion's scalability
-									This is useful for large graph but harmful to small ones.
+                  This is useful for large graph but harmful to small ones.
 @param {number} barnesHutTheta
 @param {boolean} adjustSizes
 @param {number} iterationsPerRender
@@ -77,82 +77,82 @@ import ForceLink from 'react-sigma/lib/ForceLink'
 ...
 <Sigma>
   <LoadJSON path="/public/graph.json">
-  	<RelativeSize initialSize={8}/>
-		<ForceLink background easing="cubicInOut"/>
-	</LoadJSON>
+    <RelativeSize initialSize={8}/>
+    <ForceLink background easing="cubicInOut"/>
+  </LoadJSON>
 </Sigma>
 
 **/
 
 
 class ForceLink extends React.Component {
-	state: State = {running: true};
-	props: Props;
-	static defaultProps: DefaultProps = {
-		worker: true,
-		linLogMode: true
-	}
-
-	componentDidMount() {
-		this._refreshGraph()
-	}
-
-	// Change sigma status only after react rendering complete
-	componentDidUpdate(prevProps: Props, prevState: State) {
-		let s = this.props.sigma
-		if(prevState.running && !this.state.running && s) {
-			this._stopForceLink()
-			s.refresh();
-		} else if (ForceLink._propsChanged(prevProps, this.props)) {
-			this._stopForceLink()
-			this._refreshGraph()
-		}
-	}
-
-	componentWillUnmount() {
-		this._stopForceLink()
-	}
-
-	render = () => {
-		if(this.state.running)
-			return null;
-    return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>;
-	}
-
-  _stopForceLink() {
-		sigma.layouts.stopForceLink()
-		if(this.state.timer) clearTimeout(this.state.timer)
-		if(this.props.sigma && this.props.sigma.settings) this.props.sigma.settings({drawEdges:this.state.drawEdges})
+  state: State = {running: true};
+  props: Props;
+  static defaultProps: DefaultProps = {
+    worker: true,
+    linLogMode: true
   }
 
-	_refreshGraph() {
-		let s = this.props.sigma
-		if(!sigma || !s) return
+  componentDidMount() {
+    this._refreshGraph()
+  }
 
-		let drawEdges = s.settings("drawEdges")
-		if(s.graph.edges().length > 1000)
-				s.settings({drawEdges: false})
+  // Change sigma status only after react rendering complete
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    let s = this.props.sigma
+    if(prevState.running && !this.state.running && s) {
+      this._stopForceLink()
+      s.refresh();
+    } else if (ForceLink._propsChanged(prevProps, this.props)) {
+      this._stopForceLink()
+      this._refreshGraph()
+    }
+  }
 
-		sigma.layouts.configForceLink(s, ForceLink._stripOptions(this.props))
-		sigma.layouts.startForceLink(s)
-		// TODO: convert running status to state
-		let timer = setTimeout(() => {
-					this.setState({running:false, timer:undefined})
-				}, this.props.timeout || s.graph.nodes().length*8 );
-		this.setState({running:true, timer, drawEdges})
-	}
+  componentWillUnmount() {
+    this._stopForceLink()
+  }
 
-	//strip force atlas options from component props
-	static _stripOptions(props: Props) {
-		return Object.assign({}, props, {sigma: undefined})
-	}
+  render = () => {
+    if(this.state.running)
+      return null;
+    return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>;
+  }
 
-	static _propsChanged(prev: Props, next: Props) {
-		for(let key in prev)
-			if(prev[key] !== next[key])
-				return true
-		return false
-	}
+  _stopForceLink() {
+    sigma.layouts.stopForceLink()
+    if(this.state.timer) clearTimeout(this.state.timer)
+    if(this.props.sigma && this.props.sigma.settings) this.props.sigma.settings({drawEdges:this.state.drawEdges})
+  }
+
+  _refreshGraph() {
+    let s = this.props.sigma
+    if(!sigma || !s) return
+
+    let drawEdges = s.settings("drawEdges")
+    if(s.graph.edges().length > 1000)
+        s.settings({drawEdges: false})
+
+    sigma.layouts.configForceLink(s, ForceLink._stripOptions(this.props))
+    sigma.layouts.startForceLink(s)
+    // TODO: convert running status to state
+    let timer = setTimeout(() => {
+          this.setState({running:false, timer:undefined})
+        }, this.props.timeout || s.graph.nodes().length*8 );
+    this.setState({running:true, timer, drawEdges})
+  }
+
+  //strip force atlas options from component props
+  static _stripOptions(props: Props) {
+    return Object.assign({}, props, {sigma: undefined})
+  }
+
+  static _propsChanged(prev: Props, next: Props) {
+    for(let key in prev)
+      if(prev[key] !== next[key])
+        return true
+    return false
+  }
 }
 
 export default ForceLink;
