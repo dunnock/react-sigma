@@ -30,6 +30,7 @@ type Props = {
   easing?: Sigma$Easing,
   randomize?: "globally" | "locally" | "no",
   timeout?: number,
+	children?: mixed,
   sigma?: Sigma
 };
 
