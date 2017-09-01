@@ -91,7 +91,12 @@ class ForceAtlas2 extends React.Component {
 	}
 
   //TODO: Add composition of child components after timeout
-	render = () => null
+	render() {
+        if (!this.state.running) {
+            return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>;
+        }
+        return null;
+    }
 
 
 	_refreshGraph() {
@@ -111,9 +116,12 @@ class ForceAtlas2 extends React.Component {
 	}
 
 	//strip force atlas options from component props
-	_stripOptions(props: Props): Props {
-		return Object.assign({}, props, {sigma: undefined})
-	}
+  _stripOptions(props: Props): Props {
+        return Object.assign({}, props, {
+            sigma: undefined
+							   
+        })
+    }
 
 }
 
