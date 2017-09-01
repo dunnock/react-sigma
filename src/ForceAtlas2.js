@@ -91,7 +91,6 @@ class ForceAtlas2 extends React.Component {
 		if(this.state.timer) clearTimeout(this.state.timer)
 	}
 
-  //TODO: Add composition of child components after timeout
 	render() {
         if (!this.state.running) {
             return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>;
@@ -119,8 +118,8 @@ class ForceAtlas2 extends React.Component {
 	//strip force atlas options from component props
   _stripOptions(props: Props): Props {
         return Object.assign({}, props, {
-            sigma: undefined
-							   
+            sigma: undefined,
+						children: undefined
         })
     }
 
