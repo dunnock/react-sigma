@@ -118,8 +118,8 @@ class ForceAtlas2 extends React.Component {
 	//strip force atlas options from component props
   _stripOptions(props: Props): Props {
         return Object.assign({}, props, {
-            sigma: undefined,
-						children: undefined
+            sigma: undefined, 
+            children: undefined
         })
     }
 
