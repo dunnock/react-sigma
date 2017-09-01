@@ -2,6 +2,7 @@
 
 import React from 'react'
 import '../sigma/layout.forceAtlas2'
+import { embedProps } from './tools'
 
 type State = {
 	running: boolean,
