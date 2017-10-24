@@ -24,7 +24,8 @@ type Props = {
 	slowDown?: number,
 	gravity?: number,
 	timeout?: number,
-	sigma?: sigma
+	sigma?: sigma,
+	children?: mixed
 };
 
 type DefaultProps = {

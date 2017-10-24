@@ -1,19 +1,22 @@
+// @flow
+
+declare var sigma: Sigma;
 
 // EXPORTS
 
-export type Sigma$Settings = Sigma$Settings$Renderer & Sigma$Settings$Graph
+type Sigma$Settings = Sigma$Settings$Renderer & Sigma$Settings$Graph
 				& Sigma$Settings$Renderer$HoverNode & Sigma$Settings$Renderer$HoverEdge
 				& Sigma$Settings$Renderer$Switches & Sigma$Settings$Renderer$Performance
 				& Sigma$Settings$Rescale & Sigma$Settings$Captors
 				& Sigma$Settings$Global & Sigma$Settings$Camera
 				& Sigma$Settings$Animation;
 
-export type Sigma$Graph$Data = {
+type Sigma$Graph$Data = {
 	nodes: [Sigma$Node],
 	edges: [Sigma$Edge]
 };
 
-export type Sigma$Node = {
+type Sigma$Node = {
 	id: string,
 	label?: string,
 	x?: number,
@@ -22,7 +25,7 @@ export type Sigma$Node = {
 	color?: color
 };
 
-export type Sigma$Edge = {
+type Sigma$Edge = {
 	id: string,
 	source: string,
 	target: string,
@@ -30,18 +33,18 @@ export type Sigma$Edge = {
 	color?: color
 };
 
-export type Sigma$Neo4jCypher$Producers = {
+type Sigma$Neo4jCypher$Producers = {
 	node: (Neo4j$Node) => Sigma$Node,
 	edge: (Neo4j$Edge) => Sigma$Edge
 };
 
-export type Neo4j$Node = {
+type Neo4j$Node = {
 	id: string,
 	labels: Array<string>,
 	properties: KeyValueObject
 };
 
-export type Neo4j$Edge = {
+type Neo4j$Edge = {
 	id: string,
 	type: string,
 	startNode: string,
@@ -49,14 +52,14 @@ export type Neo4j$Edge = {
 	properties: KeyValueObject
 };
 
-export type Sigma$Renderer = "webgl" | "canvas";
+type Sigma$Renderer = "webgl" | "canvas";
 
-export type KeyValueObject = {[string]: string};
+type KeyValueObject = {[string]: string};
 
 // Error handler function for Sigma component
-export type Sigma$ErrorHandler = (error: Error) => void;
+type Sigma$ErrorHandler = (error: Error) => void;
 
-export type Sigma$Event = {
+type Sigma$Event = {
 	data: {
 		node?: Neo4j$Node,
 		edge?: Neo4j$Edge,
@@ -68,24 +71,24 @@ export type Sigma$Event = {
 };
 
 // Event handler function for Sigma component
-export type Sigma$EventHandler = (node:Sigma$Event) => void;
+type Sigma$EventHandler = (node:Sigma$Event) => void;
 
 // Following type requires EdgeShapes component
-export type Sigma$Edge$Shapes = "def" | "line" | "arrow" | "curved" | "curvedArrow" | "dashed" | "dotted" | "parallel" | "tapered";
+type Sigma$Edge$Shapes = "def" | "line" | "arrow" | "curved" | "curvedArrow" | "dashed" | "dotted" | "parallel" | "tapered";
 
 // Following type requires NodeShapes component
-export type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
+type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "diamond" | "circle" | "square";
 
 // Following type used in Filter component
-export type Nodes$Filter = (node: Sigma$Node) => boolean;
+type Nodes$Filter = (node: Sigma$Node) => boolean;
 
-export type Sigma$Easing = "linear" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut";
+type Sigma$Easing = "linear" | "quadraticIn" | "quadraticOut" | "quadraticInOut" | "cubicIn" | "cubicOut" | "cubicInOut";
 
 export interface Sigma$Listener {
 	bind(event: string, handler: ()=>void): void;
 };
 
-export type Sigma = object;
+type Sigma = Object;
 
 declare var sigma: Sigma;
 

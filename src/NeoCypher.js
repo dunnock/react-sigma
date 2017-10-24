@@ -9,18 +9,22 @@ import { embedProps } from './tools'
 type State = {
     loaded: boolean
 };
+interface ProducersInterface {
+    node(node: Neo4j$Node): Sigma$Node,
+    edge(node: Neo4j$Edge): Sigma$Edge,
+};
 type Props = {
 	url: string,
 	user: string,
 	password: string,
 	query: string,
-	producers: NeoGraphItemsProducers,
+	producers: ProducersInterface,
     onGraphLoaded?: () => void,
     children?: mixed,
     sigma?: sigma
 };
 type DefaultProps = {
-	producers: NeoGraphItemsProducers
+	producers: ProducersInterface
 };
 
 

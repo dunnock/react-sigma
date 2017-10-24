@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react'
 import '../sigma/plugins.filter'
 

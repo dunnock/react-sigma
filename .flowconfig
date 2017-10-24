@@ -5,5 +5,5 @@ src
 <PROJECT_ROOT>/node_modules/fbjs/.*
 
 [libs]
-./flow-typed
-./types
+flow-typed
+types
