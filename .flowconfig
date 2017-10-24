@@ -3,6 +3,7 @@ src
 
 [ignore]
 <PROJECT_ROOT>/node_modules/fbjs/.*
+<PROJECT_ROOT>/node_modules/radium/.*
 
 [libs]
 flow-typed
