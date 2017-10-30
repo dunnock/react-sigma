@@ -91,7 +91,6 @@ class Sigma extends React.PureComponent {
   sigma: sigma;
   sigmaRenderer: ?string;
   plugins: mixed;
-  initRenderer: (container: HTMLElement) => void;
 
   static defaultProps: DefaultProps = {
     settings: {
@@ -115,7 +114,6 @@ class Sigma extends React.PureComponent {
     this.state = {renderer:false}
     let settings = this.props.settings ? this.props.settings : {}
     this.sigma = new sigma({settings})
-    this.initRenderer = this.initRenderer.bind(this)
     Sigma.bindHandlers(this.props, this.sigma)
     if(this.props.graph) {
       try {
@@ -127,7 +125,7 @@ class Sigma extends React.PureComponent {
     }
   }
 
-  initRenderer(container: HTMLElement) {
+  initRenderer = (container: HTMLElement) => {
     if(container) {
       let options: Object = {container}
       if(this.props.renderer)

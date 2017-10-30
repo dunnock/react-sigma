@@ -50,7 +50,6 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 class NeoCypher extends React.PureComponent {
     state: State;
 	props: Props;
-    onLoad: () => void;
 
 	static defaultProps: DefaultProps = {
 		producers: new NeoGraphItemsProducers()
@@ -59,7 +58,6 @@ class NeoCypher extends React.PureComponent {
     constructor(props: Props) {
         super(props)
         this.state = {loaded:false}
-        this.onLoad = this._onLoad.bind(this)
     }
 
 	componentDidMount() {
@@ -80,6 +78,13 @@ class NeoCypher extends React.PureComponent {
         return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
     }
 
+    onLoad = () => {
+        this.setState({loaded:true})
+        if(this.props.sigma)
+            this.props.sigma.refresh()
+        if(this.props.onGraphLoaded)
+            return this.props.onGraphLoaded()
+    }
 
     _runQuery(query: string) {
         // TODO: add exception handling capability to Sigma Neo4j plugin
@@ -91,15 +96,6 @@ class NeoCypher extends React.PureComponent {
                 this.props.producers
         )
     }
-
-    _onLoad() {
-        this.setState({loaded:true})
-        if(this.props.sigma)
-            this.props.sigma.refresh()
-        if(this.props.onGraphLoaded)
-            return this.props.onGraphLoaded()
-    }
-
 }
 
 export default NeoCypher;
