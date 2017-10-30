@@ -32,12 +32,10 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 class LoadGEXF extends React.PureComponent {
 	state: State;
 	props: Props;
-	onLoad: () => void;
 
 	constructor(props: Props) {
 		super(props)
 		this.state = {loaded:false}
-		this.onLoad = this._onLoad.bind(this)
 	}
 
 	componentDidMount() {
@@ -58,15 +56,7 @@ class LoadGEXF extends React.PureComponent {
 		return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
 	}
 
-	_load(url: string) {
-		sigma.parsers.gexf(
-			this.props.path ,
-			this.props.sigma ,
-			this.onLoad
-		)
-	}
-
-	_onLoad() {
+	onLoad = () => {
 		if(this.props.sigma)
 		this.props.sigma.refresh()
 		this.setState({loaded:true})
@@ -74,6 +64,13 @@ class LoadGEXF extends React.PureComponent {
 			return this.props.onGraphLoaded()
 	}
 
+	_load(url: string) {
+		sigma.parsers.gexf(
+			this.props.path ,
+			this.props.sigma ,
+			this.onLoad
+		)
+	}
 }
 
 export default LoadGEXF;
