@@ -49,13 +49,13 @@ It accepts all the parameters of sigma.layout.noverlap plugin described on its g
 
 
 const NOverlap = (props: Props) => {
-				const s = props.sigma
-				if(s)
-          return <ReactSigmaLayoutPlugin
-              start={()=>s.startNoverlap()}
-              config={options=>s.configNoverlap(options)}
-              stop={()=>s.stopNoverlap()} {...props} />
-				return null
-			}
+	const s = props.sigma
+	if(s)
+		return <ReactSigmaLayoutPlugin
+			start={()=>s.startNoverlap()}
+			config={options=>s.configNoverlap(options)}
+			stop={()=>!!s && !!s.stopNoverlap && s.stopNoverlap()} {...props} />
+	return null
+}
 
 export default NOverlap;

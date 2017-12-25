@@ -10,7 +10,7 @@ type State = {
 type Props = {
 	config: (config: KeyValueObject) => Sigma$Listener,
 	start: () => Sigma$Listener,
-	stop: () => void,
+	stop: () => mixed,
 	sigma?: sigma
 };
 
