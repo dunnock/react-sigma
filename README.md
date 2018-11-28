@@ -167,4 +167,4 @@ TODO: move to flow-typed
 
 # Attributions
 
- - this project is a React wrapper around excellent [Sigma.JS](https://github.com/jacomyal/sigma.js) library built by @jakolyal and @Yomguithereal
+ - this project is a React wrapper around excellent [Sigma.JS](https://github.com/jacomyal/sigma.js) library built by @jacomyal and @Yomguithereal
