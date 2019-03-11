@@ -81,15 +81,6 @@ import {Sigma, LoadJSON} from 'react-sigma'
 </Sigma>
 ```
 
-## Minimizing bundle
-
-Minimized sigma with minimum required functionality is 76kb, more when plugins added.
-Using webpack2 or rollup nothing need to be done. Webpack1 does not support tree shaking and require explicit submodules import to bundle only what's been used, e.g.:
-```
-import Sigma from 'react-sigma/lib/Sigma'
-import LoadJSON from 'react-sigma/lib/LoadJSON'
-```
-
 # Components reference
 
 Please see [react-sigma reference](https://github.com/dunnock/react-sigma/blob/master/DOCS.md) for details. Below is a brief concept.

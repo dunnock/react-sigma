@@ -1,4 +1,4 @@
-import { transform } from 'babel-core';
+import { transform } from '@babel/core';
 import fs from 'fs';
 import path from 'path';
 import outputFileSync from 'output-file-sync';
@@ -9,7 +9,7 @@ function buildContent(content, filename, destination, babelOptions = {}) {
     const result = transform(content, babelOptions);
     outputFileSync(destination, result.code, {encoding: 'utf8'});
   } catch(e) {
-    console.error(`${e.message} (${filename}:${e.loc.line}:${e.loc.column})`);
+    console.error(`${e.message} (${filename}:${!!e.loc && e.loc.line}:${!!e.loc && e.loc.column})`);
   }
 }
 

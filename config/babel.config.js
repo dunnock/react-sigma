@@ -1,35 +1,28 @@
 
 // Duplicated with ../.babelrc for now.
-const baseConfig = {
-  "presets": [
-    ["es2015", {modules: false}],
-    "react"
-  ],
-  "plugins": [
+const plugins = [
     "flow-react-proptypes",
-    "transform-export-extensions",
-    "transform-class-properties"
-  ]
-};
+    "@babel/plugin-transform-flow-strip-types",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-class-properties"
+  ];
 
 module.exports = (type) => {
   return {
     "production": {
-      cacheDirectory: true,
       babelrc: false,
-      presets: baseConfig.presets,
-      plugins: baseConfig.plugins.filter(plugin => plugin !== "flow-react-proptypes")
+      presets: [ ["@babel/preset-env", {targets: {browsers: ">5%"}}], "@babel/preset-react"],
+      plugins: plugins.filter(plugin => plugin !== "flow-react-proptypes")
     },
     "development": {
-      cacheDirectory: true,
       babelrc: false,
-      presets: baseConfig.presets,
-      plugins: baseConfig.plugins
+      presets: [ ["@babel/preset-env", {targets: {browsers: ">5%"}}], "@babel/preset-react"],
+      plugins
     },
     "es": {
       babelrc: false,
-      presets: [ "react" ],
-      plugins: baseConfig.plugins
+      presets: [ ["@babel/preset-env", {modules: false}], "@babel/preset-react" ],
+      plugins
     }
   }[type] || (() => {throw new Error(`Unsupported type for babel ${type}`)})();
 };
