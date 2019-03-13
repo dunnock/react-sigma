@@ -14,7 +14,7 @@
     "build:stats": "babel-node scripts/build-cli.js --stats",
     "build:doc": "documentation build src/* --shallow --config documentation.yml --github --format md --output DOCS.md",
     "pretest": "npm run build:sigma",
-    "test": "node scripts/test.js --env=jsdom",
+    "test": "babel-node scripts/test.js --env=jsdom",
     "publish:patch": "npm publish",
     "publish:minor": "npm-release minor",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -65,11 +65,10 @@
     "@storybook/react": "^5.0.1",
     "@storybook/storybook-deployer": "^2.8.1",
     "babel-eslint": "^10.0.1",
-    "babel-jest": "^24.3.1",
+    "babel-jest": "^24.5.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-flow-react-proptypes": "^25.0.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "canvas": "^2.3.1",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "child-process-promise": "^2.2.0",
     "colors": "^1.1.2",
@@ -93,7 +92,8 @@
     "fs-promise": "^2.0.0",
     "gzip-size": "^5.0.0",
     "imports-loader": "^0.8.0",
-    "jest": "^24.3.1",
+    "jest": "^24.5.0",
+    "jest-canvas-mock": "^2.0.0-beta.1",
     "lodash": "^4.17.4",
     "npm-release": "^1.0.0",
     "object-assign": "^4.1.1",
@@ -129,7 +129,8 @@
       "^.+\\.css$": "<rootDir>/config/jest/CSSStub.js"
     },
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "jest-canvas-mock"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules|es|lib|dest|sigma|scripts|stats)/"
