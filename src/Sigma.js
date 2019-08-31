@@ -85,9 +85,7 @@ type State = {
  */
 
 
-class Sigma extends React.PureComponent {
-  props: Props;
-  state: State;
+class Sigma extends React.Component<Props, State> {
   sigma: sigma;
   sigmaRenderer: ?string;
   plugins: mixed;
@@ -125,7 +123,7 @@ class Sigma extends React.PureComponent {
     }
   }
 
-  initRenderer = (container: HTMLElement) => {
+  initRenderer = (container: HTMLElement|null) => {
     if(container) {
       let options: Object = {container}
       if(this.props.renderer)
@@ -172,7 +170,7 @@ type Sigma$EventHandler = (node:Sigma$Event) => void
 ```
 **/
 
-  static bindHandlers(handlers, sigma) {
+  static bindHandlers(handlers: Props, sigma: any) {
     ["clickNode", "overNode", "outNode", "clickEdge", "overEdge", "outEdge", "clickStage"].forEach(
       event => {
           let handler = "on" + event[0].toUpperCase() + event.substr(1);

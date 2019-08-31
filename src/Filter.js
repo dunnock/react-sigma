@@ -24,8 +24,7 @@ type Nodes$Filter = (node: Sigma$Node) => boolean;
 
 **/
 
-class Filter extends React.Component {
-	props: Props;
+class Filter extends React.Component<Props> {
 	filter: Object;
 
 	componentDidMount() {

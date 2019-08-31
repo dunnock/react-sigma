@@ -29,10 +29,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 **/
 
 
-class LoadGEXF extends React.PureComponent {
-	state: State;
-	props: Props;
-
+class LoadGEXF extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props)
 		this.state = {loaded:false}

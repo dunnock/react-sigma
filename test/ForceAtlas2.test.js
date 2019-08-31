@@ -1,5 +1,3 @@
-// @flow
-
 import {Sigma, ForceAtlas2} from '../src/index';
 import React from 'react';
 import ReactDOM from 'react-dom';

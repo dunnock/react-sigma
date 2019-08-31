@@ -6,7 +6,7 @@ import { embedProps } from './tools'
 
 type State = {
 	running: boolean,
-	timer?: number,
+	timer?: TimeoutID,
 	drawEdges?: ?boolean
 };
 
@@ -61,9 +61,7 @@ It accepts all the parameters of ForceAtlas2 described on its github page:
 **/
 
 
-class ForceAtlas2 extends React.Component {
-	state: State;
-	props: Props;
+class ForceAtlas2 extends React.Component<Props, State> {
 	static defaultProps: DefaultProps = {
 		worker: true,
 		linLogMode: true

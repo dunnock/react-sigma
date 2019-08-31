@@ -44,9 +44,7 @@ type Sigma$Node$Shapes = "def" | "pacman" | "star" | "equilateral" | "cross" | "
 
 **/
 
-class NodeShapes extends React.Component {
-	props: Props;
-
+class NodeShapes extends React.Component<Props> {
 	constructor(props: Props) {
 		super(props)
 		if(this.props.sigma && this.props.default)

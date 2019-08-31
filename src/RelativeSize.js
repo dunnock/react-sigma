@@ -21,9 +21,7 @@ Sets nodes sizes corresponding its degree.
 
 **/
 
-class RelativeSize extends React.Component {
-	props: Props;
-
+class RelativeSize extends React.Component<Props> {
 	constructor(props: Props) {
 		super(props)
 		sigma.plugins.relativeSize(this.props.sigma, this.props.initialSize)

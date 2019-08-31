@@ -1,5 +1,3 @@
-// @flow
-
 import {Sigma} from '../src/index';
 import ForceLink from '../src/ForceLink';
 import React from 'react';

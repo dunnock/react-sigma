@@ -1,5 +1,3 @@
-// @flow
-
 import {Sigma} from '../src/index';
 import TestSigma from './TestSigma'
 import React from 'react';

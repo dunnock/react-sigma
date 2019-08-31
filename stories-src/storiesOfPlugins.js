@@ -18,16 +18,17 @@ storiesOf('Plugins', module)
       </LoadJSON>
     </Sigma>
   ))
-  .addWithInfo('NodeShapes and EdgeShapes',
-          'Render graph with dashed edges and diamond nodes.  Node and Edge shapes can be customized per node, using .type property, please see https://github.com/dunnock/react-sigma/blob/master/DOCS.md#edgeshapes for details.',
+  .add('NodeShapes and EdgeShapes',
           () => (
-    <Sigma renderer="canvas">
-      <EdgeShapes default="dashed"/>
-      <NodeShapes default="diamond"/>
-      <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
-      </LoadJSON>
-    </Sigma>
-  ))
+      <Sigma renderer="canvas">
+        <EdgeShapes default="dashed"/>
+        <NodeShapes default="diamond"/>
+        <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
+        </LoadJSON>
+      </Sigma>
+    ),
+    {info: 'Render graph with dashed edges and diamond nodes.  Node and Edge shapes can be customized per node, using .type property, please see https://github.com/dunnock/react-sigma/blob/master/DOCS.md#edgeshapes for details.'}
+  )
   .add('RelativeSize', () => (
     <Sigma renderer="canvas">
       <EdgeShapes default="dotted"/>
@@ -39,8 +40,7 @@ storiesOf('Plugins', module)
       </LoadJSON>
     </Sigma>
   ))
-  .addWithInfo('Force atlas 2',
-          'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, see https://dunnock.github.io/react-sigma/upwork.json.  Click on graph node to see event data.',
+  .add('Force atlas 2',
           () => (
     <Sigma renderer="canvas">
       <EdgeShapes default="curvedArrow"/>
@@ -52,9 +52,10 @@ storiesOf('Plugins', module)
         </RandomizeNodePositions>
       </LoadJSON>
     </Sigma>
-  ))
-  .addWithInfo('Force Link',
-          'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, it is extended version of ForceAtlas2. Click on graph node to see event data.',
+    ),
+    {info: 'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, see https://dunnock.github.io/react-sigma/upwork.json.  Click on graph node to see event data.'}
+  )
+  .add('Force Link',
           () => (
     <Sigma renderer="canvas" settings={{hideEdgesOnMove:false, animationsTime:3000}}>
       <EdgeShapes default="tapered"/>
@@ -66,9 +67,10 @@ storiesOf('Plugins', module)
         </RandomizeNodePositions>
       </LoadJSON>
     </Sigma>
-  ))
-  .addWithInfo('Dagre',
-          'Apply Dagre layout to the site tree, source: https://github.com/cpettitt/dagre/wiki#recommended-reading',
+    ),
+    {info: 'Animate graph with randomized coordinates and relative node sizes running ForceAtlas2, it is extended version of ForceAtlas2. Click on graph node to see event data.'}
+  )
+  .add('Dagre',
           () => {
     let directed = boolean("directed", true)
     let multigraph = boolean("multigraph", true)
@@ -86,6 +88,8 @@ storiesOf('Plugins', module)
         </RandomizeNodePositions>
       </LoadJSON>
     </Sigma>
-  })
+    },
+    {info: 'Apply Dagre layout to the site tree, source: https://github.com/cpettitt/dagre/wiki#recommended-reading'}
+  )
   .add('Filter', () => ( <FilteredSample/>))
   .add('Edge Labels', () => ( <EdgeLabelSample />))

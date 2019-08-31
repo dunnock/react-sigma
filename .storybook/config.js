@@ -1,6 +1,6 @@
-import { configure, setAddon } from '@storybook/react'
-import infoAddon from '@storybook/addon-info'
+import { configure, addDecorator } from '@storybook/react'
 import { setOptions } from '@storybook/addon-options'
+import { withInfo } from '@storybook/addon-info';
 
 setOptions({
   name: 'REACT-SIGMA GITHUB',
@@ -10,8 +10,8 @@ setOptions({
   showDownPanel: true,
   showSearchBox: false,
   downPanelInRight: true,
-})
+});
 
-setAddon(infoAddon)
+addDecorator(withInfo); 
 
-configure(() => require('../stories-src'), module)
+configure(() => require('../stories-src'), module);

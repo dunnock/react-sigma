@@ -32,10 +32,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 **/
 
 
-class LoadJSON extends React.PureComponent {
-	state: State;
-	props: Props;
-
+class LoadJSON extends React.Component<Props, State> {
 	constructor(props: Props) {
 		super(props)
 		this.state = {loaded:false}

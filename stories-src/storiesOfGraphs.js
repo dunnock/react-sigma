@@ -13,8 +13,7 @@ const sigmaAction = decorateAction([
 
 storiesOf('Complex graph samples', module)
   .addDecorator(withKnobs)
-  .addWithInfo('Medium graph animated',
-              'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceLink (ForceAtlas2) layout precalculated in background with cubicInOut easing. WebGL rendering. Roll over graph node to see event data.',
+  .add('Medium graph animated',
               () => {
     let flTimeout = number("Timeout", 2000)
     let flBackground = boolean("Force layout in backround", true)
@@ -44,18 +43,21 @@ storiesOf('Complex graph samples', module)
           </LoadGEXF>
         </Sigma>
     </div>
-  })
+    },
+    {info: 'Load medium size graph (~2k nodes) with coords and colors, then run RelativeSize and ForceLink (ForceAtlas2) layout precalculated in background with cubicInOut easing. WebGL rendering. Roll over graph node to see event data.'}
+  )
 
-  .addWithInfo('Big static',
-              'Render big graph (12k nodes) with predefined size and coordinates, see https://dunnock.github.io/react-sigma/sites_coords.json. Canvas rendering. Click on graph node to see event data.', () => (
+  .add('Big static',
+        () => (
     <Sigma renderer="canvas" onClickNode={ sigmaAction('onClickNode') }>
       <NodeShapes default="diamond"/>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_coords.json"}/>
     </Sigma>
-  ))
+    ),
+    {info: 'Render big graph (12k nodes) with predefined size and coordinates, see https://dunnock.github.io/react-sigma/sites_coords.json. Canvas rendering. Click on graph node to see event data.'}
+  )
 
-  .addWithInfo('Big graph animated',
-              'Load big graph (12k nodes, 30k edges), randomize coords and set relative node sizes, then run ForceAtlas2 algorythm with realtime calculation animation with barnesHutOptimize option, see https://dunnock.github.io/react-sigma/sites_nocoords.json. WebGL rendering. Click on graph node to see event data.',
+  .add('Big graph animated',
               () => (
     <Sigma renderer="webgl" settings={{drawEdges:false}} onClickNode={ sigmaAction('onClickNode') }>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/sites_nocoords.json"}>
@@ -65,4 +67,6 @@ storiesOf('Complex graph samples', module)
         </RandomizeNodePositions>
       </LoadJSON>
     </Sigma>
-  ))
+    ),
+    {info: 'Load big graph (12k nodes, 30k edges), randomize coords and set relative node sizes, then run ForceAtlas2 algorythm with realtime calculation animation with barnesHutOptimize option, see https://dunnock.github.io/react-sigma/sites_nocoords.json. WebGL rendering. Click on graph node to see event data.'}
+  )

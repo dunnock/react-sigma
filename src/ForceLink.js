@@ -5,7 +5,7 @@ import { embedProps } from './tools'
 
 type State = {
   running: boolean,
-  timer?: number,
+  timer?: TimeoutID,
   drawEdges?: ?boolean
 };
 
@@ -85,9 +85,8 @@ import ForceLink from 'react-sigma/lib/ForceLink'
 **/
 
 
-class ForceLink extends React.Component {
+class ForceLink extends React.Component<Props, State> {
   state: State = {running: true};
-  props: Props;
   static defaultProps: DefaultProps = {
     worker: true,
     linLogMode: true

@@ -36,9 +36,7 @@ const NOverlap = (props: Props) => {
 **/
 
 
-class ReactSigmaLayoutPlugin extends React.Component {
-	state: State;
-	props: Props;
+class ReactSigmaLayoutPlugin extends React.Component<Props, State> {
 	_mounted: boolean = false;
 
 	constructor(props: Props) {

@@ -17,9 +17,7 @@ Can be used within Sigma component with predefined graph or within graph loader 
 **/
 
 
-class RandomizeNodePositions extends React.PureComponent {
-  props: Props;
-
+class RandomizeNodePositions extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props)
     if(this.props.sigma) {

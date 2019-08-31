@@ -47,10 +47,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 **/
 
 
-class NeoCypher extends React.PureComponent {
-    state: State;
-	props: Props;
-
+class NeoCypher extends React.Component<Props, State> {
 	static defaultProps: DefaultProps = {
 		producers: new NeoGraphItemsProducers()
 	};
