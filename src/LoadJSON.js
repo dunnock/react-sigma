@@ -42,7 +42,7 @@ class LoadJSON extends React.Component<Props, State> {
 		this._load(this.props.path)
 	}
 
-	componentWillReceiveProps(props: Props) {
+	componentDidUpdate(props: Props) {
 		// reload only if path changes
 		if(this.props.path !== props.path) {
 			this.setState({loaded:false})
