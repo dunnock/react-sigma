@@ -112,7 +112,7 @@ class Sigma extends React.Component<Props, State> {
     this.state = {renderer:false}
     let settings = this.props.settings ? this.props.settings : {}
     this.sigma = new sigma({settings})
-    CustomShapes.init(this.sigma)
+    if (CustomShapes) CustomShapes.init(this.sigma)
     Sigma.bindHandlers(this.props, this.sigma)
     if(this.props.graph) {
       try {
