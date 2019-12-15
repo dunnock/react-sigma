@@ -7,21 +7,21 @@ import NeoGraphItemsProducers from './NeoGraphItemsProducers'
 import { embedProps } from './tools'
 
 type State = {
-    loaded: boolean
+	loaded: boolean
 };
 interface ProducersInterface {
-    node(node: Neo4j$Node): Sigma$Node,
-    edge(node: Neo4j$Edge): Sigma$Edge,
+	node(node: Neo4j$Node): Sigma$Node,
+	edge(node: Neo4j$Edge): Sigma$Edge,
 };
 type Props = {
 	url: string,
 	user: string,
 	password: string,
 	query: string,
-	producers: ProducersInterface,
-    onGraphLoaded?: () => void,
-    children?: mixed,
-    sigma?: sigma
+	producers?: ProducersInterface,
+	onGraphLoaded?: () => void,
+	children?: mixed,
+	sigma?: sigma
 };
 type DefaultProps = {
 	producers: ProducersInterface
@@ -39,7 +39,7 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
  @param {string} password    Neo4j instance REST API password
  @param {string} query    Neo4j cypher query
  @param {NeoGraphItemsProducers} producers   Optional transformer for creating Sigma nodes and edges,
-                                    instance compatible with NeoGraphItemsProducers
+									instance compatible with NeoGraphItemsProducers
  @param {Function} onGraphLoaded        Optional callback for graph update
 
 [see sigma plugin page for more details](https://github.com/jacomyal/sigma.js/tree/master/plugins/sigma.neo4j.cypher)
@@ -48,14 +48,13 @@ Child's componentWillMount should be used to enable plugins on loaded graph.
 
 
 class NeoCypher extends React.Component<Props, State> {
-	static defaultProps: DefaultProps = {
-		producers: new NeoGraphItemsProducers()
-	};
-
-    constructor(props: Props) {
-        super(props)
-        this.state = {loaded:false}
-    }
+	constructor(props: Props) {
+		if(!props.producers) {
+			props.producers = new NeoGraphItemsProducers();
+		}
+		super(props);
+		this.state = {loaded:false};
+	}
 
 	componentDidMount() {
 		this._runQuery(this.props.query)
@@ -64,35 +63,35 @@ class NeoCypher extends React.Component<Props, State> {
 	componentWillUpdate(props: Props) {
 		// suppose url, user or password won't change for sigma instance, as well as sigma instance itself
 		if(this.props.query !== props.query) {
-            this.setState({loaded:false})
+			this.setState({loaded:false})
 			this._runQuery(props.query)
-        }
+		}
 	}
 
 	render() {
-        if(!this.state.loaded)
-            return null
-        return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
-    }
+		if(!this.state.loaded)
+			return null
+		return <div>{ embedProps(this.props.children, {sigma: this.props.sigma}) }</div>
+	}
 
-    onLoad = () => {
-        this.setState({loaded:true})
-        if(this.props.sigma)
-            this.props.sigma.refresh()
-        if(this.props.onGraphLoaded)
-            return this.props.onGraphLoaded()
-    }
+	onLoad = () => {
+		this.setState({loaded:true})
+		if(this.props.sigma)
+			this.props.sigma.refresh()
+		if(this.props.onGraphLoaded)
+			return this.props.onGraphLoaded()
+	}
 
-    _runQuery(query: string) {
-        // TODO: add exception handling capability to Sigma Neo4j plugin
-        sigma.neo4j.cypher(
-                { url: this.props.url, user: this.props.user, password: this.props.password } ,
-                query ,
-                this.props.sigma ,
-                this.onLoad,
-                this.props.producers
-        )
-    }
+	_runQuery(query: string) {
+		// TODO: add exception handling capability to Sigma Neo4j plugin
+		sigma.neo4j.cypher(
+				{ url: this.props.url, user: this.props.user, password: this.props.password } ,
+				query ,
+				this.props.sigma ,
+				this.onLoad,
+				this.props.producers
+		)
+	}
 }
 
 export default NeoCypher;
