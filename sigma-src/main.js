@@ -1,46 +1,46 @@
 // Sigma build is quite big and not friendly for webpack, therefore we use custom import
 
 // Core:
-import "sigma-react/src/sigma.core.js"
+import "@maxsparrow/sigma/src/sigma.core.js"
 
 // Utils:
-import "sigma-react/src/conrad.js"
-import "sigma-react/src/utils/sigma.utils.js"
-import "sigma-react/src/utils/sigma.polyfills.js"
+import "@maxsparrow/sigma/src/conrad.js"
+import "@maxsparrow/sigma/src/utils/sigma.utils.js"
+import "@maxsparrow/sigma/src/utils/sigma.polyfills.js"
 
 // Main classes:
-import "sigma-react/src/sigma.settings.js"
-import "sigma-react/src/classes/sigma.classes.dispatcher.js"
-import "sigma-react/src/classes/sigma.classes.configurable.js"
-import "sigma-react/src/classes/sigma.classes.graph.js"
-import "sigma-react/src/classes/sigma.classes.camera.js"
-import "sigma-react/src/classes/sigma.classes.quad.js"
-import "sigma-react/src/classes/sigma.classes.edgequad.js"
+import "@maxsparrow/sigma/src/sigma.settings.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.dispatcher.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.configurable.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.graph.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.camera.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.quad.js"
+import "@maxsparrow/sigma/src/classes/sigma.classes.edgequad.js"
 
 // Captors:
-import "sigma-react/src/captors/sigma.captors.mouse.js"
-import "sigma-react/src/captors/sigma.captors.touch.js"
+import "@maxsparrow/sigma/src/captors/sigma.captors.mouse.js"
+import "@maxsparrow/sigma/src/captors/sigma.captors.touch.js"
 
 // Renderers:
-import "sigma-react/src/renderers/sigma.renderers.canvas.js"
+import "@maxsparrow/sigma/src/renderers/sigma.renderers.canvas.js"
 
 // Sub functions per engine:
-import "sigma-react/src/renderers/canvas/sigma.canvas.labels.def.js"
-import "sigma-react/src/renderers/canvas/sigma.canvas.hovers.def.js"
-import "sigma-react/src/renderers/canvas/sigma.canvas.nodes.def.js"
-import "sigma-react/src/renderers/canvas/sigma.canvas.edges.def.js"
-import "sigma-react/src/renderers/canvas/sigma.canvas.edgehovers.def.js"
-import "sigma-react/src/renderers/canvas/sigma.canvas.extremities.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.labels.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.hovers.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.nodes.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.edges.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.edgehovers.def.js"
+import "@maxsparrow/sigma/src/renderers/canvas/sigma.canvas.extremities.def.js"
 
 // Middlewares:
-import "sigma-react/src/middlewares/sigma.middlewares.rescale.js"
-import "sigma-react/src/middlewares/sigma.middlewares.copy.js"
+import "@maxsparrow/sigma/src/middlewares/sigma.middlewares.rescale.js"
+import "@maxsparrow/sigma/src/middlewares/sigma.middlewares.copy.js"
 
 // Miscellaneous:
-import "sigma-react/src/misc/sigma.misc.animation.js"
-import "sigma-react/src/misc/sigma.misc.bindEvents.js"
-import "sigma-react/src/misc/sigma.misc.bindDOMEvents.js"
-import "sigma-react/src/misc/sigma.misc.drawHovers.js"
+import "@maxsparrow/sigma/src/misc/sigma.misc.animation.js"
+import "@maxsparrow/sigma/src/misc/sigma.misc.bindEvents.js"
+import "@maxsparrow/sigma/src/misc/sigma.misc.bindDOMEvents.js"
+import "@maxsparrow/sigma/src/misc/sigma.misc.drawHovers.js"
 
 let sigma = window.sigma
 

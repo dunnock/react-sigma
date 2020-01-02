@@ -107,7 +107,7 @@
     "recursive-readdir": "^2.1.1",
     "rimraf": "3",
     "script-loader": "^0.7.0",
-    "sigma-react": "1.2.10",
+    "@maxsparrow/sigma": "1.2.1",
     "strip-ansi": "^5.1.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.2.3",

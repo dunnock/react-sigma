@@ -43,7 +43,7 @@ module.exports = {
   srcRoot: resolveApp('src'),
   sigmaSrcRoot: resolveApp('sigma-src'),
   sigmaDistRoot: resolveApp('') + "/sigma",
-  sigmaPluginsRoot: resolveApp('node_modules/sigma-react/plugins/'),
+  sigmaPluginsRoot: resolveApp('node_modules/@maxsparrow/sigma/plugins/'),
   statsRoot: resolveApp('') + "/stats",
   scriptsRoot: resolveApp('') + "/scripts"
 };
