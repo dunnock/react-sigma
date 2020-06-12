@@ -94,7 +94,7 @@ initializes renderer and camera in the given area and starts rendering graph.
 ```
 <Sigma renderer="webgl" style={{maxWidth:"inherit", height:"400px"}}
 		settings={{drawEdges:false}}
-		onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}>
+		onOverNode={e => console.log("Mouse over node: " + e.data.node.label)}
 		graph={{nodes:["id0", "id1"], edges:[{id:"e0",source:"id0",target:"id1"}]}}>
 	<RelativeSize initialSize={8} />
 </Sigma>
