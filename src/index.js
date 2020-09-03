@@ -1,4 +1,5 @@
 export Sigma from './Sigma';
+export DragNodes from './DragNodes';
 export EdgeShapes from './EdgeShapes';
 export NodeShapes from './NodeShapes';
 export LoadJSON from './LoadJSON';
