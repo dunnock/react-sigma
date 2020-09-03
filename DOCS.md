@@ -18,26 +18,6 @@ should be imported explicitly:
     import ForceLink from 'react-sigma/lib/ForceLink'
     import Dagre from 'react-sigma/lib/Dagre'
 
-## Minimizing bundle
-
-### webpack1
-
-Minimized sigma with minimum required functionality is 76kb, more when plugins added.
-Minimized bundle with all components (except Dagre, SVG and ForceLink) is 196kb.
-Webpack1 does not support tree shaking and require explicit submodules import
-to bundle only what's been used, e.g.:
-
-    import Sigma from 'react-sigma/lib/Sigma'
-    import LoadJSON from 'react-sigma/lib/LoadJSON'
-
-### webpack2
-
-Using webpack2
-
-    import { Sigma, LoadJSON } from 'react-sigma'
-
-unused components won't be included in the resulting bundle.
-
 # Components
 
 # Sigma
