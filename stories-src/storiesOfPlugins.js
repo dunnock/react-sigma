@@ -1,12 +1,17 @@
 import React from 'react';
 import { storiesOf, action } from '@storybook/react';
 import { withKnobs, boolean, object, select } from '@storybook/addon-knobs';
-import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions } from '../src/index';
+import { decorateAction } from '@storybook/addon-actions';
+import { Sigma, EdgeShapes, NodeShapes, LoadJSON, LoadGEXF, Filter, ForceAtlas2, RelativeSize, NOverlap, RandomizeNodePositions, DragNodes } from '../src/index';
 import ForceLink from '../src/ForceLink';
 import FilteredSample from './FilteredSample';
 import EdgeLabelSample from './EdgeLabelSample';
 import Dagre from '../src/Dagre'
+import { Note } from './style.js';
 
+const sigmaAction = decorateAction([
+  args => [{type: args[0].type,  data: {node: args[0].data.node, captor: args[0].data.captor} }]
+]);
 
 storiesOf('Plugins', module)
   .addDecorator(withKnobs)
@@ -93,3 +98,22 @@ storiesOf('Plugins', module)
   )
   .add('Filter', () => ( <FilteredSample/>))
   .add('Edge Labels', () => ( <EdgeLabelSample />))
+  .add('Drag Nodes', () => {
+    return (
+      <div style={Note}>
+      Click on nodes to drag. Check node events under the <strong>actions</strong> tab.
+      <Sigma renderer="canvas">
+        <LoadJSON path={String(process.env.PUBLIC_URL) + "/upwork.json"}>
+          <RandomizeNodePositions>
+            <DragNodes
+              onStartdrag={ sigmaAction('onStartdrag') }
+              onDrag={ sigmaAction('onDrag') }
+              onDrop={ sigmaAction('onDrop') }
+              onDragend={ sigmaAction('onDragend') } />
+          </RandomizeNodePositions>
+        </LoadJSON>
+      </Sigma>
+    </div>)
+  },
+  {info: 'Adjust the position of nodes in the graph by drag-and-drop.'}
+  )
