@@ -10,6 +10,15 @@ storiesOf('Loading', module)
       </LoadJSON>
   	</Sigma>
   ))
+  .add( 'LoadJSON without coords seeded', () => {
+    return (
+      <Sigma>
+        <LoadJSON path={String( process.env.PUBLIC_URL ) + "/geolocalized.json"}>
+          <RandomizeNodePositions seed={42} />
+        </LoadJSON>
+      </Sigma>
+    )
+  } )
   .add('LoadJSON with coords', () => (
     <Sigma>
       <LoadJSON path={String(process.env.PUBLIC_URL) + "/arctic.json"}/>
