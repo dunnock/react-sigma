@@ -360,6 +360,10 @@ preloaded, or within loader component, like LoadJSON.
 RandomizeNodePositions component, sets random positions to all nodes.
 Can be used within Sigma component with predefined graph or within graph loader component.
 
+**Parameters**
+
+-   `seed` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)?** Random position seed (optional, defaults to random number between 1 and 1e6)
+
 # RelativeSize
 
 [src/RelativeSize.js:25-34](https://github.com/dunnock/react-sigma/blob/22ffeb743b9893354171f025edc217e4241ca70c/src/RelativeSize.js#L25-L34 "Source code on GitHub")
