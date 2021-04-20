@@ -435,3 +435,4 @@ Filter is hiding all nodes which do not apply to the provided nodesBy criteria.
 **Parameters**
 
 -   `nodesBy` **Nodes$Filter** will hide nodes where filter returns falsetype Nodes$Filter = (node: Sigma$Node) => boolean;
+-   `edgesBy` **Nodes$Filter** will hide edges where filter returns falsetype Nodes$Filter = (node: Sigma$Node) => boolean;
