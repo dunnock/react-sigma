@@ -35,7 +35,7 @@ class Filter extends React.Component<Props> {
 	// TODO: will it work in composition with ForceAtlas for instance?
 	//It should hide nodes before rendering of subplugins, therefore used in componentWillUpdate.. is it right?
 	componentWillUpdate(props: Props) {
-		if(props.nodesBy!==this.props.nodesBy || props.neighborsOf!==this.props.neighborsOf)
+		if(props.nodesBy!==this.props.nodesBy || props.neighborsOf!==this.props.neighborsOf || props.edgesBy!==this.props.edgesBy)
 			this._apply(props)
 	}
 
@@ -43,12 +43,16 @@ class Filter extends React.Component<Props> {
 	render = () => null
 
 	_apply(props: Props) {
-		this.filter.undo(["neighborsOf", "nodesBy"])
+		this.filter.undo(["neighborsOf", "nodesBy", "edgesBy"])
 		if(props.neighborsOf) {
 			this.filter.neighborsOf(props.neighborsOf, "neighborsOf")
 		}
-		if(props.nodesBy)
+		if(props.nodesBy) {
 			this.filter.nodesBy(props.nodesBy, "nodesBy")
+		}
+		if(props.edgesBy) {
+			this.filter.edgesBy(props.edgesBy, "edgesBy")
+		}
 		this.filter.apply()
 		if(this.props.sigma)
 			this.props.sigma.refresh();
