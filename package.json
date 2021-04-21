@@ -103,7 +103,7 @@
     "path-exists": "4",
     "promise": "^8.1.0",
     "react": "^16.13.1",
-    "react-dev-utils": "^9.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.13.1",
     "recursive-readdir": "^2.1.1",
     "rimraf": "^3.0.2",
